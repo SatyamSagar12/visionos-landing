@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VisionOS — pick your trade</title>
+<meta name="description" content="One system your team runs on and your clients log into. Four versions, one per trade." />
+<!-- These are sales pages for named prospects, not something to rank in search. -->
+<meta name="robots" content="noindex, nofollow" />
+<style>
+  :root {
+    --ink: #16150f;
+    --ink-2: #4a483c;
+    --ink-3: #86836f;
+    --paper: #f3f0e6;
+    --card: #fffdf6;
+    --line: #16150f;
+    --hue: #b4442a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #f2efe4;
+      --ink-2: #b6b2a2;
+      --ink-3: #83806f;
+      --paper: #14140f;
+      --card: #1c1b15;
+      --line: #f2efe4;
+      --hue: #e2745a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #f2efe4;
+    --ink-2: #b6b2a2;
+    --ink-3: #83806f;
+    --paper: #14140f;
+    --card: #1c1b15;
+    --line: #f2efe4;
+    --hue: #e2745a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 8vh 5vw 12vh;
+    background: var(--paper);
+    color: var(--ink);
+    font: 16px/1.6 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 62rem; margin: 0 auto; }
+  .eyebrow {
+    font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--hue); font-weight: 700; margin: 0 0 1.2rem;
+  }
+  h1 {
+    font-size: clamp(2.1rem, 6vw, 3.6rem);
+    line-height: 1.02; letter-spacing: -.04em;
+    margin: 0 0 1rem; text-wrap: balance;
+  }
+  .lede { font-size: 1.15rem; color: var(--ink-2); max-width: 34rem; margin: 0 0 3.5rem; }
+  .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+  a.card {
+    display: block; padding: 1.5rem 1.4rem 1.3rem;
+    background: var(--card); border: 2px solid var(--line);
+    color: inherit; text-decoration: none;
+    box-shadow: 4px 4px 0 var(--line);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  a.card:hover, a.card:focus-visible {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--hue);
+    outline: none;
+  }
+  a.card .who {
+    display: block; font-size: .7rem; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: .55rem; font-weight: 700;
+  }
+  a.card h2 { font-size: 1.2rem; margin: 0 0 .5rem; letter-spacing: -.015em; line-height: 1.2; }
+  a.card p { margin: 0; font-size: .92rem; color: var(--ink-2); }
+  footer { margin-top: 4rem; font-size: .85rem; color: var(--ink-3); }
+  footer a { color: var(--hue); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">VisionOS</p>
+    <h1>One system you run on.<br>One login they use.</h1>
+    <p class="lede">
+      The same product, told four ways — because a studio and a plant-hire firm
+      lose different things when the work is scattered across six tools.
+    </p>
+
+    <div class="grid">
+      <a class="card" href="./studios.html">
+        <span class="who">Design studios &amp; agencies</span>
+        <h2>The intern approved it</h2>
+        <p>Client sign-off with a name and a date on it.</p>
+      </a>
+      <a class="card" href="./construction.html">
+        <span class="who">Builders &amp; contractors</span>
+        <h2>Who approved the variation?</h2>
+        <p>Variations agreed on the phone, written down for once.</p>
+      </a>
+      <a class="card" href="./equipment.html">
+        <span class="who">Equipment &amp; plant hire</span>
+        <h2>Where's my order?</h2>
+        <p>The question your customers stop having to ask.</p>
+      </a>
+      <a class="card" href="./professional-services.html">
+        <span class="who">Accountants &amp; consultants</span>
+        <h2>Still waiting on their paperwork</h2>
+        <p>Chasing clients, without doing the chasing.</p>
+      </a>
+    </div>
+
+    <footer>
+      <p>Twenty minutes, no slides — <a href="mailto:Satyamkns@gmail.com?subject=Twenty%20minutes%20%E2%80%94%20VisionOS">Satyamkns@gmail.com</a></p>
+    </footer>
+  </div>
+</body>
+</html>
