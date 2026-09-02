@@ -224,9 +224,12 @@
   .side-k{position:absolute;top:20px;left:24px;right:24px;display:block;font-family:var(--mono);
     font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;border-bottom:0;
     text-shadow:0 1px 10px rgba(0,0,0,.7)}
-  .feats{background:rgba(255,255,255,.94);backdrop-filter:blur(14px) saturate(1.2);
-    border-radius:16px;padding:10px 26px 14px;box-shadow:0 22px 48px -26px rgba(23,19,16,.55)}
-  .feats{list-style:none;margin:0;padding:0}
+  /* One rule, not two. The list reset used to be declared separately and later,
+     so its padding:0 silently undid the panel's padding and every line sat
+     against the left edge — same class, same specificity, source order decides. */
+  .feats{list-style:none;margin:0;padding:18px 26px 20px;
+    background:rgba(255,255,255,.94);backdrop-filter:blur(14px) saturate(1.2);
+    border-radius:16px;box-shadow:0 22px 48px -26px rgba(23,19,16,.55)}
   .feat{padding:16px 0;border-bottom:1px solid var(--line)}
   .feat:last-child{border-bottom:0}
   .feat h4{margin-bottom:5px;font-size:1rem}
