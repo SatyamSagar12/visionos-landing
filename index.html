@@ -145,6 +145,47 @@
   .door-t{font-size:.76rem;color:var(--ink-3);letter-spacing:-.005em}
   .door-w{font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:-.03em;line-height:1.22;color:var(--ink)}
 
+
+  /* ── the light ground ─────────────────────────────────────────────────
+     The room is a hero, not a whole page. Light is where you read, and a
+     visitor spends far longer below the fold than in it — a full page of
+     near-black is fine for forty words and tiring for a thousand.
+
+     This works by redeclaring the same tokens inside .lit rather than by
+     restyling components, so every rule written for the dark ground keeps
+     working and nothing had to be duplicated. The accent shifts from the
+     lamp's pale orange to a burnt one, because #F0A868 on off-white is
+     roughly 1.8:1 and unreadable. */
+  .lit section{padding:92px 0}
+  .lit{
+    --room:#F6F4F0; --paper-2:#EFEBE4; --card:#FFFFFF; --panel:#FFFFFF;
+    --ink:#171310; --ink-2:#57504A; --ink-3:#857C74;
+    --line:rgba(23,19,16,.11); --line-2:rgba(23,19,16,.18);
+    --lamp:#B8460F; --lamp-2:#8F3609;
+    background:var(--room);color:var(--ink);
+    border-radius:30px 30px 0 0;position:relative;z-index:4;margin-top:-30px;
+    box-shadow:0 -30px 60px -30px rgba(0,0,0,.55)}
+  .lit .strip{border-top:0;border-bottom:1px solid var(--line);border-radius:30px 30px 0 0;background:transparent}
+  .lit .chip{background:#fff}
+  .lit .btn-solid{background:#171310;color:#FBFAF8;box-shadow:0 10px 26px -14px rgba(23,19,16,.6)}
+  .lit .btn-solid:hover{box-shadow:0 16px 32px -14px rgba(23,19,16,.7)}
+  .lit .btn-glass{background:#fff;border-color:var(--line-2);color:var(--ink);backdrop-filter:none}
+  .lit .btn-glass:hover{background:#fff;border-color:rgba(23,19,16,.34)}
+  .lit .col{background:linear-gradient(180deg,#fff,rgba(255,255,255,.4))}
+  .lit .adm{background:linear-gradient(100deg,rgba(184,70,15,.055),rgba(23,19,16,.012) 44%)}
+  .lit .price{background:#fff}
+  .lit footer{border-top:1px solid var(--line)}
+  .lit .kicker{background:#fff}
+
+  /* The bar detaches into a floating pill once it is over the light ground,
+     the way the reference does. Sitting flush to the top edge over a rounded
+     light block reads as two pages stacked. */
+  .mast.stuck .in{max-width:calc(var(--col) - 40px);margin:10px auto;padding:11px 14px 11px 22px;
+    border:1px solid rgba(255,255,255,.13);border-radius:999px;
+    background:rgba(18,14,10,.82);backdrop-filter:blur(16px) saturate(1.4);
+    box-shadow:0 18px 40px -20px rgba(0,0,0,.8)}
+  .mast.stuck{background:transparent;backdrop-filter:none;border-bottom-color:transparent}
+
   /* ── marquee ──────────────────────────────────────────────────────── */
   .strip{padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;
     mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
@@ -157,7 +198,7 @@
   .chip.hot{color:var(--lamp-2);border-color:rgba(240,168,104,.4);background:rgba(240,168,104,.09)}
 
   /* ── features ─────────────────────────────────────────────────────── */
-  .split{margin-top:54px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .split{margin-top:54px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
   @media(max-width:900px){.split{grid-template-columns:1fr;gap:14px}}
   .col{border:1px solid var(--line);border-radius:20px;padding:30px 28px;background:linear-gradient(180deg,rgba(255,240,220,.045),transparent)}
   .side-k{display:block;font-family:var(--mono);font-size:.67rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding-bottom:18px;border-bottom:1px solid var(--line)}
@@ -300,6 +341,15 @@
   </div>
 </section>
 
+<div class="lit">
+
+<div class="strip">
+  <div class="marquee">
+    <div class="marquee-row"><span class="chip hot">AI assistant</span><span class="chip hot">Executive analytics</span><span class="chip">CRM &amp; contacts</span><span class="chip">Sales pipeline</span><span class="chip">Projects &amp; tasks</span><span class="chip">Invoices &amp; billing</span><span class="chip">Reports &amp; exports</span><span class="chip">Calendar &amp; meetings</span><span class="chip">Knowledge base</span><span class="chip">Support tickets</span><span class="chip">Audit log</span><span class="chip">Single sign-on</span><span class="chip">Nightly backups</span><span class="chip">53 screens, honestly</span></div>
+    <div class="marquee-row" aria-hidden="true"><span class="chip hot">AI assistant</span><span class="chip hot">Executive analytics</span><span class="chip">CRM &amp; contacts</span><span class="chip">Sales pipeline</span><span class="chip">Projects &amp; tasks</span><span class="chip">Invoices &amp; billing</span><span class="chip">Reports &amp; exports</span><span class="chip">Calendar &amp; meetings</span><span class="chip">Knowledge base</span><span class="chip">Support tickets</span><span class="chip">Audit log</span><span class="chip">Single sign-on</span><span class="chip">Nightly backups</span><span class="chip">53 screens, honestly</span></div>
+  </div>
+</div>
+
 <section id="inside">
   <div class="wrap reveal">
     <span class="kicker">Fifty-three screens</span>
@@ -345,13 +395,6 @@
     </div>
   </div>
 </section>
-
-<div class="strip">
-  <div class="marquee">
-    <div class="marquee-row"><span class="chip hot">AI assistant</span><span class="chip hot">Executive analytics</span><span class="chip">CRM &amp; contacts</span><span class="chip">Sales pipeline</span><span class="chip">Projects &amp; tasks</span><span class="chip">Invoices &amp; billing</span><span class="chip">Reports &amp; exports</span><span class="chip">Calendar &amp; meetings</span><span class="chip">Knowledge base</span><span class="chip">Support tickets</span><span class="chip">Audit log</span><span class="chip">Single sign-on</span><span class="chip">Nightly backups</span><span class="chip">53 screens, honestly</span></div>
-    <div class="marquee-row" aria-hidden="true"><span class="chip hot">AI assistant</span><span class="chip hot">Executive analytics</span><span class="chip">CRM &amp; contacts</span><span class="chip">Sales pipeline</span><span class="chip">Projects &amp; tasks</span><span class="chip">Invoices &amp; billing</span><span class="chip">Reports &amp; exports</span><span class="chip">Calendar &amp; meetings</span><span class="chip">Knowledge base</span><span class="chip">Support tickets</span><span class="chip">Audit log</span><span class="chip">Single sign-on</span><span class="chip">Nightly backups</span><span class="chip">53 screens, honestly</span></div>
-  </div>
-</div>
 
 <section id="week">
   <div class="wrap reveal">
@@ -438,6 +481,8 @@
     <a href="/equipment/">Equipment</a>
     <a href="/professional-services/">Professional services</a>
   </footer>
+</div>
+
 </div>
 
 </main>
