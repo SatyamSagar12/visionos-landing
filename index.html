@@ -95,7 +95,7 @@
   .btn-lg{padding:15px 28px;font-size:1rem}
 
   /* ── hero ─────────────────────────────────────────────────────────── */
-  .hero{position:relative;padding:78px 0 78px;overflow:hidden}
+  .hero{position:relative;padding:78px 0 122px;overflow:hidden}
   .hero .wrap{position:relative;z-index:2}
   .stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:48px;align-items:center;padding-bottom:150px}
   @media(max-width:1040px){.stage{grid-template-columns:1fr;gap:52px;padding-bottom:120px}}
@@ -167,9 +167,9 @@
     --line:rgba(23,19,16,.11); --line-2:rgba(23,19,16,.18);
     --lamp:#B8460F; --lamp-2:#8F3609;
     background:var(--room);color:var(--ink);
-    border-radius:30px 30px 0 0;position:relative;z-index:4;margin-top:-30px;
-    box-shadow:0 -30px 60px -30px rgba(0,0,0,.55)}
-  .lit .strip{border-top:0;border-bottom:1px solid var(--line);border-radius:30px 30px 0 0;background:transparent}
+    border-radius:44px 44px 0 0;position:relative;z-index:4;margin-top:-64px;
+    box-shadow:0 -40px 90px -30px rgba(0,0,0,.75)}
+  .lit .strip{border-top:0;border-bottom:1px solid var(--line);border-radius:44px 44px 0 0;background:transparent;padding-top:44px}
   .lit .chip{background:#fff}
   .lit .btn-solid{background:#171310;color:#FBFAF8;box-shadow:0 10px 26px -14px rgba(23,19,16,.6)}
   .lit .btn-solid:hover{box-shadow:0 16px 32px -14px rgba(23,19,16,.7)}
@@ -204,7 +204,15 @@
   /* ── features ─────────────────────────────────────────────────────── */
   .split{margin-top:54px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
   @media(max-width:900px){.split{grid-template-columns:1fr;gap:14px}}
-  .col{border:1px solid var(--line);border-radius:20px;padding:30px 28px;background:linear-gradient(180deg,rgba(255,240,220,.045),transparent)}
+  .col{border:1px solid var(--line);border-radius:20px;padding:30px 28px;overflow:hidden;background:linear-gradient(180deg,rgba(255,240,220,.045),transparent)}
+
+  /* The plate. Masked to fade out downward so it reads as engraved into the
+     card rather than pasted on top of it, and so the heading underneath never
+     has to fight a line for contrast. */
+  .plate{height:104px;margin:-30px -28px 6px;background-image:var(--pl);background-size:cover;
+    background-color:color-mix(in srgb,var(--pt) 8%,transparent);
+    -webkit-mask-image:linear-gradient(#000 56%,transparent);
+    mask-image:linear-gradient(#000 56%,transparent)}
   .side-k{display:block;font-family:var(--mono);font-size:.67rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding-bottom:18px;border-bottom:1px solid var(--line)}
   .feats{list-style:none;margin:0;padding:0}
   .feat{display:flex;gap:17px;padding:20px 0;border-bottom:1px solid var(--line)}
@@ -361,6 +369,7 @@
     <p class="lede" style="margin-top:22px">These are the ones that change your week. The rest are there when you want them and quiet when you don't.</p>
     <div class="split">
       <div class="col">
+        <div class="plate" style="--pl:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20150%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M-10%2018%20C%2090%20-8%2C%20190%2056%2C%20300%2012%20S%20460%2028%2C%20520%2014%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2034.6%20C%2090%20-3%2C%20190%2066.5%2C%20300%2028.6%20S%20460%2044.6%2C%20520%2030.6%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2047.2%20C%2090%203.5%2C%20190%2065.6%2C%20300%2041.2%20S%20460%2057.2%2C%20520%2043.2%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2056.4%20C%2090%2014.899999999999999%2C%20190%2063.9%2C%20300%2050.4%20S%20460%2066.4%2C%20520%2052.4%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2066.2%20C%2090%2034.2%2C%20190%2073.9%2C%20300%2060.2%20S%20460%2076.2%2C%20520%2062.2%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2080.2%20C%2090%2060.5%2C%20190%2098.80000000000001%2C%20300%2074.2%20S%20460%2090.2%2C%20520%2076.2%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2097.2%20C%2090%2086.9%2C%20190%20129.4%2C%20300%2091.2%20S%20460%20107.2%2C%20520%2093.2%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%20113%20C%2090%20104.7%2C%20190%20151%2C%20300%20107%20S%20460%20123%2C%20520%20109%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%20124.3%20C%2090%20109.7%2C%20190%20156%2C%20300%20118.3%20S%20460%20134.3%2C%20520%20120.3%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2070%20C%2090%2040%2C%20190%2094%2C%20300%2064%20S%20460%2080%2C%20520%2066%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%222.6%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.9%22%2F%3E%3C%2Fsvg%3E');--pt:#B8460F"></div>
         <span class="side-k">Their side — what the client sees</span>
         <ul class="feats">
           <li class="feat">
@@ -377,6 +386,7 @@
           </li></ul>
       </div>
       <div class="col">
+        <div class="plate" style="--pl:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20500%20150%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M-10%2018%20C%2090%20-8%2C%20190%2056%2C%20300%2012%20S%20460%2028%2C%20520%2014%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2034.6%20C%2090%20-3%2C%20190%2066.5%2C%20300%2028.6%20S%20460%2044.6%2C%20520%2030.6%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2047.2%20C%2090%203.5%2C%20190%2065.6%2C%20300%2041.2%20S%20460%2057.2%2C%20520%2043.2%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2056.4%20C%2090%2014.899999999999999%2C%20190%2063.9%2C%20300%2050.4%20S%20460%2066.4%2C%20520%2052.4%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2066.2%20C%2090%2034.2%2C%20190%2073.9%2C%20300%2060.2%20S%20460%2076.2%2C%20520%2062.2%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2080.2%20C%2090%2060.5%2C%20190%2098.80000000000001%2C%20300%2074.2%20S%20460%2090.2%2C%20520%2076.2%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2097.2%20C%2090%2086.9%2C%20190%20129.4%2C%20300%2091.2%20S%20460%20107.2%2C%20520%2093.2%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%20113%20C%2090%20104.7%2C%20190%20151%2C%20300%20107%20S%20460%20123%2C%20520%20109%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%20124.3%20C%2090%20109.7%2C%20190%20156%2C%20300%20118.3%20S%20460%20134.3%2C%20520%20120.3%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%221.15%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.55%22%2F%3E%3Cpath%20d%3D%22M-10%2070%20C%2090%2040%2C%20190%2094%2C%20300%2064%20S%20460%2080%2C%20520%2066%22%20fill%3D%22none%22%20stroke%3D%22%23B8460F%22%20stroke-width%3D%222.6%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.9%22%2F%3E%3C%2Fsvg%3E');--pt:#B8460F"></div>
         <span class="side-k">Your side — what you get</span>
         <ul class="feats">
           <li class="feat">
