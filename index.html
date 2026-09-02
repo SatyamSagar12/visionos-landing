@@ -204,10 +204,14 @@
   /* ── features ─────────────────────────────────────────────────────── */
   .split{margin-top:54px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
   @media(max-width:900px){.split{grid-template-columns:1fr;gap:14px}}
-  .col{position:relative;border-radius:22px;padding:22px;overflow:hidden;border:1px solid var(--line);
-    background:var(--pl) center/cover no-repeat;isolation:isolate}
+  /* The photograph gets the top of the card, not a strip. The panel is pushed
+     down by padding rather than sized, so a three-item column and a four-item
+     one still show the same amount of picture. */
+  .col{position:relative;border-radius:22px;padding:230px 16px 16px;overflow:hidden;
+    border:1px solid var(--line);background:var(--pl) center/cover no-repeat;isolation:isolate}
   .col::before{content:"";position:absolute;inset:0;z-index:-1;
-    background:linear-gradient(180deg,rgba(10,8,6,.44),rgba(10,8,6,.16) 42%)}
+    background:linear-gradient(180deg,rgba(10,8,6,.30) 0%,rgba(10,8,6,.05) 34%,rgba(10,8,6,.22) 100%)}
+  @media(max-width:900px){.col{padding-top:175px}}
 
   /* Two photographic cards, after the reference: the photograph is the card,
      not a band above it, and the content floats on top in a frosted panel.
@@ -216,17 +220,17 @@
      body copy set directly on a photograph is unreadable at any opacity you
      would still call a photograph — the panel keeps the picture full-bleed and
      the text on a surface with a contrast ratio you can rely on. */
-  .side-k{display:block;font-family:var(--mono);font-size:.67rem;letter-spacing:.14em;
-    text-transform:uppercase;color:#fff;padding:6px 4px 16px;border-bottom:0;
-    text-shadow:0 1px 8px rgba(0,0,0,.6)}
-  .feats{background:rgba(255,255,255,.93);backdrop-filter:blur(14px) saturate(1.2);
-    border-radius:16px;padding:4px 24px;box-shadow:0 20px 44px -26px rgba(23,19,16,.5)}
+  /* The label rides the photograph at the top of the card, outside the panel. */
+  .side-k{position:absolute;top:20px;left:24px;right:24px;display:block;font-family:var(--mono);
+    font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;border-bottom:0;
+    text-shadow:0 1px 10px rgba(0,0,0,.7)}
+  .feats{background:rgba(255,255,255,.94);backdrop-filter:blur(14px) saturate(1.2);
+    border-radius:16px;padding:2px 20px;box-shadow:0 22px 48px -26px rgba(23,19,16,.55)}
   .feats{list-style:none;margin:0;padding:0}
-  .feat{display:flex;gap:17px;padding:20px 0;border-bottom:1px solid var(--line)}
-  .feat:last-child{border-bottom:0;padding-bottom:0}
-  .feat-n{font-family:var(--mono);font-size:.67rem;color:var(--ink-3);padding-top:4px;flex:none}
-  .feat h4{margin-bottom:6px}
-  .feat p{font-size:.9rem;color:var(--ink-2)}
+  .feat{padding:15px 0;border-bottom:1px solid var(--line)}
+  .feat:last-child{border-bottom:0}
+  .feat h4{margin-bottom:4px;font-size:.95rem}
+  .feat p{font-size:.855rem;line-height:1.5;color:var(--ink-2)}
 
   /* ── the week ─────────────────────────────────────────────────────── */
   .week{list-style:none;margin:54px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
@@ -379,36 +383,36 @@
         <span class="side-k">Their side — what the client sees</span>
         <ul class="feats">
           <li class="feat">
-            <span class="feat-n">01</span>
-            <div><h4>Clients get their own front door</h4><p>They sign in and see their projects, their files, their invoices — and absolutely nothing belonging to anyone else. You choose what each client can see.</p></div>
+            <h4>Clients get their own front door</h4>
+            <p>They sign in and see their projects, their files, their invoices — and absolutely nothing belonging to anyone else. You choose what each client can see.</p>
           </li>
           <li class="feat">
-            <span class="feat-n">02</span>
-            <div><h4>Decisions with a name on them</h4><p>Work goes out as a decision, not an attachment. Approve, or request changes. Recorded, dated, signed by a human. “I never approved that” stops being a conversation.</p></div>
+            <h4>Decisions with a name on them</h4>
+            <p>Work goes out as a decision, not an attachment. Approve, or request changes. Recorded, dated, signed by a human. “I never approved that” stops being a conversation.</p>
           </li>
           <li class="feat">
-            <span class="feat-n">03</span>
-            <div><h4>Four roles, so the right person decides</h4><p>Account owner signs and pays. Manager approves. Team member uploads and comments. Viewer looks. Set per client in about a minute, and the wrong person simply doesn’t get the button.</p></div>
+            <h4>Four roles, so the right person decides</h4>
+            <p>Account owner signs and pays. Manager approves. Team member uploads and comments. Viewer looks. Set per client in about a minute, and the wrong person simply doesn’t get the button.</p>
           </li></ul>
       </div>
       <div class="col" style="--pl:var(--p1)">
         <span class="side-k">Your side — what you get</span>
         <ul class="feats">
           <li class="feat">
-            <span class="feat-n">01</span>
-            <div><h4>Everything live, and whose turn it is</h4><p>Projects, tasks, calendar and the pipeline in one place. At a glance: what’s moving, what’s stuck, and who it’s sitting with. Usually them.</p></div>
+            <h4>Everything live, and whose turn it is</h4>
+            <p>Projects, tasks, calendar and the pipeline in one place. At a glance: what’s moving, what’s stuck, and who it’s sitting with. Usually them.</p>
           </li>
           <li class="feat">
-            <span class="feat-n">02</span>
-            <div><h4>Invoices that know what they’re for</h4><p>Raise it against the work, send it, and see who hasn’t paid without opening anything else. It bills — it isn’t your accountant, and it won’t pretend to be.</p></div>
+            <h4>Invoices that know what they’re for</h4>
+            <p>Raise it against the work, send it, and see who hasn’t paid without opening anything else. It bills — it isn’t your accountant, and it won’t pretend to be.</p>
           </li>
           <li class="feat">
-            <span class="feat-n">03</span>
-            <div><h4>Your name on it. Not ours.</h4><p>Your logo, your colours, your domain. When your client signs in, nothing on the screen mentions us. As far as they know, you built it. We’re fine with that.</p></div>
+            <h4>Your name on it. Not ours.</h4>
+            <p>Your logo, your colours, your domain. When your client signs in, nothing on the screen mentions us. As far as they know, you built it. We’re fine with that.</p>
           </li>
           <li class="feat">
-            <span class="feat-n">04</span>
-            <div><h4>Your data leaves whenever you like</h4><p>Backed up nightly, and the backup is read back to check it actually restores — an unread backup is a hope, not a backup. Any client’s records export to a plain file on request. Nothing about this holds you hostage.</p></div>
+            <h4>Your data leaves whenever you like</h4>
+            <p>Backed up nightly, and the backup is read back to check it actually restores — an unread backup is a hope, not a backup. Any client’s records export to a plain file on request. Nothing about this holds you hostage.</p>
           </li></ul>
       </div>
     </div>
