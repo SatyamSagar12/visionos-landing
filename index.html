@@ -27,6 +27,7 @@
     --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"DejaVu Sans Mono",monospace;
     --col:1240px; --measure:52ch;
     --grain:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.82%22%20numOctaves%3D%223%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20filter%3D%22url(%23n)%22%20opacity%3D%220.42%22%2F%3E%3C%2Fsvg%3E");
+    --p0:url("/assets/b1f25b0888.webp"); --p1:url("/assets/2d256ea3f7.webp");
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -175,7 +176,6 @@
   .lit .btn-solid:hover{box-shadow:0 16px 32px -14px rgba(23,19,16,.7)}
   .lit .btn-glass{background:#fff;border-color:var(--line-2);color:var(--ink);backdrop-filter:none}
   .lit .btn-glass:hover{background:#fff;border-color:rgba(23,19,16,.34)}
-  .lit .col{background:linear-gradient(180deg,#fff,rgba(255,255,255,.4))}
   .lit .adm{background:linear-gradient(100deg,rgba(184,70,15,.055),rgba(23,19,16,.012) 44%)}
   .lit .price{background:#fff}
   .lit footer{border-top:1px solid var(--line)}
@@ -204,20 +204,23 @@
   /* ── features ─────────────────────────────────────────────────────── */
   .split{margin-top:54px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
   @media(max-width:900px){.split{grid-template-columns:1fr;gap:14px}}
-  .col{border:1px solid var(--line);border-radius:20px;padding:30px 28px;overflow:hidden;background:linear-gradient(180deg,rgba(255,240,220,.045),transparent)}
+  .col{position:relative;border-radius:22px;padding:22px;overflow:hidden;border:1px solid var(--line);
+    background:var(--pl) center/cover no-repeat;isolation:isolate}
+  .col::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,rgba(10,8,6,.44),rgba(10,8,6,.16) 42%)}
 
-  /* The photographic plate. A crisp bottom edge rather than a fade: these are
-     photographs, and a masked photograph reads as a mistake rather than a
-     treatment. The gradient below it is a legibility floor, not decoration —
-     it keeps a bright sky from running into the eyebrow underneath.
+  /* Two photographic cards, after the reference: the photograph is the card,
+     not a band above it, and the content floats on top in a frosted panel.
 
-     Saturation is pulled back a touch because the set is cool blue-green and
-     the page accent is burnt orange; at full chroma the two fight. */
-  .plate{position:relative;height:124px;margin:-30px -28px 16px;overflow:hidden;
-    background:var(--pl) center/cover no-repeat;filter:saturate(.9) contrast(1.02)}
-  .plate::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg,transparent 55%,rgba(23,19,16,.10))}
-  .side-k{display:block;font-family:var(--mono);font-size:.67rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding-bottom:18px;border-bottom:1px solid var(--line)}
+     That panel is doing real work rather than decoration. Four paragraphs of
+     body copy set directly on a photograph is unreadable at any opacity you
+     would still call a photograph — the panel keeps the picture full-bleed and
+     the text on a surface with a contrast ratio you can rely on. */
+  .side-k{display:block;font-family:var(--mono);font-size:.67rem;letter-spacing:.14em;
+    text-transform:uppercase;color:#fff;padding:6px 4px 16px;border-bottom:0;
+    text-shadow:0 1px 8px rgba(0,0,0,.6)}
+  .feats{background:rgba(255,255,255,.93);backdrop-filter:blur(14px) saturate(1.2);
+    border-radius:16px;padding:4px 24px;box-shadow:0 20px 44px -26px rgba(23,19,16,.5)}
   .feats{list-style:none;margin:0;padding:0}
   .feat{display:flex;gap:17px;padding:20px 0;border-bottom:1px solid var(--line)}
   .feat:last-child{border-bottom:0;padding-bottom:0}
@@ -372,8 +375,7 @@
     <h2 style="margin-top:24px">Their half, and <span class="ser">your half.</span></h2>
     <p class="lede" style="margin-top:22px">These are the ones that change your week. The rest are there when you want them and quiet when you don't.</p>
     <div class="split">
-      <div class="col">
-        <div class="plate" style="--pl:var(--p0)"></div>
+      <div class="col" style="--pl:var(--p0)">
         <span class="side-k">Their side — what the client sees</span>
         <ul class="feats">
           <li class="feat">
@@ -389,8 +391,7 @@
             <div><h4>Four roles, so the right person decides</h4><p>Account owner signs and pays. Manager approves. Team member uploads and comments. Viewer looks. Set per client in about a minute, and the wrong person simply doesn’t get the button.</p></div>
           </li></ul>
       </div>
-      <div class="col">
-        <div class="plate" style="--pl:var(--p1)"></div>
+      <div class="col" style="--pl:var(--p1)">
         <span class="side-k">Your side — what you get</span>
         <ul class="feats">
           <li class="feat">
