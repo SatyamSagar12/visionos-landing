@@ -43,18 +43,23 @@
          --paper  #332920  13.29   8.47   5.92   5.38   5.65
          --card   #3E3127  11.74   7.49   5.23   4.76   4.99
          --panel  #413429  11.24   7.17   5.00   4.56   4.78            */
-    --room:#332920; --paper:#332920; --paper-2:#3A2E25; --card:#3E3127; --panel:#413429;
-    --ink:#FAF7F2; --ink-2:#CFC7BA; --ink-3:#B0A697;
-    --line:rgba(255,240,220,.13); --line-2:rgba(255,240,220,.22);
-    --rule:rgba(255,240,220,.13);
-    --hue:#FF8CB0; --hue-ink:#14100B; --hue-wash:#FF8CB01A;
-    --two:#8E9CFF; --two-wash:#8E9CFF1A;
-    --ok:#A9D137; --ok-wash:rgba(169,209,55,.09);
-    /* Softened with the ground. A shadow mixed for near-black is a black
-       smear once the surface under it is a mid brown. */
-    --shadow:0 20px 44px -26px rgba(0,0,0,.55);
-    --hard:0 18px 40px -24px rgba(0,0,0,.5);
-    --soft:0 20px 44px -26px rgba(0,0,0,.55);
+    --room:#FBFAF8; --paper:#FBFAF8; --paper-2:#EFEBE4; --card:#FFFFFF; --panel:#FFFFFF;
+    /* --ink-3 was #857C74, which is 3.97:1 on the hero's cream and was
+       already under AA in the old light half — 40-odd small labels, role
+       names and captions sat below the line. #756D65 reads the same weight
+       and clears 4.5 on every ground here. */
+    --ink:#171310; --ink-2:#57504A; --ink-3:#756D65;
+    --line:rgba(23,19,16,.11); --line-2:rgba(23,19,16,.18);
+    --rule:rgba(23,19,16,.11);
+    /* The saturated accents, not the pale ones. hueDark exists for a dark
+       room; on paper #FF8CB0 sits at about 1.9:1 and disappears.
+       --hue-ink is what goes ON the accent, so it inverts with it. */
+    --hue:#BC2A59; --hue-ink:#FFFFFF; --hue-wash:#BC2A5912;
+    --two:#2B44C7; --two-wash:#2B44C712;
+    --ok:#456E00; --ok-wash:rgba(69,110,0,.08);
+    --shadow:0 18px 40px -28px rgba(23,19,16,.35);
+    --hard:0 18px 40px -28px rgba(23,19,16,.35);
+    --soft:0 18px 40px -28px rgba(23,19,16,.35);
     --display:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --poster:var(--display);
     --body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -70,7 +75,7 @@
      which is the dark strip that used to run across the top of these pages.
      The mast's own tint below is the same colour at .55, so the two composite
      to exactly this and the seam disappears. */
-  body{margin:0;background:#4C3A2A;color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.68;-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.68;-webkit-font-smoothing:antialiased}
   ::selection{background:var(--hue);color:var(--hue-ink)}
   p{margin:0} a{color:inherit}
   :focus-visible{outline:3px solid var(--two);outline-offset:3px}
@@ -191,7 +196,7 @@
      at 10% and every word stays on the page's own paper. */
   .price.founding{background:var(--hue-wash);border-color:var(--hue);
     margin:-10px 0;padding:34px 24px 32px;
-    box-shadow:0 26px 50px -24px rgba(0,0,0,.55)}
+    box-shadow:0 26px 50px -26px rgba(23,19,16,.36)}
   .price:hover{transform:translateY(-4px)}
   .price .stamp{position:absolute;top:-13px;right:-8px;font-family:var(--mono);font-size:.58rem;
     letter-spacing:.1em;text-transform:uppercase;background:var(--hue);color:var(--hue-ink);
@@ -242,19 +247,20 @@
      so every rule above keeps working untouched. The accent darkens because
      the pale hero accents sit at roughly 1.8:1 on off-white. */
   .lit{
-    --paper:#F6F4F0; --room:#F6F4F0; --paper-2:#EFEBE4; --card:#FFFFFF; --panel:#FFFFFF;
-    --ink:#171310; --ink-2:#57504A; --ink-3:#857C74;
+    --paper:#FBFAF8; --room:#FBFAF8; --paper-2:#EFEBE4; --card:#FFFFFF; --panel:#FFFFFF;
+    --ink:#171310; --ink-2:#57504A; --ink-3:#756D65;
     --line:rgba(23,19,16,.11); --line-2:rgba(23,19,16,.18);
     --rule:rgba(23,19,16,.11);
-    --hue:#E0326B; --hue-wash:#E0326B12;
+    --hue:#BC2A59; --hue-wash:#BC2A5912;
     --two:#2B44C7; --two-wash:#2B44C712;
-    --ok:#4B7A00; --ok-wash:rgba(75,122,0,.08);
+    --ok:#456E00; --ok-wash:rgba(69,110,0,.08);
     --shadow:0 18px 40px -28px rgba(23,19,16,.35);
     --hard:0 18px 40px -28px rgba(23,19,16,.35);
     --soft:0 18px 40px -28px rgba(23,19,16,.35);
-    background:var(--paper);color:var(--ink);
-    border-radius:44px 44px 0 0;position:relative;z-index:3;margin-top:-64px;
-    box-shadow:0 -40px 90px -30px rgba(0,0,0,.4)}
+    /* No rounded lip, no lift, no shadow: those landed a light block on a
+       dark room, and there is one ground now. The token block above is kept
+       because every .lit-scoped rule still reads from it. */
+    background:transparent;color:var(--ink);position:relative;z-index:3}
   .lit section{padding:64px 0}
   .lit section:first-child{padding-top:72px}
   .lit .btn{background:#fff;border-color:var(--line-2);color:var(--ink)}
@@ -286,14 +292,12 @@
   section.hero{position:relative;padding:64px 0 116px}
   .top::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:
-      radial-gradient(120% 90% at 12% 4%, rgba(255,190,126,.22), transparent 48%),
-      radial-gradient(90% 70% at 88% 20%, var(--hue-wash), transparent 55%),
-      linear-gradient(168deg,#4C3A2A 0%, #3E3127 46%, #332920 100%)}
-  /* The vignette comes down with the ground. At .6 over a mid brown it pulls
-     the corners back to the near-black this whole change is getting away
-     from. */
-  .top::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:radial-gradient(120% 100% at 50% 40%, transparent 44%, rgba(0,0,0,.26) 100%)}
+      radial-gradient(130% 95% at 10% 0%, rgba(255,206,158,.50), transparent 54%),
+      radial-gradient(80% 60% at 92% 30%, var(--hue-wash), transparent 60%),
+      linear-gradient(180deg,#FFFBF5 0%, #FBF5EB 56%, var(--paper) 100%)}
+  /* No vignette. On a dark ground it read as falloff; on paper the same
+     gradient is a grey smudge in each corner. The right-hand wash is still
+     the page's own --hue, so each vertical keeps its tint. */
   section.hero > .wrap{position:relative;z-index:1}
 
   /* No tint and no backdrop-filter. Both existed to keep the bar legible when
@@ -305,11 +309,11 @@
   .mast nav a:not(.btn){font-family:var(--body);font-size:.88rem;font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink-2)}
 
   .btn{font-family:var(--display);font-weight:600;text-transform:none;letter-spacing:-.02em;
-    border:1px solid rgba(255,240,220,.16);border-radius:999px;padding:12px 22px;
-    background:rgba(255,240,220,.10);color:var(--ink);box-shadow:none;backdrop-filter:blur(10px)}
-  .btn:hover{transform:translateY(-2px);box-shadow:none;background:rgba(255,240,220,.17);border-color:rgba(255,240,220,.3)}
-  .btn-hot{background:#FFFDFA;color:#14100B;border-color:#FFFDFA;box-shadow:0 10px 30px -12px rgba(255,220,180,.5)}
-  .btn-hot:hover{background:#fff;box-shadow:0 16px 38px -12px rgba(255,220,180,.65)}
+    border:1px solid var(--line-2);border-radius:999px;padding:12px 22px;
+    background:#fff;color:var(--ink);box-shadow:none}
+  .btn:hover{transform:translateY(-2px);box-shadow:none;background:#fff;border-color:rgba(23,19,16,.34)}
+  .btn-hot{background:#171310;color:#FBFAF8;border-color:#171310;box-shadow:0 10px 26px -14px rgba(23,19,16,.55)}
+  .btn-hot:hover{background:#000;box-shadow:0 16px 34px -14px rgba(23,19,16,.68)}
 
   /* Every panel: hairline, radius, depth instead of an offset block. */
   .who,.cards article,.price,.week .d,.close,.mail,.shot,.verdict,.owner,.thread .mail{
@@ -319,12 +323,12 @@
      already does this job. */
   .lit .cards article:hover{box-shadow:0 26px 50px -26px rgba(23,19,16,.42)}
   .who:nth-child(2),.who:nth-child(3),.mail:nth-child(even),.mail:nth-child(odd){transform:none}
-  .who.decider{background:var(--hue-wash);border-color:var(--hue);box-shadow:0 20px 44px -26px rgba(0,0,0,.9)}
+  .who.decider{background:var(--hue-wash);border-color:var(--hue);box-shadow:0 22px 46px -26px rgba(23,19,16,.34)}
   .who .face{border:1px solid var(--line-2);border-radius:50%}
   .who.decider .face{border-color:var(--hue)}
   .who .stamp{border:1px solid var(--hue);border-radius:999px;transform:none;top:-10px}
-  .verdict{border:1px solid rgba(169,209,55,.35);background:var(--ok-wash);border-radius:16px}
-  .mail.shout{background:var(--hue-wash);border-color:rgba(255,240,220,.18)}
+  .verdict{border:1px solid rgba(69,110,0,.32);background:var(--ok-wash);border-radius:16px}
+  .mail.shout{background:var(--hue-wash);border-color:var(--hue)}
   .cards article{padding:24px 22px;overflow:hidden}
   /* The photographic plate. A crisp bottom edge rather than a fade: these are
      photographs, and a masked photograph reads as a mistake rather than a
@@ -342,21 +346,21 @@
   .price .fig{font-family:var(--display);font-weight:700}
   .week .d.fri{background:var(--hue-wash);border-color:var(--hue);box-shadow:var(--soft)}
   .week .d .lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--hue)}
-  .owner{border-left:2px solid var(--two);border-radius:0 16px 16px 0;background:linear-gradient(100deg,var(--two-wash),rgba(255,240,220,.012) 44%)}
-  .close{background:linear-gradient(180deg,rgba(255,240,220,.05),transparent);border-radius:20px;padding:34px 30px}
+  .owner{border-left:2px solid var(--two);border-radius:0 16px 16px 0;background:linear-gradient(100deg,var(--two-wash),rgba(255,255,255,0) 44%)}
+  .close{background:linear-gradient(180deg,rgba(23,19,16,.035),transparent);border-radius:20px;padding:34px 30px}
   .tools{border-top:1px solid var(--line)}
   .tools li{border-bottom:1px solid var(--line)}
   .honest{border-top:1px solid var(--line)}
   .honest li{border-bottom:1px solid var(--line)}
   .honest .h{font-family:var(--display);font-weight:600}
-  .rest span{border:1px solid var(--line);border-radius:999px;background:rgba(255,240,220,.02);color:var(--ink-3);padding:7px 13px}
-  .rest span.hot{background:var(--hue-wash);border-color:rgba(240,168,104,.4);color:var(--hue)}
+  .rest span{border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink-3);padding:7px 13px}
+  .rest span.hot{background:var(--hue-wash);border-color:var(--hue);color:var(--hue)}
   .also a{border-bottom:1px solid var(--hue);color:var(--ink-2)}
   .also a:hover{color:var(--ink)}
 
-  .shot{border:1px solid var(--line-2);border-radius:16px;box-shadow:0 40px 90px -40px rgba(0,0,0,.95)}
-  .shot figcaption{border-top:1px solid var(--line);background:rgba(255,240,220,.02);color:var(--ink-3)}
-  .shot-wrap::before{opacity:.22;filter:blur(60px) saturate(1.6)}
+  .shot{border:1px solid var(--line-2);border-radius:16px;box-shadow:0 34px 70px -38px rgba(23,19,16,.4)}
+  .shot figcaption{border-top:1px solid var(--line);background:#F7F4EF;color:var(--ink-3)}
+  .shot-wrap::before{opacity:.10;filter:blur(60px) saturate(1.6)}
 
   /* The third face earns its keep at display size and nowhere else. It was
      also set on .verdict p, which is a paragraph with bold runs inside it —
@@ -393,7 +397,7 @@
 
 <header class="mast">
   <div class="in">
-    <span class="logo"><svg class="mk" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="mkw" gradientUnits="userSpaceOnUse" x1="10" y1="8" x2="52" y2="58"><stop offset="0" stop-color="#FFD9B8"/><stop offset=".55" stop-color="#F0A868"/><stop offset="1" stop-color="#C9571A"/></linearGradient><linearGradient id="mkt" gradientUnits="userSpaceOnUse" x1="18" y1="48" x2="54" y2="18"><stop offset="0" stop-color="#79CFCA"/><stop offset="1" stop-color="#25807E"/></linearGradient></defs><path d="M10 57 31 9 52 57" fill="none" stroke="url(#mkw)" stroke-width="8" stroke-linejoin="miter" stroke-miterlimit="8" stroke-linecap="butt"/><path d="M19 45 L43.5 26.3" fill="none" stroke="url(#mkt)" stroke-width="6.5" stroke-linecap="butt"/><path d="M52 20 L47.7 32.7 L38.7 20.7 Z" fill="url(#mkt)"/></svg>Studio OS</span>
+    <span class="logo"><svg class="mk" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="mkw" gradientUnits="userSpaceOnUse" x1="10" y1="8" x2="52" y2="58"><stop offset="0" stop-color="#E8913F"/><stop offset=".55" stop-color="#C9571A"/><stop offset="1" stop-color="#8F3609"/></linearGradient><linearGradient id="mkt" gradientUnits="userSpaceOnUse" x1="18" y1="48" x2="54" y2="18"><stop offset="0" stop-color="#3AA5A0"/><stop offset="1" stop-color="#14615F"/></linearGradient></defs><path d="M10 57 31 9 52 57" fill="none" stroke="url(#mkw)" stroke-width="8" stroke-linejoin="miter" stroke-miterlimit="8" stroke-linecap="butt"/><path d="M19 45 L43.5 26.3" fill="none" stroke="url(#mkt)" stroke-width="6.5" stroke-linecap="butt"/><path d="M52 20 L47.7 32.7 L38.7 20.7 Z" fill="url(#mkt)"/></svg>Studio OS</span>
     <nav>
       <a href="#inside" class="sm">What's inside</a>
       <a href="#price" class="sm">Price</a>

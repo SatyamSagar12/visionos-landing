@@ -45,10 +45,18 @@
          --ink   on mid    14.77  11.6
          --ink-2 on mid     7.28   8.6
          --ink-3 on bottom  3.78   5.4   (was below AA, now above)          */
-    --room:#3B2F26; --room-2:#453729; --panel:#4F3E30;
-    --ink:#FAF7F2; --ink-2:#CFC7BA; --ink-3:#B5AB9B;
-    --line:rgba(255,240,220,.13); --line-2:rgba(255,240,220,.22);
-    --lamp:#F0A868; --lamp-2:#FFC79A;
+    --room:#FBFAF8; --room-2:#F3F0EA; --paper-2:#EFEBE4; --card:#FFFFFF; --panel:#FFFFFF;
+    /* --ink-3 was #857C74, which is 3.97:1 on the hero's cream and was
+       already under AA in the old light half — 40-odd small labels, role
+       names and captions sat below the line. #756D65 reads the same weight
+       and clears 4.5 on every ground here. */
+    --ink:#171310; --ink-2:#57504A; --ink-3:#756D65;
+    --line:rgba(23,19,16,.11); --line-2:rgba(23,19,16,.18);
+    --lamp:#B8460F; --lamp-2:#8F3609;
+    /* --lamp at low alpha. Written out rather than color-mix()'d so the value
+       is greppable next to the hex it comes from. */
+    --lamp-wash:rgba(184,70,15,.085); --lamp-wash-2:rgba(184,70,15,.025);
+    --lamp-line:rgba(184,70,15,.34);
     --display:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --ser:"Newsreader",Georgia,"Iowan Old Style",serif;
@@ -62,7 +70,7 @@
      section, so it is painted on the body — and with --room here that band
      was the gradient's darkest colour butted against its lightest, which is
      the dark strip that used to run across the top of the page. */
-  body{margin:0;background:#54402E;color:var(--ink);font-family:var(--sans);
+  body{margin:0;background:var(--room);color:var(--ink);font-family:var(--sans);
     font-size:17px;line-height:1.62;letter-spacing:-.011em;
     -webkit-font-smoothing:antialiased;overflow-x:hidden}
   p{margin:0} a{color:inherit}
@@ -74,7 +82,7 @@
   .ser{font-family:var(--ser);font-style:italic;font-weight:400;letter-spacing:-.015em}
   .wrap{max-width:var(--col);margin:0 auto;padding:0 30px}
   .lede{font-size:clamp(1.03rem,1.4vw,1.17rem);color:var(--ink-2);max-width:var(--measure)}
-  .kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:7px 15px 7px 12px;background:rgba(38,29,20,.5);backdrop-filter:blur(8px)}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:7px 15px 7px 12px;background:rgba(255,255,255,.78);backdrop-filter:blur(8px)}
   .kicker::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--lamp);box-shadow:0 0 10px var(--lamp)}
   section{padding:120px 0;position:relative}
   .rule{border-top:1px solid var(--line)}
@@ -91,28 +99,27 @@
      the hero's own height. */
   .room{position:absolute;inset:-110px 0 0 0;overflow:hidden;z-index:0;pointer-events:none;
     background:
-      radial-gradient(120% 90% at 12% 6%, rgba(255,190,126,.26), transparent 48%),
-      radial-gradient(90% 70% at 88% 22%, rgba(255,150,86,.10), transparent 55%),
-      radial-gradient(140% 120% at 50% 108%, rgba(120,78,44,.24), transparent 60%),
-      linear-gradient(168deg,#54402E 0%, #413429 42%, #3B2F26 100%)}
+      radial-gradient(130% 95% at 10% 0%, rgba(255,206,158,.50), transparent 54%),
+      radial-gradient(80% 60% at 92% 30%, rgba(255,222,190,.34), transparent 60%),
+      linear-gradient(180deg,#FFFBF5 0%, #FBF5EB 56%, var(--room) 100%)}
   /* Every wash above is weaker than it was. They were mixed to carry a
      near-black ground; over a lighter one the same alphas blow the top-left
      corner out to cream and flatten the whole room. */
   /* The vignette pulls the corners down. Each lift of the ground makes it
      louder relative to everything else, so it comes down with them. */
-  .room::after{content:"";position:absolute;inset:0;
-    background:radial-gradient(120% 100% at 50% 42%, transparent 46%, rgba(0,0,0,.26) 100%)}
+  /* No vignette. On a dark ground it pulled the corners down and read as
+     falloff; on paper the same gradient is a grey smudge in each corner. */
   .grain{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background-image:var(--grain);background-size:200px 200px;opacity:.22;mix-blend-mode:overlay}
+    background-image:var(--grain);background-size:200px 200px;opacity:.05;mix-blend-mode:multiply}
   /* The lamp's own bloom, animated so the room breathes very slightly. */
   .bloom{position:absolute;top:-24%;left:-6%;width:52vw;height:52vw;max-width:760px;max-height:760px;
-    border-radius:50%;background:radial-gradient(circle,rgba(255,196,136,.30),transparent 62%);
+    border-radius:50%;background:radial-gradient(circle,rgba(255,206,152,.22),transparent 62%);
     filter:blur(60px);z-index:1;pointer-events:none;animation:breathe 14s ease-in-out infinite alternate}
   @keyframes breathe{to{transform:scale(1.1) translate(3%,2%);opacity:.82}}
 
   /* ── nav ──────────────────────────────────────────────────────────── */
   .mast{position:sticky;top:0;z-index:60;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
-  .mast.stuck{background:rgba(44,34,25,.55);backdrop-filter:blur(18px) saturate(1.5);border-bottom-color:var(--line)}
+  .mast.stuck{background:rgba(251,250,248,.72);backdrop-filter:blur(18px) saturate(1.5);border-bottom-color:var(--line)}
   .mast .in{max-width:var(--col);margin:0 auto;padding:18px 30px;display:flex;align-items:center;gap:18px}
   .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;letter-spacing:-.035em;font-size:1.1rem;text-decoration:none}
   /* A glass tile with the A cut in warm gradient. The crossbar is a
@@ -121,7 +128,7 @@
      bar silently disappears, leaving a chevron. */
   .mk{width:25px;height:25px;flex:none}
   .mast nav{margin-left:auto;display:flex;align-items:center;gap:28px}
-  .mast nav a:not(.btn){font-size:.9rem;font-weight:500;color:rgba(250,247,242,.82);text-decoration:none;transition:color .18s ease}
+  .mast nav a:not(.btn){font-size:.9rem;font-weight:500;color:rgba(23,19,16,.72);text-decoration:none;transition:color .18s ease}
   .mast nav a:not(.btn):hover{color:var(--ink)}
   @media(max-width:960px){.mast nav a.sm{display:none}.mast nav{gap:12px}}
   /* Below ~640 the two CTAs together are wider than the viewport and push the
@@ -131,10 +138,10 @@
 
   .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:.93rem;font-weight:600;letter-spacing:-.02em;padding:12px 22px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;
     transition:transform .2s cubic-bezier(.2,.7,.3,1),background .2s ease,border-color .2s ease,box-shadow .2s ease}
-  .btn-solid{background:#FFFDFA;color:#14100B;box-shadow:0 10px 30px -12px rgba(255,220,180,.55)}
-  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 16px 38px -12px rgba(255,220,180,.7)}
-  .btn-glass{background:rgba(255,240,220,.10);color:var(--ink);border-color:rgba(255,240,220,.16);backdrop-filter:blur(10px)}
-  .btn-glass:hover{transform:translateY(-2px);background:rgba(255,240,220,.17);border-color:rgba(255,240,220,.3)}
+  .btn-solid{background:#171310;color:#FBFAF8;box-shadow:0 10px 26px -14px rgba(23,19,16,.55)}
+  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 16px 34px -14px rgba(23,19,16,.68)}
+  .btn-glass{background:#fff;color:var(--ink);border-color:var(--line-2)}
+  .btn-glass:hover{transform:translateY(-2px);background:#fff;border-color:rgba(23,19,16,.34)}
   .btn-lg{padding:15px 28px;font-size:1rem}
 
   /* ── hero ─────────────────────────────────────────────────────────── */
@@ -169,20 +176,19 @@
      the child, so the shadow stays flat on the "desk" while the panel turns. */
   .screen{perspective:1600px;position:relative}
   .screen figure{margin:0;transform:rotateY(-11deg) rotateX(3deg) translateZ(0);
-    border-radius:14px;overflow:hidden;border:1px solid rgba(255,240,220,.20);
+    border-radius:14px;overflow:hidden;border:1px solid var(--line-2);
     background:var(--panel);
-    box-shadow:0 60px 120px -50px rgba(0,0,0,.95), 0 0 0 1px rgba(0,0,0,.5), -30px 30px 80px -40px rgba(255,170,110,.35);
+    box-shadow:0 60px 110px -46px rgba(23,19,16,.34), 0 2px 6px rgba(23,19,16,.05);
     transition:transform .8s cubic-bezier(.2,.7,.3,1)}
   .screen:hover figure{transform:rotateY(-6deg) rotateX(1.5deg)}
   @media(max-width:1040px){.screen figure{transform:none}.screen:hover figure{transform:none}}
-  .screen-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;border-bottom:1px solid rgba(255,240,220,.08);background:rgba(255,240,220,.04)}
-  .screen-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,240,220,.22);display:block}
+  .screen-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;border-bottom:1px solid var(--line);background:#F4F1EC}
+  .screen-bar i{width:9px;height:9px;border-radius:50%;background:rgba(23,19,16,.16);display:block}
   .screen-bar span{margin-left:10px;font-family:var(--mono);font-size:.67rem;color:var(--ink-3)}
   .screen img{display:block;width:100%;height:auto}
-  /* Warms the screenshot into the room. Without this the product reads as a
-     bright rectangle pasted onto a photograph, which is exactly what it is. */
-  .screen figure::after{content:"";position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(115deg,rgba(255,180,120,.16),transparent 42%),linear-gradient(0deg,rgba(28,21,14,.26),transparent 55%)}
+  /* The warm overlay that used to bed the screenshot into a dark room is
+     gone. On paper the product is already the same brightness as the page;
+     tinting it only makes a clean UI look dirty. */
 
   /* ── the four doors, riding the hero's bottom edge ────────────────── */
   .doors{position:relative;z-index:3;margin-top:-108px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -190,17 +196,18 @@
   @media(max-width:860px){.doors{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:520px){.doors{grid-template-columns:1fr;margin-top:-56px}}
   .door{display:flex;flex-direction:column;gap:11px;padding:20px 20px 22px;border-radius:16px;text-decoration:none;
-    background:rgba(42,33,24,.55);border:1px solid rgba(255,240,220,.16);backdrop-filter:blur(18px) saturate(1.3);
-    box-shadow:0 26px 50px -30px rgba(0,0,0,.5);
+    background:#fff;border:1px solid var(--line);
+    box-shadow:0 22px 46px -30px rgba(23,19,16,.34);
     transition:transform .24s cubic-bezier(.2,.7,.3,1),background .24s ease,border-color .24s ease,box-shadow .24s ease}
-  .door:hover{transform:translateY(-6px);background:rgba(56,44,32,.72);border-color:rgba(255,240,220,.28)}
+  .door:hover{transform:translateY(-6px);border-color:var(--line-2);box-shadow:0 30px 56px -28px rgba(23,19,16,.42)}
   .door:focus-visible{outline:2px solid var(--d);outline-offset:3px}
-  /* One card is opaque and forward — the campaign's current vertical. It is
-     the only element on the page with a light background, so it wins. */
-  .door.on{background:#FFFDFA;border-color:#FFFDFA;box-shadow:0 30px 60px -26px rgba(0,0,0,.9)}
-  .door.on .door-t{color:#6B6257} .door.on .door-w{color:#14100B}
-  .door.on:hover{background:#fff}
-  .mark{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:-.02em;color:#14100B;background:var(--d)}
+  /* One card is inverted — the campaign's current vertical. On a dark ground
+     it was the only light card and won that way; on paper the same trick
+     runs the other direction. */
+  .door.on{background:#171310;border-color:#171310;box-shadow:0 28px 56px -26px rgba(23,19,16,.5)}
+  .door.on .door-t{color:rgba(250,247,242,.62)} .door.on .door-w{color:#FAF7F2}
+  .door.on:hover{background:#171310}
+  .mark{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:-.02em;color:#fff;background:var(--d)}
   .door-t{font-size:.76rem;color:var(--ink-3);letter-spacing:-.005em}
   .door-w{font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:-.03em;line-height:1.22;color:var(--ink)}
 
@@ -217,18 +224,19 @@
      roughly 1.8:1 and unreadable. */
   .lit section{padding:92px 0}
   .lit{
-    --room:#F6F4F0; --paper-2:#EFEBE4; --card:#FFFFFF; --panel:#FFFFFF;
-    --ink:#171310; --ink-2:#57504A; --ink-3:#857C74;
+    --room:#FBFAF8; --paper-2:#EFEBE4; --card:#FFFFFF; --panel:#FFFFFF;
+    --ink:#171310; --ink-2:#57504A; --ink-3:#756D65;
     --line:rgba(23,19,16,.11); --line-2:rgba(23,19,16,.18);
     --lamp:#B8460F; --lamp-2:#8F3609;
     /* --lamp at low alpha. Written out rather than color-mix()'d so the
        value is greppable next to the hex it comes from. */
     --lamp-wash:rgba(184,70,15,.085); --lamp-wash-2:rgba(184,70,15,.025);
     --lamp-line:rgba(184,70,15,.34);
-    background:var(--room);color:var(--ink);
-    border-radius:44px 44px 0 0;position:relative;z-index:4;margin-top:-64px;
-    box-shadow:0 -40px 90px -30px rgba(0,0,0,.42)}
-  .lit .strip{border-top:0;border-bottom:1px solid var(--line);border-radius:44px 44px 0 0;background:transparent;padding-top:44px}
+    /* No rounded lip, no lift, no shadow. Those existed to land a light
+       block on a dark room; with one ground for the whole page they would be
+       a seam where there is nothing to seam. */
+    background:transparent;color:var(--ink);position:relative;z-index:4}
+  .lit .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:transparent}
   .lit .chip{background:#fff}
   .lit .btn-solid{background:#171310;color:#FBFAF8;box-shadow:0 10px 26px -14px rgba(23,19,16,.6)}
   .lit .btn-solid:hover{box-shadow:0 16px 32px -14px rgba(23,19,16,.7)}
@@ -322,9 +330,9 @@
      the way the reference does. Sitting flush to the top edge over a rounded
      light block reads as two pages stacked. */
   .mast.stuck .in{max-width:calc(var(--col) - 40px);margin:10px auto;padding:11px 14px 11px 22px;
-    border:1px solid rgba(255,255,255,.13);border-radius:999px;
-    background:rgba(24,19,14,.46);backdrop-filter:blur(20px) saturate(1.6);
-    box-shadow:0 18px 40px -20px rgba(0,0,0,.8)}
+    border:1px solid rgba(23,19,16,.10);border-radius:999px;
+    background:rgba(255,255,255,.74);backdrop-filter:blur(20px) saturate(1.6);
+    box-shadow:0 18px 40px -22px rgba(23,19,16,.35)}
   .mast.stuck{background:transparent;backdrop-filter:none;border-bottom-color:transparent}
 
   /* ── marquee ──────────────────────────────────────────────────────── */
@@ -336,7 +344,7 @@
   .strip:hover .marquee{animation-play-state:paused}
   @keyframes slide{to{transform:translateX(-50%)}}
   .chip{font-family:var(--mono);font-size:.69rem;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:7px 14px;white-space:nowrap;color:var(--ink-3)}
-  .chip.hot{color:var(--lamp-2);border-color:rgba(240,168,104,.4);background:rgba(240,168,104,.09)}
+  .chip.hot{color:var(--lamp-2);border-color:var(--lamp-line);background:var(--lamp-wash)}
 
   /* ── features ─────────────────────────────────────────────────────── */
   /* stretch, not start: the "Their side" column carries three items and
@@ -459,7 +467,7 @@
 
 <header class="mast" id="mast">
   <div class="in">
-    <a class="logo" href="#top"><svg class="mk" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="mkw" gradientUnits="userSpaceOnUse" x1="10" y1="8" x2="52" y2="58"><stop offset="0" stop-color="#FFD9B8"/><stop offset=".55" stop-color="#F0A868"/><stop offset="1" stop-color="#C9571A"/></linearGradient><linearGradient id="mkt" gradientUnits="userSpaceOnUse" x1="18" y1="48" x2="54" y2="18"><stop offset="0" stop-color="#79CFCA"/><stop offset="1" stop-color="#25807E"/></linearGradient></defs><path d="M10 57 31 9 52 57" fill="none" stroke="url(#mkw)" stroke-width="8" stroke-linejoin="miter" stroke-miterlimit="8" stroke-linecap="butt"/><path d="M19 45 L43.5 26.3" fill="none" stroke="url(#mkt)" stroke-width="6.5" stroke-linecap="butt"/><path d="M52 20 L47.7 32.7 L38.7 20.7 Z" fill="url(#mkt)"/></svg>Anqulas</a>
+    <a class="logo" href="#top"><svg class="mk" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="mkw" gradientUnits="userSpaceOnUse" x1="10" y1="8" x2="52" y2="58"><stop offset="0" stop-color="#E8913F"/><stop offset=".55" stop-color="#C9571A"/><stop offset="1" stop-color="#8F3609"/></linearGradient><linearGradient id="mkt" gradientUnits="userSpaceOnUse" x1="18" y1="48" x2="54" y2="18"><stop offset="0" stop-color="#3AA5A0"/><stop offset="1" stop-color="#14615F"/></linearGradient></defs><path d="M10 57 31 9 52 57" fill="none" stroke="url(#mkw)" stroke-width="8" stroke-linejoin="miter" stroke-miterlimit="8" stroke-linecap="butt"/><path d="M19 45 L43.5 26.3" fill="none" stroke="url(#mkt)" stroke-width="6.5" stroke-linecap="butt"/><path d="M52 20 L47.7 32.7 L38.7 20.7 Z" fill="url(#mkt)"/></svg>Anqulas</a>
     <nav>
       <a class="sm" href="#doors">Who it's for</a>
       <a class="sm" href="#inside">What's inside</a>
@@ -481,7 +489,7 @@
       <div>
         <span class="kicker">One system · four front doors</span>
         <h1>Somebody said yes.<br><span class="ser">Nobody wrote it down.</span></h1>
-        <div class="rot"><span class="rot-item on" style="--d:#FF8CB0">in an email thread, by somebody junior.</span><span class="rot-item" style="--d:#5FD3A6">four chasing emails ago. Still nothing.</span><span class="rot-item" style="--d:#FF9152">on site, by phone. It cost £40,000.</span><span class="rot-item" style="--d:#4CCBD6">on a call, at a price nobody wrote down.</span></div>
+        <div class="rot"><span class="rot-item on" style="--d:#BC2A59">in an email thread, by somebody junior.</span><span class="rot-item" style="--d:#0F6B4F">four chasing emails ago. Still nothing.</span><span class="rot-item" style="--d:#B44917">on site, by phone. It cost £40,000.</span><span class="rot-item" style="--d:#0D6E76">on a call, at a price nobody wrote down.</span></div>
         <p class="lede">One login where an approval carries a name, a date and a price — and nothing can quietly change afterwards.</p>
         <div class="cta">
           <a class="btn btn-solid btn-lg" href="https://app.anqulas.com/login">Open the live demo</a>
@@ -500,22 +508,22 @@
   </div>
   <div class="wrap">
     <div class="doors" id="doors">
-        <a class="door" href="/studios/" style="--d:#FF8CB0" data-i="0">
+        <a class="door" href="/studios/" style="--d:#BC2A59" data-i="0">
           <span class="mark">St</span>
           <span class="door-t">Design studios</span>
           <span class="door-w">The intern approved it</span>
         </a>
-        <a class="door" href="/professional-services/" style="--d:#5FD3A6" data-i="1">
+        <a class="door" href="/professional-services/" style="--d:#0F6B4F" data-i="1">
           <span class="mark">Pr</span>
           <span class="door-t">Accountants &amp; consultants</span>
           <span class="door-w">Still waiting on their paperwork</span>
         </a>
-        <a class="door on" href="/construction/" style="--d:#FF9152" data-i="2">
+        <a class="door on" href="/construction/" style="--d:#B44917" data-i="2">
           <span class="mark">Si</span>
           <span class="door-t">Construction &amp; fit-out</span>
           <span class="door-w">Who approved the variation?</span>
         </a>
-        <a class="door" href="/equipment/" style="--d:#4CCBD6" data-i="3">
+        <a class="door" href="/equipment/" style="--d:#0D6E76" data-i="3">
           <span class="mark">Su</span>
           <span class="door-t">Equipment &amp; supply</span>
           <span class="door-w">Who agreed to that price?</span>
