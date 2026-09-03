@@ -30,14 +30,24 @@
   :root{
     /* Brown-dark, not black-dark. Every neutral below carries a little red and
        yellow in it, which is what makes the page feel lamp-lit. */
-    /* Lifted out of near-black. #0B0906 against the #F6F4F0 body was a jump of
-       roughly 18:1 at the seam, which reads as two different websites stapled
-       together rather than one page changing mood. These are the same hues,
-       several stops warmer and lighter, so the hero still reads as a lit room
-       and the transition into the light half is a step rather than a cliff. */
-    --room:#221A14; --room-2:#2A211A; --panel:#2F251D;
-    --ink:#FAF7F2; --ink-2:#B8AFA2; --ink-3:#7E7568;
-    --line:rgba(255,240,220,.10); --line-2:rgba(255,240,220,.18);
+    /* Lifted out of near-black, twice. #0B0906 against the #F6F4F0 body was a
+       jump of roughly 18:1 at the seam, which reads as two different websites
+       stapled together; #221A14 was better and still read as black-brown in a
+       bright room. These are the same hues again, lighter still.
+
+       The ceiling is set by the rotating accent line, not by taste: the
+       studios pink #FF6E9C sits on the gradient's middle stop and needs 4.5:1
+       there. #413429 is the lightest warm brown that holds it (4.56). The
+       two muted inks are raised to match, so lifting the ground did not cost
+       the body copy any contrast — every pairing on the hero is better than
+       it was:
+                            was   now
+         --ink   on mid    14.77  11.6
+         --ink-2 on mid     7.28   8.6
+         --ink-3 on bottom  3.78   5.4   (was below AA, now above)          */
+    --room:#3B2F26; --room-2:#453729; --panel:#4F3E30;
+    --ink:#FAF7F2; --ink-2:#CFC7BA; --ink-3:#B5AB9B;
+    --line:rgba(255,240,220,.13); --line-2:rgba(255,240,220,.22);
     --lamp:#F0A868; --lamp-2:#FFC79A;
     --display:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -48,7 +58,11 @@
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  body{margin:0;background:var(--room);color:var(--ink);font-family:var(--sans);
+  /* The gradient's TOP stop, not --room. The masthead sits outside the hero
+     section, so it is painted on the body — and with --room here that band
+     was the gradient's darkest colour butted against its lightest, which is
+     the dark strip that used to run across the top of the page. */
+  body{margin:0;background:#54402E;color:var(--ink);font-family:var(--sans);
     font-size:17px;line-height:1.62;letter-spacing:-.011em;
     -webkit-font-smoothing:antialiased;overflow-x:hidden}
   p{margin:0} a{color:inherit}
@@ -60,7 +74,7 @@
   .ser{font-family:var(--ser);font-style:italic;font-weight:400;letter-spacing:-.015em}
   .wrap{max-width:var(--col);margin:0 auto;padding:0 30px}
   .lede{font-size:clamp(1.03rem,1.4vw,1.17rem);color:var(--ink-2);max-width:var(--measure)}
-  .kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:7px 15px 7px 12px;background:rgba(12,9,6,.55);backdrop-filter:blur(8px)}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:7px 15px 7px 12px;background:rgba(38,29,20,.5);backdrop-filter:blur(8px)}
   .kicker::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--lamp);box-shadow:0 0 10px var(--lamp)}
   section{padding:120px 0;position:relative}
   .rule{border-top:1px solid var(--line)}
@@ -69,27 +83,36 @@
      Five layers, back to front: a warm floor wash, the lamp itself as a hot
      off-screen source top-left, its bounce off the right wall, a vignette to
      pull the corners down, and grain over everything.                     */
-  .room{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none;
+  /* -110px so the room paints behind the masthead, which sits above the hero
+     in the flow and would otherwise show the flat body colour while the hero
+     right below it carries the lamp — a darker strip across the top of the
+     page. Nothing clips it and the bar is z-index 60, so it just extends the
+     lit area upward. The gradient stops are set against this taller box, not
+     the hero's own height. */
+  .room{position:absolute;inset:-110px 0 0 0;overflow:hidden;z-index:0;pointer-events:none;
     background:
-      radial-gradient(120% 90% at 12% 6%, rgba(255,190,126,.38), transparent 48%),
-      radial-gradient(90% 70% at 88% 22%, rgba(255,150,86,.14), transparent 55%),
-      radial-gradient(140% 120% at 50% 108%, rgba(120,78,44,.42), transparent 60%),
-      linear-gradient(168deg,#3A2C21 0%, #2A211A 42%, #221A14 100%)}
-  /* The vignette was pulling the corners to near-black and undoing the lift
-     above, so it is lighter and stops further out. */
+      radial-gradient(120% 90% at 12% 6%, rgba(255,190,126,.26), transparent 48%),
+      radial-gradient(90% 70% at 88% 22%, rgba(255,150,86,.10), transparent 55%),
+      radial-gradient(140% 120% at 50% 108%, rgba(120,78,44,.24), transparent 60%),
+      linear-gradient(168deg,#54402E 0%, #413429 42%, #3B2F26 100%)}
+  /* Every wash above is weaker than it was. They were mixed to carry a
+     near-black ground; over a lighter one the same alphas blow the top-left
+     corner out to cream and flatten the whole room. */
+  /* The vignette pulls the corners down. Each lift of the ground makes it
+     louder relative to everything else, so it comes down with them. */
   .room::after{content:"";position:absolute;inset:0;
-    background:radial-gradient(120% 100% at 50% 42%, transparent 42%, rgba(0,0,0,.38) 100%)}
+    background:radial-gradient(120% 100% at 50% 42%, transparent 46%, rgba(0,0,0,.26) 100%)}
   .grain{position:absolute;inset:0;z-index:1;pointer-events:none;
     background-image:var(--grain);background-size:200px 200px;opacity:.22;mix-blend-mode:overlay}
   /* The lamp's own bloom, animated so the room breathes very slightly. */
   .bloom{position:absolute;top:-24%;left:-6%;width:52vw;height:52vw;max-width:760px;max-height:760px;
-    border-radius:50%;background:radial-gradient(circle,rgba(255,196,136,.42),transparent 62%);
+    border-radius:50%;background:radial-gradient(circle,rgba(255,196,136,.30),transparent 62%);
     filter:blur(60px);z-index:1;pointer-events:none;animation:breathe 14s ease-in-out infinite alternate}
   @keyframes breathe{to{transform:scale(1.1) translate(3%,2%);opacity:.82}}
 
   /* ── nav ──────────────────────────────────────────────────────────── */
   .mast{position:sticky;top:0;z-index:60;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
-  .mast.stuck{background:rgba(11,9,6,.42);backdrop-filter:blur(18px) saturate(1.5);border-bottom-color:var(--line)}
+  .mast.stuck{background:rgba(44,34,25,.55);backdrop-filter:blur(18px) saturate(1.5);border-bottom-color:var(--line)}
   .mast .in{max-width:var(--col);margin:0 auto;padding:18px 30px;display:flex;align-items:center;gap:18px}
   .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;letter-spacing:-.035em;font-size:1.1rem;text-decoration:none}
   /* A glass tile with the A cut in warm gradient. The crossbar is a
@@ -115,7 +138,13 @@
   .btn-lg{padding:15px 28px;font-size:1rem}
 
   /* ── hero ─────────────────────────────────────────────────────────── */
-  .hero{position:relative;padding:78px 0 122px;overflow:hidden}
+  /* No overflow:hidden. It was clipping the room and the bloom to the hero
+     box, which left the masthead above them on the flat body colour — a
+     darker strip across the top of the page. The room now extends up behind
+     the bar instead (see .room). Nothing needs the clip: body already carries
+     overflow-x:hidden for the bloom's sideways bleed, and the bloom is
+     top-anchored so it never reaches the bottom edge. */
+  .hero{position:relative;padding:78px 0 122px}
   .hero .wrap{position:relative;z-index:2}
   .stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:48px;align-items:center;padding-bottom:150px}
   @media(max-width:1040px){.stage{grid-template-columns:1fr;gap:52px;padding-bottom:120px}}
@@ -123,7 +152,13 @@
   .hero h1 .ser{color:var(--lamp-2);font-size:1.02em}
   /* Fixed height: a headline that shoves the page down every 2.9s reads as
      broken rather than alive. */
-  .rot{margin-top:22px;position:relative;height:calc(1.5em * 2);max-width:26ch;font-size:clamp(1.04rem,1.7vw,1.26rem);line-height:1.5;font-weight:500;letter-spacing:-.025em}
+  /* weight 600, and that is a contrast decision rather than a typographic
+     one. This line is set in each vertical's accent, and the weakest of the
+     four — the studios pink #FF6E9C — measures 3.48:1 against the lamp-lit
+     ground it actually sits on. At 20px it needs 4.5:1 as normal text and
+     3:1 as bold, and bolding is the change that does not cost the brand
+     colour or darken the room back down. */
+  .rot{margin-top:22px;position:relative;height:calc(1.5em * 2);max-width:26ch;font-size:clamp(1.04rem,1.7vw,1.26rem);line-height:1.5;font-weight:600;letter-spacing:-.025em}
   .rot-item{position:absolute;inset:0;opacity:0;transform:translateY(.4em);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.3,1);color:var(--d)}
   .rot-item.on{opacity:1;transform:none}
   .hero .lede{margin-top:24px}
@@ -147,7 +182,7 @@
   /* Warms the screenshot into the room. Without this the product reads as a
      bright rectangle pasted onto a photograph, which is exactly what it is. */
   .screen figure::after{content:"";position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(115deg,rgba(255,180,120,.16),transparent 42%),linear-gradient(0deg,rgba(11,9,6,.30),transparent 55%)}
+    background:linear-gradient(115deg,rgba(255,180,120,.16),transparent 42%),linear-gradient(0deg,rgba(28,21,14,.26),transparent 55%)}
 
   /* ── the four doors, riding the hero's bottom edge ────────────────── */
   .doors{position:relative;z-index:3;margin-top:-108px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -155,10 +190,10 @@
   @media(max-width:860px){.doors{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:520px){.doors{grid-template-columns:1fr;margin-top:-56px}}
   .door{display:flex;flex-direction:column;gap:11px;padding:20px 20px 22px;border-radius:16px;text-decoration:none;
-    background:rgba(28,22,16,.52);border:1px solid rgba(255,240,220,.13);backdrop-filter:blur(18px) saturate(1.3);
-    box-shadow:0 26px 50px -30px rgba(0,0,0,.85);
+    background:rgba(42,33,24,.55);border:1px solid rgba(255,240,220,.16);backdrop-filter:blur(18px) saturate(1.3);
+    box-shadow:0 26px 50px -30px rgba(0,0,0,.5);
     transition:transform .24s cubic-bezier(.2,.7,.3,1),background .24s ease,border-color .24s ease,box-shadow .24s ease}
-  .door:hover{transform:translateY(-6px);background:rgba(38,30,22,.72);border-color:rgba(255,240,220,.24)}
+  .door:hover{transform:translateY(-6px);background:rgba(56,44,32,.72);border-color:rgba(255,240,220,.28)}
   .door:focus-visible{outline:2px solid var(--d);outline-offset:3px}
   /* One card is opaque and forward — the campaign's current vertical. It is
      the only element on the page with a light background, so it wins. */
@@ -192,7 +227,7 @@
     --lamp-line:rgba(184,70,15,.34);
     background:var(--room);color:var(--ink);
     border-radius:44px 44px 0 0;position:relative;z-index:4;margin-top:-64px;
-    box-shadow:0 -40px 90px -30px rgba(0,0,0,.75)}
+    box-shadow:0 -40px 90px -30px rgba(0,0,0,.42)}
   .lit .strip{border-top:0;border-bottom:1px solid var(--line);border-radius:44px 44px 0 0;background:transparent;padding-top:44px}
   .lit .chip{background:#fff}
   .lit .btn-solid{background:#171310;color:#FBFAF8;box-shadow:0 10px 26px -14px rgba(23,19,16,.6)}
@@ -446,7 +481,7 @@
       <div>
         <span class="kicker">One system · four front doors</span>
         <h1>Somebody said yes.<br><span class="ser">Nobody wrote it down.</span></h1>
-        <div class="rot"><span class="rot-item on" style="--d:#FF6E9C">in an email thread, by somebody junior.</span><span class="rot-item" style="--d:#5FD3A6">four chasing emails ago. Still nothing.</span><span class="rot-item" style="--d:#FF9152">on site, by phone. It cost £40,000.</span><span class="rot-item" style="--d:#4CCBD6">on a call, at a price nobody wrote down.</span></div>
+        <div class="rot"><span class="rot-item on" style="--d:#FF8CB0">in an email thread, by somebody junior.</span><span class="rot-item" style="--d:#5FD3A6">four chasing emails ago. Still nothing.</span><span class="rot-item" style="--d:#FF9152">on site, by phone. It cost £40,000.</span><span class="rot-item" style="--d:#4CCBD6">on a call, at a price nobody wrote down.</span></div>
         <p class="lede">One login where an approval carries a name, a date and a price — and nothing can quietly change afterwards.</p>
         <div class="cta">
           <a class="btn btn-solid btn-lg" href="https://app.anqulas.com/login">Open the live demo</a>
@@ -465,7 +500,7 @@
   </div>
   <div class="wrap">
     <div class="doors" id="doors">
-        <a class="door" href="/studios/" style="--d:#FF6E9C" data-i="0">
+        <a class="door" href="/studios/" style="--d:#FF8CB0" data-i="0">
           <span class="mark">St</span>
           <span class="door-t">Design studios</span>
           <span class="door-w">The intern approved it</span>

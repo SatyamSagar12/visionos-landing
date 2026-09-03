@@ -29,16 +29,32 @@
        Arial Black caps and 3px offset shadows, which read as a different
        company to anyone who arrived from the hub. Only the skin changed — every
        class name, every element and every word below is untouched. */
-    --room:#0B0906; --paper:#0B0906; --paper-2:#12100C; --card:#171310; --panel:#191510;
-    --ink:#FAF7F2; --ink-2:#B8AFA2; --ink-3:#7E7568;
-    --line:rgba(255,240,220,.10); --line-2:rgba(255,240,220,.18);
-    --rule:rgba(255,240,220,.10);
+    /* Lifted off near-black, the same move and the same reason as the front
+       page: #0B0906 under white body copy is a contrast a reader flinches at,
+       and the seam into the light half below read as two different websites.
+
+       The ceiling is set by --hue, not by taste. These four surfaces carry
+       accent text, and the studios pink #FF6E9C is the weakest of the four
+       accents — #413429 is the lightest warm brown that still gives it 4.5:1,
+       so the ramp tops out there. Every step below it clears AA for all four
+       verticals' accents AND for both muted inks, which are raised to match:
+
+         surface            ink   ink-2  ink-3   pink   indigo
+         --paper  #332920  13.29   8.47   5.92   5.38   5.65
+         --card   #3E3127  11.74   7.49   5.23   4.76   4.99
+         --panel  #413429  11.24   7.17   5.00   4.56   4.78            */
+    --room:#332920; --paper:#332920; --paper-2:#3A2E25; --card:#3E3127; --panel:#413429;
+    --ink:#FAF7F2; --ink-2:#CFC7BA; --ink-3:#B0A697;
+    --line:rgba(255,240,220,.13); --line-2:rgba(255,240,220,.22);
+    --rule:rgba(255,240,220,.13);
     --hue:#4CCBD6; --hue-ink:#14100B; --hue-wash:#4CCBD61A;
     --two:#E8A648; --two-wash:#E8A6481A;
     --ok:#A9D137; --ok-wash:rgba(169,209,55,.09);
-    --shadow:0 20px 44px -26px rgba(0,0,0,.9);
-    --hard:0 18px 40px -24px rgba(0,0,0,.85);
-    --soft:0 20px 44px -26px rgba(0,0,0,.9);
+    /* Softened with the ground. A shadow mixed for near-black is a black
+       smear once the surface under it is a mid brown. */
+    --shadow:0 20px 44px -26px rgba(0,0,0,.55);
+    --hard:0 18px 40px -24px rgba(0,0,0,.5);
+    --soft:0 20px 44px -26px rgba(0,0,0,.55);
     --display:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     --poster:var(--display);
     --body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -48,7 +64,13 @@
   }
 
   *{box-sizing:border-box}
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.68;-webkit-font-smoothing:antialiased}
+  /* The hero's TOP gradient stop, not --paper. The masthead sits above the
+     hero section, so it is painted on the body — and with --paper here that
+     band was the ramp's darkest colour butted against the hero's lightest,
+     which is the dark strip that used to run across the top of these pages.
+     The mast's own tint below is the same colour at .55, so the two composite
+     to exactly this and the seam disappears. */
+  body{margin:0;background:#4C3A2A;color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.68;-webkit-font-smoothing:antialiased}
   ::selection{background:var(--hue);color:var(--hue-ink)}
   p{margin:0} a{color:inherit}
   :focus-visible{outline:3px solid var(--two);outline-offset:3px}
@@ -232,7 +254,7 @@
     --soft:0 18px 40px -28px rgba(23,19,16,.35);
     background:var(--paper);color:var(--ink);
     border-radius:44px 44px 0 0;position:relative;z-index:3;margin-top:-64px;
-    box-shadow:0 -40px 90px -30px rgba(0,0,0,.7)}
+    box-shadow:0 -40px 90px -30px rgba(0,0,0,.4)}
   .lit section{padding:64px 0}
   .lit section:first-child{padding-top:72px}
   .lit .btn{background:#fff;border-color:var(--line-2);color:var(--ink)}
@@ -257,18 +279,28 @@
   h3{font-weight:600;letter-spacing:-.03em}
   section{border-bottom:1px solid var(--line);padding:96px 0}
 
-  /* The lamp. One hero, lit from the top left, exactly as the front page. */
-  section.hero{position:relative;overflow:hidden;padding:64px 0 116px}
-  section.hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  /* The lamp. One hero, lit from the top left, exactly as the front page.
+     It is painted on .top, which spans the masthead as well as the hero — see
+     the comment on that element. */
+  .top{position:relative;z-index:0}
+  section.hero{position:relative;padding:64px 0 116px}
+  .top::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
     background:
-      radial-gradient(120% 90% at 12% 4%, rgba(255,190,126,.30), transparent 48%),
+      radial-gradient(120% 90% at 12% 4%, rgba(255,190,126,.22), transparent 48%),
       radial-gradient(90% 70% at 88% 20%, var(--hue-wash), transparent 55%),
-      linear-gradient(168deg,#1B1610 0%, #120E0A 46%, #0B0906 100%)}
-  section.hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-    background:radial-gradient(120% 100% at 50% 40%, transparent 36%, rgba(0,0,0,.6) 100%)}
+      linear-gradient(168deg,#4C3A2A 0%, #3E3127 46%, #332920 100%)}
+  /* The vignette comes down with the ground. At .6 over a mid brown it pulls
+     the corners back to the near-black this whole change is getting away
+     from. */
+  .top::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(120% 100% at 50% 40%, transparent 44%, rgba(0,0,0,.26) 100%)}
   section.hero > .wrap{position:relative;z-index:1}
 
-  .mast{background:rgba(11,9,6,.44);backdrop-filter:blur(20px) saturate(1.6);border-bottom:1px solid var(--line)}
+  /* No tint and no backdrop-filter. Both existed to keep the bar legible when
+     it floated over the light half of the page — which it is now bounded out
+     of by .top, so the tint only darkened the strip it sits on and the blur
+     was compositing a uniform gradient at full cost. */
+  .mast{background:transparent;border-bottom:1px solid var(--line)}
   .logo{font-family:var(--display);font-weight:700;letter-spacing:-.035em;text-transform:none}
   .mast nav a:not(.btn){font-family:var(--body);font-size:.88rem;font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink-2)}
 
@@ -352,6 +384,13 @@
 </head>
 <body>
 
+<!-- The masthead and the hero share one painted block. Painting the lamp on
+     the hero alone left the masthead on the flat body colour, which showed as
+     a darker strip across the top of the page — the two are lit together or
+     the seam is visible. No overflow:hidden here: it would break the
+     masthead's position:sticky. -->
+<div class="top">
+
 <header class="mast">
   <div class="in">
     <span class="logo"><svg class="mk" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="mkw" gradientUnits="userSpaceOnUse" x1="10" y1="8" x2="52" y2="58"><stop offset="0" stop-color="#FFD9B8"/><stop offset=".55" stop-color="#F0A868"/><stop offset="1" stop-color="#C9571A"/></linearGradient><linearGradient id="mkt" gradientUnits="userSpaceOnUse" x1="18" y1="48" x2="54" y2="18"><stop offset="0" stop-color="#79CFCA"/><stop offset="1" stop-color="#25807E"/></linearGradient></defs><path d="M10 57 31 9 52 57" fill="none" stroke="url(#mkw)" stroke-width="8" stroke-linejoin="miter" stroke-miterlimit="8" stroke-linecap="butt"/><path d="M19 45 L43.5 26.3" fill="none" stroke="url(#mkt)" stroke-width="6.5" stroke-linecap="butt"/><path d="M52 20 L47.7 32.7 L38.7 20.7 Z" fill="url(#mkt)"/></svg>Supply OS</span>
@@ -409,6 +448,8 @@
     <p class="fine">Live in five days · no per-seat pricing · the accounts are in your name from day one</p>
   </div>
 </section>
+
+</div>
 
 <div class="lit">
 
