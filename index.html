@@ -30,7 +30,12 @@
   :root{
     /* Brown-dark, not black-dark. Every neutral below carries a little red and
        yellow in it, which is what makes the page feel lamp-lit. */
-    --room:#0B0906; --room-2:#12100C; --panel:#191510;
+    /* Lifted out of near-black. #0B0906 against the #F6F4F0 body was a jump of
+       roughly 18:1 at the seam, which reads as two different websites stapled
+       together rather than one page changing mood. These are the same hues,
+       several stops warmer and lighter, so the hero still reads as a lit room
+       and the transition into the light half is a step rather than a cliff. */
+    --room:#221A14; --room-2:#2A211A; --panel:#2F251D;
     --ink:#FAF7F2; --ink-2:#B8AFA2; --ink-3:#7E7568;
     --line:rgba(255,240,220,.10); --line-2:rgba(255,240,220,.18);
     --lamp:#F0A868; --lamp-2:#FFC79A;
@@ -68,10 +73,12 @@
     background:
       radial-gradient(120% 90% at 12% 6%, rgba(255,190,126,.38), transparent 48%),
       radial-gradient(90% 70% at 88% 22%, rgba(255,150,86,.14), transparent 55%),
-      radial-gradient(140% 120% at 50% 108%, rgba(72,44,24,.55), transparent 60%),
-      linear-gradient(168deg,#1B1610 0%, #120E0A 42%, #0B0906 100%)}
+      radial-gradient(140% 120% at 50% 108%, rgba(120,78,44,.42), transparent 60%),
+      linear-gradient(168deg,#3A2C21 0%, #2A211A 42%, #221A14 100%)}
+  /* The vignette was pulling the corners to near-black and undoing the lift
+     above, so it is lighter and stops further out. */
   .room::after{content:"";position:absolute;inset:0;
-    background:radial-gradient(120% 100% at 50% 42%, transparent 34%, rgba(0,0,0,.62) 100%)}
+    background:radial-gradient(120% 100% at 50% 42%, transparent 42%, rgba(0,0,0,.38) 100%)}
   .grain{position:absolute;inset:0;z-index:1;pointer-events:none;
     background-image:var(--grain);background-size:200px 200px;opacity:.22;mix-blend-mode:overlay}
   /* The lamp's own bloom, animated so the room breathes very slightly. */
@@ -256,13 +263,17 @@
   .chip.hot{color:var(--lamp-2);border-color:rgba(240,168,104,.4);background:rgba(240,168,104,.09)}
 
   /* ── features ─────────────────────────────────────────────────────── */
-  .split{margin-top:54px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+  /* stretch, not start: the "Their side" column carries three items and
+     "Your side" four, so at align-items:start one card finished 80px short of
+     the other and the pair looked accidental. */
+  .split{margin-top:54px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
   @media(max-width:900px){.split{grid-template-columns:1fr;gap:14px}}
   /* The photograph gets the top of the card, not a strip. The panel is pushed
      down by padding rather than sized, so a three-item column and a four-item
      one still show the same amount of picture. */
   .col{position:relative;border-radius:22px;padding:230px 16px 16px;overflow:hidden;
-    border:1px solid var(--line);isolation:isolate}
+    border:1px solid var(--line);isolation:isolate;display:flex;flex-direction:column}
+  .col .feats{flex:1}
   /* The photograph is an <img>, not a background-image, for one reason:
      loading="lazy" does not reach CSS backgrounds. As a background these two
      were fetched before the load event even though the section sits well below
@@ -307,15 +318,6 @@
   .day-k{display:block;font-family:var(--mono);font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lamp-2);margin-bottom:11px}
   .day h4{margin-bottom:8px}
   .day p{font-size:.87rem;color:var(--ink-2);padding-right:8px}
-
-  /* ── honesty ──────────────────────────────────────────────────────── */
-  .adms{list-style:none;margin:52px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  @media(max-width:900px){.adms{grid-template-columns:1fr}}
-  .adm{border:1px solid var(--line);border-left:2px solid rgba(240,168,104,.6);border-radius:0 16px 16px 0;padding:24px 26px;
-    background:linear-gradient(100deg,rgba(240,168,104,.07),rgba(255,240,220,.012) 44%)}
-  .adm h4{margin-bottom:9px;color:var(--lamp-2)}
-  .adm p{font-size:.89rem;color:var(--ink-2)}
-  .adms .adm:last-child:nth-child(odd){grid-column:1/-1}
 
   /* ── close ────────────────────────────────────────────────────────── */
   .price{margin-top:34px;display:inline-flex;align-items:baseline;gap:14px;border:1px solid var(--line-2);border-radius:16px;padding:18px 26px;background:linear-gradient(180deg,rgba(255,240,220,.06),transparent)}
@@ -372,7 +374,6 @@
       <a class="sm" href="#doors">Who it's for</a>
       <a class="sm" href="#inside">What's inside</a>
       <a class="sm" href="#week">The week</a>
-      <a class="sm" href="#honest">What it can't do</a>
       <a class="btn btn-glass" href="https://app.anqulas.com/login">Sign in to the demo</a>
       <a class="btn btn-solid" href="mailto:satyam@anqulas.com?subject=Twenty%20minutes">Book a call</a>
     </nav>
@@ -587,34 +588,6 @@
   </div>
 </section>
 
-<section id="honest" class="rule">
-  <div class="wrap reveal">
-    <span class="kicker">Read this before you reply</span>
-    <h2 style="margin-top:24px">What it <span class="ser">doesn't</span> do.</h2>
-    <p class="lede" style="margin-top:22px">Every one of these is on the front page rather than discovered by you in month three. If one is a deal-breaker, better we both find out now.</p>
-    <ul class="adms">
-        <li class="adm">
-          <h4>Support is email, not a phone line.</h4>
-          <p>One business day, Monday to Friday — written down here rather than discovered by you in month three. No weekends, no 2am pager. If you need somebody on call through the night, we’re the wrong shop and we’d rather say so now than take your money and disappoint you later.</p>
-        </li>
-        <li class="adm">
-          <h4>You’d be early.</h4>
-          <p>There’s no wall of client logos on this page because there is no wall of client logos. That’s exactly why the founding price is what it is. Open the demo and judge the software instead of the logos — nothing is behind a “book a call” wall.</p>
-        </li>
-        <li class="adm">
-          <h4>Your clients can’t pay by card in it.</h4>
-          <p>Invoices get raised, sent and chased, and your client sees exactly what’s outstanding. The actual paying still happens wherever you take payment today.</p>
-        </li>
-        <li class="adm">
-          <h4>The automations don’t run.</h4>
-          <p>There’s a rather lovely workflow builder in there. It draws beautiful diagrams. Nothing executes them yet. Please don’t buy this for that.</p>
-        </li>
-        <li class="adm">
-          <h4>Single sign-on works, but you supply the keys.</h4>
-          <p>Sign in with Google, Microsoft or GitHub is built and tested. Switching it on needs credentials from your own Google or Microsoft account — a twenty minute job, and one we’ll do with you on the call rather than leave you to it. Until then it’s email and password, with sessions that expire and a proper audit trail.</p>
-        </li></ul>
-  </div>
-</section>
 
 <section class="rule">
   <div class="wrap reveal">
