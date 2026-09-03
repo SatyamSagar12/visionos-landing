@@ -186,6 +186,10 @@
     --ink:#171310; --ink-2:#57504A; --ink-3:#857C74;
     --line:rgba(23,19,16,.11); --line-2:rgba(23,19,16,.18);
     --lamp:#B8460F; --lamp-2:#8F3609;
+    /* --lamp at low alpha. Written out rather than color-mix()'d so the
+       value is greppable next to the hex it comes from. */
+    --lamp-wash:rgba(184,70,15,.085); --lamp-wash-2:rgba(184,70,15,.025);
+    --lamp-line:rgba(184,70,15,.34);
     background:var(--room);color:var(--ink);
     border-radius:44px 44px 0 0;position:relative;z-index:4;margin-top:-64px;
     box-shadow:0 -40px 90px -30px rgba(0,0,0,.75)}
@@ -229,16 +233,53 @@
      "$6,000 · founding price", which contradicted the app's own pricing
      screen, where the founding rate is $2,500 and $6,000 is what it becomes
      once the three founding slots are gone.                              */
-  .prices{margin-top:40px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-  .tier{border:1px solid var(--line);border-radius:18px;padding:24px 22px;background:rgba(255,255,255,.6)}
-  .tier.lead{border-color:var(--line-2);background:#fff;
-    box-shadow:0 24px 50px -32px rgba(23,19,16,.4)}
+  .prices{margin-top:46px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:18px;align-items:stretch}
+  .tier{position:relative;display:flex;flex-direction:column;
+    border:1px solid var(--line);border-radius:18px;padding:26px 22px;
+    background:rgba(255,255,255,.55);
+    transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s ease,border-color .22s ease}
   .tier .amt{font-family:var(--display);font-weight:700;letter-spacing:-.045em;
     font-size:2.05rem;line-height:1;display:block}
   .tier .per{display:block;margin-top:7px;font-family:var(--mono);font-size:.68rem;
     letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
   .tier p{margin-top:13px;font-size:.9rem;line-height:1.55;color:var(--ink-2)}
-  @media(max-width:820px){.prices{grid-template-columns:1fr;gap:14px}}
+  .tier:hover{transform:translateY(-4px)}
+
+  /* The recommended tier, without a slab of colour.
+     The obvious way to do this is the one every pricing page uses: fill the
+     card with a saturated block and reverse the text out of it. Against this
+     paper that is a jump of about 11:1 at the card edge, and it reads as a
+     banner dropped onto the page rather than part of it.
+     So the pull is built from ONE hue — the same --lamp the rest of the page
+     accents with — at four strengths: an 8% wash for the ground, 34% for the
+     border, the full colour for the number and the badge, and a tinted
+     shadow. The card also sits 12px proud of its neighbours top and bottom,
+     which is where most of the "choose this" comes from: size and elevation
+     carry hierarchy at a fraction of the contrast that colour needs. */
+  .tier.lead{margin:-12px 0;padding:34px 24px 32px;
+    border-color:var(--lamp-line);
+    background:linear-gradient(168deg,var(--lamp-wash) 0%,var(--lamp-wash-2) 58%,rgba(255,255,255,0) 100%),#fff;
+    box-shadow:0 28px 56px -30px rgba(184,70,15,.4),0 1px 0 rgba(184,70,15,.06)}
+  .tier.lead .amt{color:var(--lamp)}
+  .tier.lead .per{color:var(--lamp-2)}
+  .tier.lead:hover{box-shadow:0 34px 62px -30px rgba(184,70,15,.5)}
+
+  /* Sits on the border rather than inside it, so the eye finds the card
+     before it reads a word. Full-strength lamp on ~5.4:1 against its own
+     text — the one place on this block where the colour goes solid, and it
+     is 90px wide. */
+  .pick{position:absolute;top:-11px;right:20px;
+    font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+    background:var(--lamp);color:#FFF7F1;padding:5px 11px;border-radius:999px;
+    box-shadow:0 6px 16px -9px rgba(184,70,15,.9)}
+
+  @media(max-width:820px){
+    .prices{grid-template-columns:1fr;gap:14px}
+    /* Stacked, there are no neighbours to stand proud of, and the negative
+       margin would just collide with the card above. */
+    .tier.lead{margin:0}
+  }
 
   .lit .kicker{background:#fff}
 
@@ -271,8 +312,17 @@
   /* The photograph gets the top of the card, not a strip. The panel is pushed
      down by padding rather than sized, so a three-item column and a four-item
      one still show the same amount of picture. */
-  .col{position:relative;border-radius:22px;padding:230px 16px 16px;overflow:hidden;
-    border:1px solid var(--line);isolation:isolate;display:flex;flex-direction:column}
+  /* The 30px here is the photo mat, not the text's padding — the panel keeps
+     its own 26px inside. At 16px the panel was 578px wide and its lines ran
+     to about 62 characters, which is past a comfortable measure and left the
+     photograph as a hairline around the edge. At 30px the panel is 542px and
+     the lines settle near 58, and the picture actually reads as the card. */
+  .col{position:relative;border-radius:22px;padding:230px 30px 30px;overflow:hidden;
+    border:1px solid var(--line);isolation:isolate;display:flex;flex-direction:column;
+    transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s ease}
+  /* Same 4px lift as the tiers and the vertical cards, so every card on the
+     site answers the cursor the same way. */
+  .col:hover{transform:translateY(-4px);box-shadow:0 30px 58px -32px rgba(23,19,16,.55)}
   .col .feats{flex:1}
   /* The photograph is an <img>, not a background-image, for one reason:
      loading="lazy" does not reach CSS backgrounds. As a background these two
@@ -285,7 +335,9 @@
     object-position:center;z-index:-2}
   .col::before{content:"";position:absolute;inset:0;z-index:-1;
     background:linear-gradient(180deg,rgba(10,8,6,.30) 0%,rgba(10,8,6,.05) 34%,rgba(10,8,6,.22) 100%)}
-  @media(max-width:900px){.col{padding-top:175px}}
+  /* On a phone the mat would eat a third of an already narrow measure, so it
+     comes back in. */
+  @media(max-width:900px){.col{padding:175px 18px 18px}}
 
   /* Two photographic cards, after the reference: the photograph is the card,
      not a band above it, and the content floats on top in a frosted panel.
@@ -360,6 +412,9 @@
     .reveal,.doors .door,.week .day{opacity:1;transform:none;transition:none}
     .screen figure,.screen:hover figure{transform:none;transition:none}
     .door:hover,.btn:hover,.btn-solid:hover,.btn-glass:hover{transform:none}
+    /* The lift is movement, so it goes. The wash, the badge and the extra
+       height are static and still say "this one". */
+    .tier:hover,.col:hover{transform:none}
     .door-go svg,.door:hover .door-go svg{transition:none;transform:none}
     .rot-item{transform:none;transition:opacity .45s ease}
   }
@@ -595,6 +650,7 @@
     <p class="lede" style="margin-top:22px">The hosting and database accounts are opened in your name, on your card, on day one. Nothing on your clients' screen mentions me. If you stop working with me on a Wednesday, nothing switches off — you keep the system, the data and the logins.</p>
     <div class="prices">
       <div class="tier lead">
+        <span class="pick">Recommended</span>
         <span class="amt">$2,500</span>
         <span class="per">once · founding, first three</span>
         <p>While there is nothing to show but the software. Your price locked for good; in exchange, honest feedback and your name once it works.</p>

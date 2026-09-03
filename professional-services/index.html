@@ -158,8 +158,22 @@
   .owner .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--two);display:block;margin-bottom:8px}
   .owner p{font-size:.99rem;color:var(--ink-2)} .owner strong{color:var(--ink)}
   .prices{margin-top:34px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-  .price{border:3px solid var(--ink);background:var(--card);padding:26px 24px;display:grid;gap:12px;align-content:start;box-shadow:var(--hard)}
-  .price.founding{background:var(--hue-wash);border-color:var(--hue)}
+  .price{position:relative;border:3px solid var(--ink);background:var(--card);padding:26px 24px;
+    display:grid;gap:12px;align-content:start;box-shadow:var(--hard);
+    transition:transform .18s cubic-bezier(.2,.7,.3,1),box-shadow .18s ease}
+  /* The recommended one. It was already washed in the page's hue, which was
+     too quiet to do any work sitting next to an identically-sized card. It
+     now stands 10px proud on both edges and carries the same stamp the
+     decider in the cast list wears, so the two "this is the one" marks on
+     the page are the same mark. No reversed-out block: the wash is the hue
+     at 10% and every word stays on the page's own paper. */
+  .price.founding{background:var(--hue-wash);border-color:var(--hue);
+    margin:-10px 0;padding:34px 24px 32px;
+    box-shadow:0 26px 50px -24px rgba(0,0,0,.55)}
+  .price:hover{transform:translateY(-4px)}
+  .price .stamp{position:absolute;top:-13px;right:-8px;font-family:var(--mono);font-size:.58rem;
+    letter-spacing:.1em;text-transform:uppercase;background:var(--hue);color:var(--hue-ink);
+    padding:4px 9px;border:2px solid var(--ink);transform:rotate(3deg)}
   .price.small{border-width:2px;padding:22px 20px}
   .price .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
   .price.founding .k{color:var(--hue)}
@@ -193,7 +207,7 @@
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1)}
   .reveal.in{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.rise,.reveal{animation:none;opacity:1;transform:none}
-    .cards article:hover{transform:none!important}*{transition:none!important}}
+    .cards article:hover,.price:hover{transform:none!important}*{transition:none!important}}
 
 
   /* ── the light ground ─────────────────────────────────────────────────
@@ -331,7 +345,7 @@
       transition-duration:.18s!important}
     /* The hover lift is movement, so it goes; the shadow stays, which still
        says "this one" without anything sliding. */
-    .cards article:hover{transform:none!important}
+    .cards article:hover,.price:hover{transform:none!important}
     .btn:hover{transform:none}
   }
 </style>
@@ -537,6 +551,7 @@
   </div>
   <div class="prices">
     <div class="price founding">
+      <span class="stamp">Recommended</span>
       <span class="k">Founding client · first three only</span>
       <span class="fig">$2,500<small>once</small></span>
       <p>The whole week below, your branding, your real work loaded in. Then pick a support option — or don't.</p>
