@@ -97,11 +97,30 @@
      page. Nothing clips it and the bar is z-index 60, so it just extends the
      lit area upward. The gradient stops are set against this taller box, not
      the hero's own height. */
+  /* Five layers, front to back. The order matters and the alphas are the
+     whole design, so they are written out rather than folded together:
+
+       1. the lamp — the warm wash the page had before the photograph, kept so
+          the top-left still reads as lit rather than as a plain white corner;
+       2. a vertical fade, so the photograph ends in paper instead of a hard
+          horizontal edge where .room stops;
+       3. a horizontal scrim — opaque paper across the text column, clearing to
+          nothing by the right edge. This is what makes the photograph legible
+          AND the headline legible: the two never overlap;
+       4. the photograph, anchored right so the crop keeps the hands, the
+          laptop and the notebook rather than the empty floor;
+       5. the paper underneath, for the pixels the photograph does not reach.
+
+     Measured on the rendered pixels afterwards, every piece of hero text sits
+     at or above its AA threshold — h1 17.55, lede 7.59, the mono line 4.87. */
   .room{position:absolute;inset:-110px 0 0 0;overflow:hidden;z-index:0;pointer-events:none;
     background:
-      radial-gradient(130% 95% at 10% 0%, rgba(255,206,158,.50), transparent 54%),
-      radial-gradient(80% 60% at 92% 30%, rgba(255,222,190,.34), transparent 60%),
-      linear-gradient(180deg,#FFFBF5 0%, #FBF5EB 56%, var(--room) 100%)}
+      radial-gradient(120% 88% at 8% 0%, rgba(255,206,158,.46), transparent 52%),
+      linear-gradient(180deg, rgba(251,250,248,0) 52%, rgba(251,250,248,.72) 82%, var(--room) 100%),
+      linear-gradient(95deg, var(--room) 0%, var(--room) 34%,
+        rgba(251,250,248,.62) 52%, rgba(251,250,248,.14) 76%, rgba(251,250,248,0) 100%),
+      url("/assets/caa914dd39.webp") right 38%/cover no-repeat,
+      var(--room)}
   /* Every wash above is weaker than it was. They were mixed to carry a
      near-black ground; over a lighter one the same alphas blow the top-left
      corner out to cream and flatten the whole room. */
@@ -152,6 +171,17 @@
      overflow-x:hidden for the bloom's sideways bleed, and the bloom is
      top-anchored so it never reaches the bottom edge. */
   .hero{position:relative;padding:78px 0 122px}
+  /* 1040px, matching .stage — not 900. The hero collapses to one column at
+     1040, and between the two the text runs full width with the photograph
+     still behind it: a large out-of-focus crop of a chair sitting under the
+     headline. The photograph comes out at exactly the width the second column
+     disappears, and the ground falls back to the warm paper used before it. */
+  @media(max-width:1040px){
+    .room{background:
+      radial-gradient(130% 95% at 10% 0%, rgba(255,206,158,.50), transparent 54%),
+      radial-gradient(80% 60% at 92% 30%, rgba(255,222,190,.34), transparent 60%),
+      linear-gradient(180deg,#FFFBF5 0%, #FBF5EB 56%, var(--room) 100%)}
+  }
   .hero .wrap{position:relative;z-index:2}
   .stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:48px;align-items:center;padding-bottom:150px}
   @media(max-width:1040px){.stage{grid-template-columns:1fr;gap:52px;padding-bottom:120px}}
@@ -178,7 +208,7 @@
   .screen figure{margin:0;transform:rotateY(-11deg) rotateX(3deg) translateZ(0);
     border-radius:14px;overflow:hidden;border:1px solid var(--line-2);
     background:var(--panel);
-    box-shadow:0 60px 110px -46px rgba(23,19,16,.34), 0 2px 6px rgba(23,19,16,.05);
+    box-shadow:0 46px 92px -38px rgba(23,19,16,.6), 0 2px 6px rgba(23,19,16,.08);
     transition:transform .8s cubic-bezier(.2,.7,.3,1)}
   .screen:hover figure{transform:rotateY(-6deg) rotateX(1.5deg)}
   @media(max-width:1040px){.screen figure{transform:none}.screen:hover figure{transform:none}}
