@@ -525,22 +525,43 @@
      heavy enough to make it a smudge, and there is no version of "washed-out
      mountain behind a text field" that reads as anything but a mistake. Below
      the content it costs nothing and does the whole job. */
-  .talk{position:relative;padding:64px 0 300px;overflow:hidden;scroll-margin-top:100px}
-  /* Four layers, front to back. The warm wash is not decoration: the plate is
-     grey rock under white mist and the rest of this site is cream and warm
-     brown, so untinted it reads as a photograph borrowed from another
-     website. The paper gradient holds near-solid to the halfway mark so the
-     summit sits low — a horizon under the content, not a mountain behind it. */
-  .talk-bg{position:absolute;left:0;right:0;bottom:0;height:290px;z-index:0;pointer-events:none;
+  section.talk{position:relative;padding:64px 0 300px;overflow:hidden;scroll-margin-top:100px}
+  /* An <img> rather than a background-image, for one reason: a CSS background
+     is fetched as soon as its element enters the render tree, off-screen or
+     not. Measured on the deployed front page, the old plate was in the 513KB
+     the browser pulled before a visitor scrolled a pixel — for a picture at
+     the very bottom of the page. loading="lazy" defers it to the moment
+     somebody actually approaches this section, so a plate six times sharper
+     costs nothing at all on first paint. (In the committed copies the image is
+     inlined and this is moot; pages.mjs pulls it out into /assets on deploy,
+     which is where it matters.)
+     
+     The band reaches 600px up — past the form card, not to it. Anchored to
+     the card's lower edge it drew a line across the page; rising behind the
+     card there is no edge to see. */
+  .talk-bg{position:absolute;left:0;right:0;bottom:0;height:600px;z-index:0;
+    pointer-events:none;overflow:hidden}
+  .talk-bg img{position:absolute;inset:0;width:100%;height:100%;display:block;
+    object-fit:cover;object-position:center bottom}
+  /* The scrim, painted over the photograph. Eight stops with no flat run and
+     no step: the eye cannot find an edge, so the picture grows out of the
+     paper rather than starting somewhere. It eases back toward paper over the
+     last 15% as well: the footer below is plain ground, and a photograph at
+     full strength meeting it draws the same hard line at the bottom that the
+     old band drew at the top. The warm wash is not decoration —
+     the plate is grey rock under white mist and this site is cream and warm
+     brown, so untinted it reads as a photograph borrowed from elsewhere. */
+  .talk-bg::after{content:"";position:absolute;inset:0;
     background:
-      linear-gradient(180deg, var(--room) 0%, var(--room) 34%, rgba(251,250,248,.80) 60%, rgba(251,250,248,.42) 80%, rgba(251,250,248,.30) 100%),
-      linear-gradient(180deg, rgba(255,206,158,.30), rgba(214,148,88,.26)),
-      url("/assets/e122c4cfc6.webp") center 88%/cover no-repeat,
-      var(--room)}
+      linear-gradient(180deg, var(--room) 0%, rgba(251,250,248,.965) 13%,
+        rgba(251,250,248,.87) 28%, rgba(251,250,248,.68) 44%, rgba(251,250,248,.44) 60%,
+        rgba(251,250,248,.22) 74%, rgba(251,250,248,.10) 84%,
+        rgba(251,250,248,.26) 93%, rgba(251,250,248,.62) 100%),
+      linear-gradient(180deg, rgba(255,206,158,.16), rgba(214,148,88,.11))}
   .talk .wrap{position:relative;z-index:1}
   .talk-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:52px;align-items:start}
   @media(max-width:900px){.talk-grid{grid-template-columns:1fr;gap:32px}
-    .talk{padding:52px 0 250px}.talk-bg{height:230px}}
+    section.talk{padding:52px 0 250px}.talk-bg{height:470px}}
 
   .talk-facts{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px}
   .talk-facts li{display:grid;gap:2px}
@@ -840,7 +861,9 @@
 
 
 <section class="talk" id="talk">
-  <div class="talk-bg" aria-hidden="true"></div>
+  <div class="talk-bg" aria-hidden="true">
+    <img src="/assets/0a86312d6b.webp" alt="" width="1600" height="724" loading="lazy" decoding="async">
+  </div>
   <div class="wrap">
     <div class="talk-grid">
       <div>
