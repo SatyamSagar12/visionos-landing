@@ -60,13 +60,14 @@
        already under AA in the old light half — 40-odd small labels, role
        names and captions sat below the line. #756D65 reads the same weight
        and clears 4.5 on every ground here. */
-    --ink:#171310; --ink-2:#57504A; --ink-3:#756D65;
+    --ink:#171310; --ink-2:#57504A; --ink-3:#6A625A;
     --line:rgba(23,19,16,.11); --line-2:rgba(23,19,16,.18);
     --rule:rgba(23,19,16,.11);
     /* The saturated accents, not the pale ones. hueDark exists for a dark
        room; on paper #FF8CB0 sits at about 1.9:1 and disappears.
        --hue-ink is what goes ON the accent, so it inverts with it. */
-    --hue:#0F6B4F; --hue-ink:#FFFFFF; --hue-wash:#0F6B4F12;
+    --hue:#0F6B4F; --hue-ink:#FFFFFF; --hue-wash:#0F6B4F12; --hue-line:#0F6B4F2E;
+    --hue-tint:#0F6B4F0A;
     --two:#8A5A12; --two-wash:#8A5A1212;
     --ok:#456E00; --ok-wash:rgba(69,110,0,.08);
     --shadow:0 18px 40px -28px rgba(23,19,16,.35);
@@ -163,7 +164,22 @@
   /* stretch, not start: a card with four lines of copy and one with two used
      to be different heights, and a grid of ragged boxes reads as unfinished
      rather than as varied. Every card now fills its row. */
+
+  .cards article.theirs{background:var(--hue-wash);border-color:var(--hue-line)}
   .cards{margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;align-items:stretch}
+  /* ── card rails on a phone ─────────────────────────────────────────── */
+  .swipe{display:none;margin-top:2px;font-family:var(--mono);font-size:.68rem;
+    color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
+
+  @media(max-width:720px){
+    .cards,.prices.opts{display:flex;gap:12px;overflow-x:auto;overscroll-behavior-x:contain;
+      scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+      margin-left:-24px;margin-right:-24px;padding:3px 24px 14px;
+      scroll-padding-left:24px;scrollbar-width:none}
+    .cards::-webkit-scrollbar,.prices.opts::-webkit-scrollbar{display:none}
+    .cards article,.prices.opts .price{flex:0 0 78%;scroll-snap-align:start}
+    .swipe{display:block}
+  }
   .cards article{background:var(--card);border:2px solid var(--ink);padding:22px 20px;box-shadow:var(--hard);display:flex;flex-direction:column;gap:8px;
     transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s cubic-bezier(.2,.7,.3,1)}
   /* The float. Small on purpose — 4px is enough to read as "this lifted",
@@ -225,10 +241,13 @@
   .price.small li::before{content:"·";color:var(--two)}
   .price p{font-size:.95rem;color:var(--ink-2)}
 
-  .honest{margin-top:30px;display:grid;gap:0;border-top:2px solid var(--ink)}
-  .honest li{list-style:none;padding:18px 0;border-bottom:1px solid var(--rule);display:grid;gap:5px}
+  .honest{margin-top:30px;columns:2;column-gap:52px;border-top:2px solid var(--ink);padding-top:4px}
+  .honest li{list-style:none;padding:16px 0;border-bottom:1px solid var(--rule);
+    break-inside:avoid;-webkit-column-break-inside:avoid;display:flow-root}
+  .honest .h,.honest .b{display:block}
+  @media(max-width:860px){.honest{columns:1;column-gap:0}}
   .honest .h{font-family:var(--poster);font-size:1rem;letter-spacing:-.02em}
-  .honest .b{color:var(--ink-2);font-size:.97rem}
+  .honest .b{color:var(--ink-2);font-size:.95rem;line-height:1.55;margin-top:5px}
 
   .close{margin-top:28px;border:3px solid var(--ink);background:var(--two-wash);padding:32px 28px;box-shadow:var(--hard);display:grid;gap:16px}
   .qs{margin:0;padding:0;display:grid;gap:9px}
@@ -260,10 +279,10 @@
      the pale hero accents sit at roughly 1.8:1 on off-white. */
   .lit{
     --paper:#FBFAF8; --room:#FBFAF8; --paper-2:#EFEBE4; --card:#FFFFFF; --panel:#FFFFFF;
-    --ink:#171310; --ink-2:#57504A; --ink-3:#756D65;
+    --ink:#171310; --ink-2:#57504A; --ink-3:#6A625A;
     --line:rgba(23,19,16,.11); --line-2:rgba(23,19,16,.18);
     --rule:rgba(23,19,16,.11);
-    --hue:#0F6B4F; --hue-wash:#0F6B4F12;
+    --hue:#0F6B4F; --hue-wash:#0F6B4F12; --hue-line:#0F6B4F2E; --hue-tint:#0F6B4F0A;
     --two:#8A5A12; --two-wash:#8A5A1212;
     --ok:#456E00; --ok-wash:rgba(69,110,0,.08);
     --shadow:0 18px 40px -28px rgba(23,19,16,.35);
@@ -280,7 +299,7 @@
   .lit .btn-hot{background:#171310;color:#FBFAF8;border-color:#171310}
   .lit .btn-hot:hover{background:#000}
   .lit .rest span{background:#fff}
-  .lit .rest span.hot{background:var(--hue-wash);border-color:var(--hue);color:var(--hue)}
+  .lit .rest span.hot{background:var(--hue-tint);border-color:var(--hue);color:var(--hue)}
   .lit .mail.shout{background:var(--hue-wash)}
   .lit .shot-wrap::before{opacity:.16}
 
@@ -366,7 +385,7 @@
   .honest li{border-bottom:1px solid var(--line)}
   .honest .h{font-family:var(--display);font-weight:600}
   .rest span{border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink-3);padding:7px 13px}
-  .rest span.hot{background:var(--hue-wash);border-color:var(--hue);color:var(--hue)}
+  .rest span.hot{background:var(--hue-tint);border-color:var(--hue);color:var(--hue)}
   .also a{border-bottom:1px solid var(--hue);color:var(--ink-2)}
   .also a:hover{color:var(--ink)}
 
@@ -395,7 +414,72 @@
        says "this one" without anything sliding. */
     .cards article:hover,.price:hover{transform:none!important}
     .btn:hover{transform:none}
+    .talk-field input,.talk-field textarea,.talk-send{transition:none}
   }
+
+
+  /* ── let's talk ───────────────────────────────────────────────────────
+     The photograph is a horizon at the foot of the section, not a ground
+     under the form. Behind form labels and input text it would need a scrim
+     heavy enough to make it a smudge, and there is no version of "washed-out
+     mountain behind a text field" that reads as anything but a mistake. Below
+     the content it costs nothing and does the whole job. */
+  .talk{position:relative;padding:64px 0 300px;overflow:hidden;scroll-margin-top:100px}
+  /* Four layers, front to back. The warm wash is not decoration: the plate is
+     grey rock under white mist and the rest of this site is cream and warm
+     brown, so untinted it reads as a photograph borrowed from another
+     website. The paper gradient holds near-solid to the halfway mark so the
+     summit sits low — a horizon under the content, not a mountain behind it. */
+  .talk-bg{position:absolute;left:0;right:0;bottom:0;height:290px;z-index:0;pointer-events:none;
+    background:
+      linear-gradient(180deg, var(--room) 0%, var(--room) 34%, rgba(251,250,248,.80) 60%, rgba(251,250,248,.42) 80%, rgba(251,250,248,.30) 100%),
+      linear-gradient(180deg, rgba(255,206,158,.30), rgba(214,148,88,.26)),
+      url("/assets/e122c4cfc6.webp") center 88%/cover no-repeat,
+      var(--room)}
+  .talk .wrap{position:relative;z-index:1}
+  .talk-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:52px;align-items:start}
+  @media(max-width:900px){.talk-grid{grid-template-columns:1fr;gap:32px}
+    .talk{padding:52px 0 250px}.talk-bg{height:230px}}
+
+  .talk-facts{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px}
+  .talk-facts li{display:grid;gap:2px}
+  .talk-facts .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-2)}
+  .talk-facts .v{font-size:.97rem;color:var(--ink)}
+  .talk-facts a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hue)}
+  .talk-facts a:hover{color:var(--hue)}
+
+  .talk-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 26px 24px;
+    box-shadow:0 30px 64px -34px rgba(23,19,16,.40)}
+  .talk-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:520px){.talk-row{grid-template-columns:1fr}}
+  .talk-field{display:grid;gap:6px;margin-top:14px}
+  .talk-field:first-child,.talk-row .talk-field{margin-top:0}
+  .talk-row{margin-bottom:14px}
+  .talk-field label{font-size:.85rem;font-weight:600;color:var(--ink)}
+  .talk-field input,.talk-field textarea{font:inherit;font-size:.95rem;color:var(--ink);
+    background:#FDFCFA;border:1px solid var(--line-2, var(--line));border-radius:10px;
+    padding:11px 13px;width:100%;box-sizing:border-box;
+    transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
+  .talk-field textarea{min-height:118px;resize:vertical;line-height:1.55}
+  .talk-field input:focus,.talk-field textarea:focus{outline:none;background:#fff;
+    border-color:var(--hue);box-shadow:0 0 0 3px color-mix(in srgb, var(--hue) 18%, transparent)}
+  .talk-field input::placeholder,.talk-field textarea::placeholder{color:var(--ink-3)}
+
+  /* Off-screen rather than display:none — a bot reading the DOM fills what it
+     can see in the markup, and a hidden input is the tell. */
+  .talk-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .talk-send{margin-top:16px;width:100%;justify-content:center}
+  .talk-send[disabled]{opacity:.62;cursor:progress}
+  .talk-note{margin-top:12px;font-family:var(--mono);font-size:.72rem;line-height:1.6;
+    color:var(--ink-3);text-align:center}
+  .talk-note a{color:var(--ink-2);text-decoration:underline;text-underline-offset:2px}
+  .talk-msg{margin-top:12px;font-size:.9rem;line-height:1.55;padding:11px 13px;border-radius:10px;display:none}
+  .talk-msg.on{display:block}
+  .talk-msg.ok{background:#EFF6EF;border:1px solid #BFD8BF;color:#2C5530}
+  .talk-msg.warn{background:#FDF4E8;border:1px solid #E6CFA8;color:#6B4A17}
+
 </style>
 </head>
 <body>
@@ -413,7 +497,7 @@
     <nav>
       <a href="#inside" class="sm">What's inside</a>
       <a href="#price" class="sm">Price</a>
-      <a class="btn btn-hot" href="mailto:contact@anqulas.com?subject=Twenty%20minutes%20%E2%80%94%20Practice%20OS">Book 20 minutes</a>
+      <a class="btn btn-hot" href="#talk">Book 20 minutes</a>
     </nav>
   </div>
 </header>
@@ -458,7 +542,7 @@
       <p>It’s recorded against <strong>that exact document</strong>, with her name, the date and an audit trail nobody can edit afterwards. When a query comes back in eighteen months, you have an answer rather than a search.</p>
     </div>
     <div class="cta">
-      <a class="btn btn-hot" href="mailto:contact@anqulas.com?subject=Twenty%20minutes%20%E2%80%94%20Practice%20OS">Book 20 minutes</a>
+      <a class="btn btn-hot" href="#talk">Book 20 minutes</a>
       <a class="btn" href="https://app.anqulas.com/login" target="_blank" rel="noopener">Poke around the demo</a>
     </div>
     <p class="fine">Live in five days · no per-seat pricing · the accounts are in your name from day one</p>
@@ -503,60 +587,61 @@
 
 <section><div class="wrap reveal">
   <h2>One client.<br>Six places.<br>Nothing joined up.</h2>
-  <p class="lede" style="margin-top:20px;">Nothing here is broken exactly. It's just that the work lives in one place, the money lives in another, and the client lives in your inbox.</p>
+  <p class="lede" style="margin-top:20px;">Nothing here is broken. The work lives in one place, the money in another, and the client in your inbox.</p>
   <ul class="tools"><li><span class="n">01</span><span class="t">Documents</span><span class="d">An email thread, a Dropbox link that expired, and one thing they “posted”.</span></li><li><span class="n">02</span><span class="t">Deadlines</span><span class="d">A spreadsheet that is accurate right up until somebody is on leave.</span></li><li><span class="n">03</span><span class="t">Sign-off</span><span class="d">“Approved” in the body of an email, from an address you hope was theirs.</span></li><li><span class="n">04</span><span class="t">Engagement</span><span class="d">A PDF letter, printed, signed, photographed, emailed back at an angle.</span></li><li><span class="n">05</span><span class="t">Fees</span><span class="d">Practice software that has never heard of the job you actually did.</span></li><li><span class="n">06</span><span class="t">The client</span><span class="d">Phones at 4:55pm on a Friday.</span></li></ul>
   <p class="punch">None of it lets the client help themselves. So they ask you instead.</p>
 </div></section>
 
 <section id="inside"><div class="wrap reveal">
   <h2>One system you run on.<br>One login they use.</h2>
-  <p class="lede" style="margin-top:20px;">Fifty-three screens ship with it. These are the eight that change your week — the rest are there when you want them and quiet when you don't.</p>
+  <p class="lede" style="margin-top:20px;">Fifty-three screens ship with it. These eight change your week; the rest are quiet until you want them.</p>
   <div class="cards">
-      <article>
+      <article class="theirs">
         <span class="k">Their side</span>
         <h3>Clients get their own front door</h3>
-        <p>They sign in and see their projects, their files, their invoices — and absolutely nothing belonging to anyone else. You choose what each client can see.</p>
+        <p>They sign in and see their projects, their files, their invoices — and nothing belonging to anyone else.</p>
       </article>
-      <article>
+      <article class="theirs">
         <span class="k">Their side</span>
         <h3>Decisions with a name on them</h3>
-        <p>Work goes out as a decision, not an attachment. Approve, or request changes. Recorded, dated, signed by a human. “I never approved that” stops being a conversation.</p>
+        <p>Work goes out as a decision, not an attachment. Approve, or request changes — recorded, dated, signed. “I never approved that” stops being a conversation.</p>
       </article>
-      <article>
+      <article class="theirs">
         <span class="k">Their side</span>
         <h3>Four roles, so the right person decides</h3>
-        <p>Account owner signs and pays. Manager approves. Team member uploads and comments. Viewer looks. Set per client in about a minute, and the wrong person simply doesn’t get the button.</p>
+        <p>Owner signs and pays. Manager approves. Team member uploads. Viewer looks. Set per client in a minute — the wrong person doesn’t get the button.</p>
       </article>
-      <article>
+      <article class="yours">
         <span class="k">Your side</span>
         <h3>Everything live, and whose turn it is</h3>
-        <p>Projects, tasks, calendar and the pipeline in one place. At a glance: what’s moving, what’s stuck, and who it’s sitting with. Usually them.</p>
+        <p>Projects, tasks, calendar and pipeline in one place. What’s moving, what’s stuck, and who it’s sitting with. Usually them.</p>
       </article>
-      <article>
+      <article class="yours">
         <span class="k">Your side</span>
         <h3>Invoices that know what they’re for</h3>
-        <p>Raise it against the work, send it, and see who hasn’t paid without opening anything else. It bills — it isn’t your accountant, and it won’t pretend to be.</p>
+        <p>Raise it against the work, send it, see who hasn’t paid — without opening anything else. It bills. It isn’t your accountant.</p>
       </article>
-      <article>
+      <article class="yours">
         <span class="k">Your side</span>
         <h3>Your name on it. Not ours.</h3>
-        <p>Your logo, your colours, your domain. When your client signs in, nothing on the screen mentions us. As far as they know, you built it. We’re fine with that.</p>
+        <p>Your logo, your colours, your domain. Nothing on the screen mentions us. As far as they know, you built it.</p>
       </article>
-      <article>
+      <article class="yours">
         <span class="k">Your side</span>
         <h3>When a manager leaves and takes the client with them</h3>
         <p>They’ve carried the client relationship in their head for years and none of it is written down. This keeps a standing list of who is the only person on an account — read off your records, not their inbox.</p>
       </article>
-      <article>
+      <article class="yours">
         <span class="k">Your side</span>
         <h3>Your data leaves whenever you like</h3>
-        <p>Backed up nightly, and the backup is read back to check it actually restores — an unread backup is a hope, not a backup. Any client’s records export to a plain file on request. Nothing about this holds you hostage.</p>
+        <p>Backed up nightly, and read back to check it restores — an unread backup is a hope. Any records export to a plain file. Nothing holds you hostage.</p>
       </article></div>
+  <p class="swipe">Swipe →</p>
 </div></section>
 
 <section><div class="wrap reveal">
   <h2>Oh, and<br>the rest of it.</h2>
-  <p class="lede" style="margin-top:20px;">Everything above is the half your clients touch. This is the half you get, and we're not charging extra for any of it — you don't have to use a single screen on day one.</p>
+  <p class="lede" style="margin-top:20px;">That was the half your clients touch. This is the half you get — no extra charge, and no obligation to open any of it on day one.</p>
   <div class="shot-wrap">
     <figure class="shot">
       <img src="/assets/7b73b82d39.webp" width="1600" height="1095" loading="lazy" decoding="async"
@@ -575,17 +660,17 @@
       <div class="d">
         <span class="lbl">Mon</span>
         <h3>We talk for an hour</h3>
-        <p>How you really work — your stages, your roles, who is allowed to approve what. Bring a job that went sideways. Everyone has one.</p>
+        <p>Your stages, your roles, who is allowed to approve what. Bring a job that went sideways — everyone has one.</p>
       </div>
       <div class="d">
         <span class="lbl">Tue</span>
         <h3>Your copy goes up</h3>
-        <p>Your instance, your subdomain, your logo and colours. On accounts opened in your name.</p>
+        <p>Your instance, your subdomain, your logo and colours — on accounts opened in your name.</p>
       </div>
       <div class="d">
         <span class="lbl">Wed</span>
         <h3>Your real work goes in</h3>
-        <p>Live clients, live jobs, the invoices you’re still chasing. No blank screens, no sample data.</p>
+        <p>Live clients, live jobs, the invoices you’re still chasing. No sample data.</p>
       </div>
       <div class="d">
         <span class="lbl">Thu</span>
@@ -595,7 +680,7 @@
       <div class="d fri">
         <span class="lbl">Fri</span>
         <h3>You let the clients in</h3>
-        <p>Two or three to start. The first decision that lands in the portal instead of your inbox pays for the week.</p>
+        <p>Two or three to start. The first decision that lands there instead of your inbox pays for the week.</p>
       </div></div>
 </div></section>
 
@@ -603,8 +688,8 @@
   <h2>What it costs.</h2>
   <div class="owner">
     <span class="k">First, the bit nobody else tells you</span>
-    <p><strong>The accounts are yours.</strong> Your domain, your hosting, your database — all opened in your name, on your card, on day one. Runs about <strong>$40&ndash;50 a month</strong>, paid straight to them, no markup from us.</p>
-    <p style="margin-top:10px;">Which means there is no switch we can flip. If you sack us on a Wednesday, nothing turns off. You keep the system, the data and the logins, and we hand over a runbook so any competent developer can pick it up.</p>
+    <p><strong>The accounts are yours.</strong> Your domain, your hosting, your database — opened in your name, on your card, on day one. About <strong>$40&ndash;50 a month</strong>, paid straight to them, no markup.</p>
+    <p style="margin-top:10px;">So there is no switch we can flip. Sack us on a Wednesday and nothing turns off — you keep the system, the data, the logins, and a runbook any developer can pick up.</p>
   </div>
   <div class="prices">
     <div class="price founding">
@@ -622,7 +707,7 @@
     </div>
   </div>
   <h3 style="margin-top:48px;font-size:1.4rem;">Then, afterwards, one of three things</h3>
-  <div class="prices" style="margin-top:20px;">
+  <div class="prices opts" style="margin-top:20px;">
     <div class="price small"><span class="k">Option A · Nothing</span><span class="fig">$0<small>/month</small></span>
       <p>It's yours, it's running, we're done. Genuinely a fine choice.</p>
       <ul><li>Call us back at $80/hour if something breaks</li><li>No contract, no notice, no awkwardness</li></ul></div>
@@ -633,6 +718,7 @@
       <p>On top of the care plan, when you want the thing itself changed.</p>
       <ul><li>New screens, new fields, new reports</li><li>Quoted before we start, always</li></ul></div>
   </div>
+  <p class="swipe">Swipe →</p>
   <p class="fine">For scale: a custom-built client portal runs $25,000&ndash;$60,000 and takes six months. We're the other option.</p>
 </div></section>
 
@@ -656,6 +742,7 @@
         <h3>A briefing, not a lever-arch file</h3>
         <p>Whoever inherits the book gets the clients, the live engagements and the deadlines — and a list of what the records cannot explain.</p>
       </article></div>
+  <p class="swipe">Swipe →</p>
   <p class="punch">Clients don’t leave with the file.<br>They leave with the person.</p>
   <div class="verdict">
     <p style="margin:0;">It reads your clients, engagements, tasks and pipeline. Not their inbox, not their calendar, not what was said at lunch. What it can’t see is whatever never got typed anywhere — so it tells you what to ask before the notice period runs out.</p>
@@ -664,23 +751,71 @@
 
 <section><div class="wrap reveal">
   <h2>Things it can't do.</h2>
-  <p class="lede" style="margin-top:20px;">Every other page you've read today told you what its software does. Here's the other list, because you'd find out in week two anyway and week two is a rotten time to find out.</p>
-  <ul class="honest"><li><span class="h">Support is email, not a phone line.</span><span class="b">One business day, Monday to Friday — written down here rather than discovered by you in month three. No weekends, no 2am pager. If you need somebody on call through the night, we’re the wrong shop and we’d rather say so now than take your money and disappoint you later.</span></li><li><span class="h">You’d be early.</span><span class="b">There’s no wall of client logos on this page because there is no wall of client logos. That’s exactly why the founding price is what it is. Open the demo and judge the software instead of the logos — nothing is behind a “book a call” wall.</span></li><li><span class="h">Your clients can’t pay by card in it.</span><span class="b">Invoices get raised, sent and chased, and your client sees exactly what’s outstanding. The actual paying still happens wherever you take payment today.</span></li><li><span class="h">The handover only knows what’s in the system.</span><span class="b">It reconstructs a leaver’s job from your clients, matters, tasks and deadlines — which is genuinely most of it, and it’s assembled before you ask them a single question. What it can’t see is whatever never got typed anywhere: the supplier who only answers WhatsApp, the reason something is priced oddly. That’s exactly what the exit questions are for, and it tells the new person when something wasn’t captured rather than making it up.</span></li><li><span class="h">The automations don’t run.</span><span class="b">There’s a rather lovely workflow builder in there. It draws beautiful diagrams. Nothing executes them yet. Please don’t buy this for that.</span></li><li><span class="h">Single sign-on works, but you supply the keys.</span><span class="b">Sign in with Google, Microsoft or GitHub is built and tested. Switching it on needs credentials from your own Google or Microsoft account — a twenty minute job, and one we’ll do with you on the call rather than leave you to it. Until then it’s email and password, with sessions that expire and a proper audit trail.</span></li></ul>
+  <p class="lede" style="margin-top:20px;">Every other page today told you what its software does. Here is the other list — you would find out in week two anyway, and week two is a rotten time to find out.</p>
+  <ul class="honest"><li><span class="h">Support is email, not a phone line.</span><span class="b">One business day, Monday to Friday. No weekends, no 2am pager. If you need somebody on call through the night, we’re the wrong shop — and we’d rather say so now.</span></li><li><span class="h">You’d be early.</span><span class="b">No wall of client logos on this page, because there is no wall of client logos. That is exactly why the founding price is what it is. Open the demo and judge the software instead.</span></li><li><span class="h">Your clients can’t pay by card in it.</span><span class="b">Invoices get raised, sent and chased, and your client sees what’s outstanding. The paying still happens wherever you take payment today.</span></li><li><span class="h">The handover only knows what’s in the system.</span><span class="b">It rebuilds a leaver’s job from your clients, matters, tasks and deadlines — most of it, assembled before you ask them a single question. What it can’t see is whatever never got typed: the supplier who only answers WhatsApp, the reason something is priced oddly. It flags those rather than inventing them.</span></li><li><span class="h">The automations don’t run.</span><span class="b">There’s a rather lovely workflow builder in there. It draws beautiful diagrams. Nothing executes them yet. Please don’t buy this for that.</span></li><li><span class="h">Single sign-on works, but you supply the keys.</span><span class="b">Google, Microsoft and GitHub sign-in is built and tested. Switching it on needs credentials from your own account — twenty minutes, done with you on the call. Until then: email and password, expiring sessions, a proper audit trail.</span></li></ul>
 </div></section>
 
 <section><div class="wrap reveal">
   <div class="close">
     <h2 style="font-size:clamp(1.5rem,3.4vw,2.3rem);">Twenty minutes.<br>No slides.</h2>
-    <p style="color:var(--ink-2);max-width:var(--measure);">It isn't a demo call, it's four questions. If it's not a fit we'll say so in the first ten minutes and give you the twenty back.</p>
+    <p style="color:var(--ink-2);max-width:var(--measure);">Not a demo call — four questions. If it isn't a fit we'll say so in the first ten minutes and give you the twenty back.</p>
     <ul class="qs"><li>How many hours a month go into chasing paperwork you can’t bill for?</li><li>Where does a client look when they want last year’s accounts?</li><li>If a sign-off were disputed in a year, could you prove who gave it?</li><li>What do you use now, and which part of it do you work around?</li></ul>
     <div class="cta" style="margin-top:6px;">
-      <a class="btn btn-hot" href="mailto:contact@anqulas.com?subject=Twenty%20minutes%20%E2%80%94%20Practice%20OS">Book 20 minutes</a>
+      <a class="btn btn-hot" href="#talk">Book 20 minutes</a>
       <a class="btn" href="https://app.anqulas.com/login" target="_blank" rel="noopener">Or just poke the demo</a>
     </div>
-    <p class="fine" style="margin-top:2px;">contact@anqulas.com — a real person, same working day.</p>
+    <p class="fine" style="margin-top:2px;">A real person, same working day.</p>
   </div>
   <div class="also"><span class="tag" style="color:var(--ink-3)">Not quite you?</span><a href="/studios/">Design studios</a><a href="/construction/">Construction &amp; fit-out</a><a href="/equipment/">Equipment &amp; supply</a></div>
 </div></section>
+
+
+<section class="talk" id="talk">
+  <div class="talk-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="talk-grid">
+      <div>
+        <h2>Let's talk</h2>
+        <p class="lede" style="margin-top:18px;">Twenty minutes, four questions, no slides. Tell us how the job runs where you are — we work with accountants, consultants and advisory firms — and you'll get a reply from the person who built it. There is no sales team to pass you to.</p>
+        <ul class="talk-facts">
+          <li><span class="k">Email</span><span class="v"><a href="mailto:contact@anqulas.com">contact@anqulas.com</a></span></li>
+          <li><span class="k">Replies</span><span class="v">Same working day, Monday to Friday</span></li>
+          <li><span class="k">Where</span><span class="v">India — working with clients worldwide</span></li>
+        </ul>
+      </div>
+
+      <form class="talk-card" id="talk-form" novalidate>
+        <div class="talk-row">
+          <div class="talk-field">
+            <label for="talk-name">Your name</label>
+            <input id="talk-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+          </div>
+          <div class="talk-field">
+            <label for="talk-company">Company</label>
+            <input id="talk-company" name="company" type="text" autocomplete="organization" maxlength="160">
+          </div>
+        </div>
+        <div class="talk-field">
+          <label for="talk-email">Your email</label>
+          <input id="talk-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+        </div>
+        <div class="talk-field">
+          <label for="talk-message">What's the situation?</label>
+          <textarea id="talk-message" name="message" maxlength="5000" required
+            placeholder="What you're trying to solve, and roughly how big your team is…"></textarea>
+        </div>
+        <p class="talk-hp" aria-hidden="true">
+          <label for="talk-website">Leave this empty</label>
+          <input id="talk-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </p>
+        <button class="btn btn-hot talk-send" type="submit">Send it</button>
+        <div class="talk-msg" id="talk-msg" role="status" aria-live="polite"></div>
+        <p class="talk-note">Goes straight to a person, not a CRM sequence.<br>
+          Or write to <a href="mailto:contact@anqulas.com">contact@anqulas.com</a> yourself.</p>
+      </form>
+    </div>
+  </div>
+</section>
 
 </div>
 
@@ -697,6 +832,60 @@
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;e.target.classList.add('in');io.unobserve(e.target)})},{rootMargin:'0px 0px -12% 0px',threshold:.08});
   t.forEach(function(e){io.observe(e)});
 })();
+
+(() => {
+  const form = document.getElementById("talk-form");
+  if (!form) return;
+  const msg = document.getElementById("talk-msg");
+  const btn = form.querySelector("button[type=submit]");
+  const label = btn.textContent;
+
+  const say = (kind, text) => {
+    msg.className = "talk-msg on " + kind;
+    msg.textContent = text;
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const val = (n) => String(new FormData(form).get(n) || "").trim();
+
+    if (!val("name") || !val("email") || !val("message")) {
+      say("warn", "Name, email and a message, and it's on its way.");
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    msg.className = "talk-msg";
+
+    try {
+      const res = await fetch("https://visionos-api.onrender.com/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: val("name"), company: val("company"), email: val("email"),
+          message: val("message"), website: val("website"),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.delivered) {
+        form.reset();
+        say("ok", "Sent. You'll get a reply the same working day — from the person who built it.");
+      } else if (res.ok) {
+        say("warn", "That reached us but the mail didn't go out. Email contact@anqulas.com and it won't get lost.");
+      } else {
+        say("warn", "That didn't send. Email contact@anqulas.com instead and I'll pick it up.");
+      }
+    } catch {
+      say("warn", "Couldn't reach the server. Email contact@anqulas.com instead — that always works.");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  });
+})();
+
 </script>
 </body>
 </html>

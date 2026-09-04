@@ -31,6 +31,9 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap"></noscript>
 <style>
   :root{
+    /* One copy of the photograph, used twice: as the hero ground on a wide
+       screen and as the .deskband strip on a narrow one. */
+    --desk: url("/assets/caa914dd39.webp");
     /* Brown-dark, not black-dark. Every neutral below carries a little red and
        yellow in it, which is what makes the page feel lamp-lit. */
     /* Lifted out of near-black, twice. #0B0906 against the #F6F4F0 body was a
@@ -122,7 +125,7 @@
       linear-gradient(180deg, rgba(251,250,248,0) 52%, rgba(251,250,248,.72) 82%, var(--room) 100%),
       linear-gradient(95deg, var(--room) 0%, var(--room) 34%,
         rgba(251,250,248,.62) 52%, rgba(251,250,248,.14) 76%, rgba(251,250,248,0) 100%),
-      url("/assets/caa914dd39.webp") right 38%/cover no-repeat,
+      var(--desk) right 38%/cover no-repeat,
       var(--room)}
   /* Every wash above is weaker than it was. They were mixed to carry a
      near-black ground; over a lighter one the same alphas blow the top-left
@@ -174,11 +177,30 @@
      overflow-x:hidden for the bloom's sideways bleed, and the bloom is
      top-anchored so it never reaches the bottom edge. */
   .hero{position:relative;padding:78px 0 122px}
+  /* On a phone the headline started 320px down a screen 844px tall — nearly
+     40% of the first view spent on empty gradient, because the space that
+     carries the photograph on a wide screen carries nothing on a narrow one. */
+  @media(max-width:720px){.hero{padding:26px 0 104px}}
   /* 1040px, matching .stage — not 900. The hero collapses to one column at
      1040, and between the two the text runs full width with the photograph
      still behind it: a large out-of-focus crop of a chair sitting under the
      headline. The photograph comes out at exactly the width the second column
      disappears, and the ground falls back to the warm paper used before it. */
+  /* The photograph's narrow-screen home. Behind the copy it needs a scrim
+     that ruins it, so below 1040 it stops being a ground and becomes a band:
+     full-bleed, its own strip between the buttons and the product shot, with
+     the paper feathering into the top edge so it grows out of the page rather
+     than being pasted on. Same bytes as the desktop ground — the CSS variable
+     is set once on :root, so this costs no second copy. */
+  .deskband{display:none}
+  @media(max-width:1040px){
+    .deskband{display:block;margin:34px -24px 0;height:190px;position:relative;
+      background:var(--desk) center 42%/cover no-repeat}
+    .deskband::after{content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg,rgba(251,250,248,.92) 0%,rgba(251,250,248,.30) 26%,rgba(251,250,248,0) 58%)}
+  }
+  @media(max-width:520px){.deskband{height:158px;margin-top:28px}}
+
   @media(max-width:1040px){
     .room{background:
       radial-gradient(130% 95% at 10% 0%, rgba(255,206,158,.50), transparent 54%),
@@ -493,7 +515,72 @@
     .tier:hover,.col:hover{transform:none}
     .door-go svg,.door:hover .door-go svg{transition:none;transform:none}
     .rot-item{transform:none;transition:opacity .45s ease}
+    .talk-field input,.talk-field textarea,.talk-send{transition:none}
   }
+
+
+  /* ── let's talk ───────────────────────────────────────────────────────
+     The photograph is a horizon at the foot of the section, not a ground
+     under the form. Behind form labels and input text it would need a scrim
+     heavy enough to make it a smudge, and there is no version of "washed-out
+     mountain behind a text field" that reads as anything but a mistake. Below
+     the content it costs nothing and does the whole job. */
+  .talk{position:relative;padding:64px 0 300px;overflow:hidden;scroll-margin-top:100px}
+  /* Four layers, front to back. The warm wash is not decoration: the plate is
+     grey rock under white mist and the rest of this site is cream and warm
+     brown, so untinted it reads as a photograph borrowed from another
+     website. The paper gradient holds near-solid to the halfway mark so the
+     summit sits low — a horizon under the content, not a mountain behind it. */
+  .talk-bg{position:absolute;left:0;right:0;bottom:0;height:290px;z-index:0;pointer-events:none;
+    background:
+      linear-gradient(180deg, var(--room) 0%, var(--room) 34%, rgba(251,250,248,.80) 60%, rgba(251,250,248,.42) 80%, rgba(251,250,248,.30) 100%),
+      linear-gradient(180deg, rgba(255,206,158,.30), rgba(214,148,88,.26)),
+      url("/assets/e122c4cfc6.webp") center 88%/cover no-repeat,
+      var(--room)}
+  .talk .wrap{position:relative;z-index:1}
+  .talk-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:52px;align-items:start}
+  @media(max-width:900px){.talk-grid{grid-template-columns:1fr;gap:32px}
+    .talk{padding:52px 0 250px}.talk-bg{height:230px}}
+
+  .talk-facts{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px}
+  .talk-facts li{display:grid;gap:2px}
+  .talk-facts .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-2)}
+  .talk-facts .v{font-size:.97rem;color:var(--ink)}
+  .talk-facts a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lamp)}
+  .talk-facts a:hover{color:var(--lamp)}
+
+  .talk-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 26px 24px;
+    box-shadow:0 30px 64px -34px rgba(23,19,16,.40)}
+  .talk-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:520px){.talk-row{grid-template-columns:1fr}}
+  .talk-field{display:grid;gap:6px;margin-top:14px}
+  .talk-field:first-child,.talk-row .talk-field{margin-top:0}
+  .talk-row{margin-bottom:14px}
+  .talk-field label{font-size:.85rem;font-weight:600;color:var(--ink)}
+  .talk-field input,.talk-field textarea{font:inherit;font-size:.95rem;color:var(--ink);
+    background:#FDFCFA;border:1px solid var(--line-2, var(--line));border-radius:10px;
+    padding:11px 13px;width:100%;box-sizing:border-box;
+    transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
+  .talk-field textarea{min-height:118px;resize:vertical;line-height:1.55}
+  .talk-field input:focus,.talk-field textarea:focus{outline:none;background:#fff;
+    border-color:var(--lamp);box-shadow:0 0 0 3px color-mix(in srgb, var(--lamp) 18%, transparent)}
+  .talk-field input::placeholder,.talk-field textarea::placeholder{color:var(--ink-3)}
+
+  /* Off-screen rather than display:none — a bot reading the DOM fills what it
+     can see in the markup, and a hidden input is the tell. */
+  .talk-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .talk-send{margin-top:16px;width:100%;justify-content:center}
+  .talk-send[disabled]{opacity:.62;cursor:progress}
+  .talk-note{margin-top:12px;font-family:var(--mono);font-size:.72rem;line-height:1.6;
+    color:var(--ink-3);text-align:center}
+  .talk-note a{color:var(--ink-2);text-decoration:underline;text-underline-offset:2px}
+  .talk-msg{margin-top:12px;font-size:.9rem;line-height:1.55;padding:11px 13px;border-radius:10px;display:none}
+  .talk-msg.on{display:block}
+  .talk-msg.ok{background:#EFF6EF;border:1px solid #BFD8BF;color:#2C5530}
+  .talk-msg.warn{background:#FDF4E8;border:1px solid #E6CFA8;color:#6B4A17}
+
 </style>
 </head>
 <body>
@@ -506,7 +593,7 @@
       <a class="sm" href="#inside">What's inside</a>
       <a class="sm" href="#week">The week</a>
       <a class="btn btn-glass" href="https://app.anqulas.com/login">Sign in to the demo</a>
-      <a class="btn btn-solid" href="mailto:contact@anqulas.com?subject=Twenty%20minutes">Book a call</a>
+      <a class="btn btn-solid" href="#talk">Book a call</a>
     </nav>
   </div>
 </header>
@@ -526,9 +613,10 @@
         <p class="lede">One login where an approval carries a name, a date and a price — and nothing can quietly change afterwards.</p>
         <div class="cta">
           <a class="btn btn-solid btn-lg" href="https://app.anqulas.com/login">Open the live demo</a>
-          <a class="btn btn-glass btn-lg" href="mailto:contact@anqulas.com?subject=Twenty%20minutes">Twenty minutes, no slides</a>
+          <a class="btn btn-glass btn-lg" href="#talk">Twenty minutes, no slides</a>
         </div>
         <p class="fine">Nothing is behind a booking form. Open it, click anything, then decide.</p>
+        <div class="deskband" aria-hidden="true"></div>
       </div>
       <div class="screen">
         <figure>
@@ -585,15 +673,15 @@
         <ul class="feats">
           <li class="feat">
             <h4>Clients get their own front door</h4>
-            <p>They sign in and see their projects, their files, their invoices — and absolutely nothing belonging to anyone else. You choose what each client can see.</p>
+            <p>They sign in and see their projects, their files, their invoices — and nothing belonging to anyone else.</p>
           </li>
           <li class="feat">
             <h4>Decisions with a name on them</h4>
-            <p>Work goes out as a decision, not an attachment. Approve, or request changes. Recorded, dated, signed by a human. “I never approved that” stops being a conversation.</p>
+            <p>Work goes out as a decision, not an attachment. Approve, or request changes — recorded, dated, signed. “I never approved that” stops being a conversation.</p>
           </li>
           <li class="feat">
             <h4>Four roles, so the right person decides</h4>
-            <p>Account owner signs and pays. Manager approves. Team member uploads and comments. Viewer looks. Set per client in about a minute, and the wrong person simply doesn’t get the button.</p>
+            <p>Owner signs and pays. Manager approves. Team member uploads. Viewer looks. Set per client in a minute — the wrong person doesn’t get the button.</p>
           </li></ul>
       </div>
       <div class="col">
@@ -602,19 +690,19 @@
         <ul class="feats">
           <li class="feat">
             <h4>Everything live, and whose turn it is</h4>
-            <p>Projects, tasks, calendar and the pipeline in one place. At a glance: what’s moving, what’s stuck, and who it’s sitting with. Usually them.</p>
+            <p>Projects, tasks, calendar and pipeline in one place. What’s moving, what’s stuck, and who it’s sitting with. Usually them.</p>
           </li>
           <li class="feat">
             <h4>Invoices that know what they’re for</h4>
-            <p>Raise it against the work, send it, and see who hasn’t paid without opening anything else. It bills — it isn’t your accountant, and it won’t pretend to be.</p>
+            <p>Raise it against the work, send it, see who hasn’t paid — without opening anything else. It bills. It isn’t your accountant.</p>
           </li>
           <li class="feat">
             <h4>Your name on it. Not ours.</h4>
-            <p>Your logo, your colours, your domain. When your client signs in, nothing on the screen mentions us. As far as they know, you built it. We’re fine with that.</p>
+            <p>Your logo, your colours, your domain. Nothing on the screen mentions us. As far as they know, you built it.</p>
           </li>
           <li class="feat">
             <h4>Your data leaves whenever you like</h4>
-            <p>Backed up nightly, and the backup is read back to check it actually restores — an unread backup is a hope, not a backup. Any client’s records export to a plain file on request. Nothing about this holds you hostage.</p>
+            <p>Backed up nightly, and read back to check it restores — an unread backup is a hope. Any records export to a plain file. Nothing holds you hostage.</p>
           </li></ul>
       </div>
     </div>
@@ -694,17 +782,17 @@
         <li class="day" data-i="0">
           <span class="day-k">Mon</span>
           <h4>We talk for an hour</h4>
-          <p>How you really work — your stages, your roles, who is allowed to approve what. Bring a job that went sideways. Everyone has one.</p>
+          <p>Your stages, your roles, who is allowed to approve what. Bring a job that went sideways — everyone has one.</p>
         </li>
         <li class="day" data-i="1">
           <span class="day-k">Tue</span>
           <h4>Your copy goes up</h4>
-          <p>Your instance, your subdomain, your logo and colours. On accounts opened in your name.</p>
+          <p>Your instance, your subdomain, your logo and colours — on accounts opened in your name.</p>
         </li>
         <li class="day" data-i="2">
           <span class="day-k">Wed</span>
           <h4>Your real work goes in</h4>
-          <p>Live clients, live jobs, the invoices you’re still chasing. No blank screens, no sample data.</p>
+          <p>Live clients, live jobs, the invoices you’re still chasing. No sample data.</p>
         </li>
         <li class="day" data-i="3">
           <span class="day-k">Thu</span>
@@ -714,7 +802,7 @@
         <li class="day" data-i="4">
           <span class="day-k">Fri</span>
           <h4>You let the clients in</h4>
-          <p>Two or three to start. The first decision that lands in the portal instead of your inbox pays for the week.</p>
+          <p>Two or three to start. The first decision that lands there instead of your inbox pays for the week.</p>
         </li></ul>
   </div>
 </section>
@@ -744,8 +832,56 @@
     </div>
     <p class="lede" style="margin-top:22px">No per-seat pricing, no AI credits, no tier that unlocks the thing you actually needed. Unlimited people and unlimited client logins on all of them.</p>
     <div class="cta">
-      <a class="btn btn-solid btn-lg" href="mailto:contact@anqulas.com?subject=Twenty%20minutes">Book twenty minutes</a>
+      <a class="btn btn-solid btn-lg" href="#talk">Book twenty minutes</a>
       <a class="btn btn-glass btn-lg" href="https://app.anqulas.com/login">Or just open the demo</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="talk" id="talk">
+  <div class="talk-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="talk-grid">
+      <div>
+        <h2>Let's talk</h2>
+        <p class="lede" style="margin-top:18px;">Questions about the demo, an install for your own team, or the price — write and you'll get a reply from the person who built it, not a sales team. There isn't one.</p>
+        <ul class="talk-facts">
+          <li><span class="k">Email</span><span class="v"><a href="mailto:contact@anqulas.com">contact@anqulas.com</a></span></li>
+          <li><span class="k">Replies</span><span class="v">Same working day, Monday to Friday</span></li>
+          <li><span class="k">Where</span><span class="v">India — working with clients worldwide</span></li>
+        </ul>
+      </div>
+
+      <form class="talk-card" id="talk-form" novalidate>
+        <div class="talk-row">
+          <div class="talk-field">
+            <label for="talk-name">Your name</label>
+            <input id="talk-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+          </div>
+          <div class="talk-field">
+            <label for="talk-company">Company</label>
+            <input id="talk-company" name="company" type="text" autocomplete="organization" maxlength="160">
+          </div>
+        </div>
+        <div class="talk-field">
+          <label for="talk-email">Your email</label>
+          <input id="talk-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+        </div>
+        <div class="talk-field">
+          <label for="talk-message">What's the situation?</label>
+          <textarea id="talk-message" name="message" maxlength="5000" required
+            placeholder="What you're trying to solve, and roughly how big your team is…"></textarea>
+        </div>
+        <p class="talk-hp" aria-hidden="true">
+          <label for="talk-website">Leave this empty</label>
+          <input id="talk-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </p>
+        <button class="btn btn-solid btn-lg talk-send" type="submit">Send it</button>
+        <div class="talk-msg" id="talk-msg" role="status" aria-live="polite"></div>
+        <p class="talk-note">Goes straight to a person, not a CRM sequence.<br>
+          Or write to <a href="mailto:contact@anqulas.com">contact@anqulas.com</a> yourself.</p>
+      </form>
     </div>
   </div>
 </section>
@@ -814,6 +950,60 @@
     start();
   }
 })();
+
+(() => {
+  const form = document.getElementById("talk-form");
+  if (!form) return;
+  const msg = document.getElementById("talk-msg");
+  const btn = form.querySelector("button[type=submit]");
+  const label = btn.textContent;
+
+  const say = (kind, text) => {
+    msg.className = "talk-msg on " + kind;
+    msg.textContent = text;
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const val = (n) => String(new FormData(form).get(n) || "").trim();
+
+    if (!val("name") || !val("email") || !val("message")) {
+      say("warn", "Name, email and a message, and it's on its way.");
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    msg.className = "talk-msg";
+
+    try {
+      const res = await fetch("https://visionos-api.onrender.com/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: val("name"), company: val("company"), email: val("email"),
+          message: val("message"), website: val("website"),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.delivered) {
+        form.reset();
+        say("ok", "Sent. You'll get a reply the same working day — from the person who built it.");
+      } else if (res.ok) {
+        say("warn", "That reached us but the mail didn't go out. Email contact@anqulas.com and it won't get lost.");
+      } else {
+        say("warn", "That didn't send. Email contact@anqulas.com instead and I'll pick it up.");
+      }
+    } catch {
+      say("warn", "Couldn't reach the server. Email contact@anqulas.com instead — that always works.");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  });
+})();
+
 </script>
 </body>
 </html>
