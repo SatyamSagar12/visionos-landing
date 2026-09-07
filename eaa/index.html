@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Annex VI Assessment Workbook — Anqulas</title>
+<meta name="description" content="A free workbook for the disproportionate-burden assessment under the European Accessibility Act. Calculates the three Annex VI ratios, checks the micro-enterprise exemption, and lists the record-keeping duties.">
+<link rel="canonical" href="https://anqulas.com/eaa/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://anqulas.com/eaa/">
+<meta property="og:title" content="Annex VI Assessment Workbook">
+<meta property="og:description" content="Free tool for the European Accessibility Act disproportionate-burden assessment. No signup.">
+<meta name="twitter:card" content="summary">
+<style>
+  :root{
+    --ink:#14171a; --mut:#5b6570; --line:#dfe4e9; --bg:#ffffff;
+    --card:#f6f8fa; --accent:#1a4d8f; --warn:#8a5a00; --warnbg:#fff8e6;
+    --ok:#1d6b3f; --okbg:#eef7f1; --danger:#8a2b2b;
+  }
+  :root:not([data-theme="light"]){}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#e8ecf0; --mut:#9aa5b1; --line:#2c3540; --bg:#12151a;
+      --card:#1a1f27; --accent:#7ab3f5; --warn:#e0b050; --warnbg:#2a2214;
+      --ok:#6ec894; --okbg:#16241c; --danger:#e08585;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#e8ecf0; --mut:#9aa5b1; --line:#2c3540; --bg:#12151a;
+    --card:#1a1f27; --accent:#7ab3f5; --warn:#e0b050; --warnbg:#2a2214;
+    --ok:#6ec894; --okbg:#16241c; --danger:#e08585;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:860px;margin:0 auto;padding:40px 20px 80px}
+  h1{font-size:27px;margin:0 0 6px;letter-spacing:-.02em}
+  .sub{color:var(--mut);margin:0 0 28px;font-size:15px}
+  h2{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--mut);
+    margin:38px 0 14px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+  .card{border:1px solid var(--line);border-radius:11px;padding:20px 22px;margin-bottom:14px;background:var(--card)}
+  .note{background:var(--warnbg);border:1px solid var(--warn);border-radius:11px;
+    padding:16px 20px;margin-bottom:22px;font-size:14px;color:var(--ink)}
+  .note strong{color:var(--warn)}
+  label{display:block;font-weight:600;margin-bottom:4px;font-size:14px}
+  .hint{color:var(--mut);font-size:13px;margin:0 0 8px;font-weight:400}
+  input[type=number],input[type=text],select,textarea{
+    width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:7px;
+    background:var(--bg);color:var(--ink);font:inherit;font-size:15px}
+  textarea{min-height:70px;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:620px){.row{grid-template-columns:1fr}}
+  .field{margin-bottom:16px}
+  .ratio{display:flex;justify-content:space-between;align-items:baseline;
+    padding:13px 0;border-bottom:1px solid var(--line);gap:12px}
+  .ratio:last-child{border-bottom:0}
+  .ratio .lbl{font-size:14px}
+  .ratio .lbl small{display:block;color:var(--mut);font-size:12.5px;font-weight:400}
+  .ratio .val{font-size:22px;font-weight:700;white-space:nowrap;letter-spacing:-.02em}
+  .verdict{border-radius:11px;padding:18px 22px;margin-top:16px;font-size:15px}
+  .v-strong{background:var(--okbg);border:1px solid var(--ok)}
+  .v-weak{background:var(--warnbg);border:1px solid var(--warn)}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+  th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);font-weight:600}
+  td.num{text-align:right;white-space:nowrap}
+  button{font:inherit;font-weight:600;padding:10px 18px;border-radius:8px;cursor:pointer;
+    border:1px solid var(--accent);background:var(--accent);color:#fff}
+  button.ghost{background:transparent;color:var(--accent)}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .cite{color:var(--mut);font-size:13px;font-style:italic}
+  code{font:13px ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--card);padding:1px 5px;border-radius:4px}
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
+  @media print{
+    body{background:#fff;color:#000}
+    .noprint{display:none!important}
+    .card,.note{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <h1>Annex VI Assessment Workbook</h1>
+  <p class="sub">Disproportionate burden assessment under the European Accessibility Act (Directive (EU) 2019/882)</p>
+
+  <div class="note">
+    <strong>Read this first.</strong> This workbook helps you structure and document an assessment.
+    It is <strong>not legal advice</strong> and it does not make you compliant. Whether a burden is
+    disproportionate is decided by the relevant market surveillance authority, not by this tool or by you.
+    The directive states that <em>lack of priority, time or knowledge</em> are not legitimate reasons for
+    claiming disproportionate burden. If you rely on this exception you must still make the service
+    <em>as accessible as possible</em>.
+  </div>
+
+  <h2>Step 1 — Who is doing the assessment</h2>
+  <div class="card">
+    <div class="row">
+      <div class="field">
+        <label for="org">Legal entity name</label>
+        <input type="text" id="org" placeholder="Example Retail BV">
+      </div>
+      <div class="field">
+        <label for="svc">Service or product assessed</label>
+        <input type="text" id="svc" placeholder="example.com e-commerce website">
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="date">Assessment date</label>
+        <input type="text" id="date" placeholder="2026-09-07">
+      </div>
+      <div class="field">
+        <label for="state">Member State(s) where offered</label>
+        <input type="text" id="state" placeholder="Netherlands, Germany">
+      </div>
+    </div>
+  </div>
+
+  <h2>Step 2 — Check the micro-enterprise exemption first</h2>
+  <div class="card">
+    <p class="hint" style="margin-top:0">
+      A micro-enterprise providing <em>services</em> is exempt. The test is
+      <strong>fewer than 10 staff AND turnover or balance sheet total not above €2 million</strong>.
+      Both conditions must hold. If you are exempt, you do not need the rest of this workbook —
+      but keep evidence of the exemption.
+    </p>
+    <div class="row">
+      <div class="field">
+        <label for="staff">Headcount</label>
+        <input type="number" id="staff" min="0" step="1" placeholder="24">
+      </div>
+      <div class="field">
+        <label for="turnover">Annual net turnover (€)</label>
+        <input type="number" id="turnover" min="0" step="1000" placeholder="8400000">
+      </div>
+    </div>
+    <div id="microOut"></div>
+  </div>
+
+  <h2>Step 3 — The three Annex VI ratios</h2>
+  <div class="card">
+    <p class="hint" style="margin-top:0">
+      Enter your own figures. Every number you enter should be traceable to a quote, an invoice,
+      or a documented internal estimate — an authority may ask to see the basis.
+    </p>
+    <div class="row">
+      <div class="field">
+        <label for="cost">Net one-off cost of compliance (€)</label>
+        <p class="hint">Remediation quotes, design and dev time, testing, audit. Net of any grants or funding.</p>
+        <input type="number" id="cost" min="0" step="100" placeholder="46000">
+      </div>
+      <div class="field">
+        <label for="recur">Recurring annual accessibility cost (€)</label>
+        <p class="hint">Ongoing testing, monitoring, training, maintenance.</p>
+        <input type="number" id="recur" min="0" step="100" placeholder="9000">
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label for="opex">Total annual operating + capital expenditure (€)</label>
+        <input type="number" id="opex" min="0" step="1000" placeholder="6100000">
+      </div>
+      <div class="field">
+        <label for="users">Estimated users with disabilities served per year</label>
+        <p class="hint">A reasoned estimate. EU disability prevalence is commonly cited near 1 in 4 adults; state your basis.</p>
+        <input type="number" id="users" min="0" step="1" placeholder="12000">
+      </div>
+    </div>
+
+    <div style="margin-top:20px">
+      <div class="ratio">
+        <div class="lbl">Ratio 1 — Compliance cost ÷ total expenditure
+          <small>Annex VI: net cost of compliance relative to overall operating and capital expenditure</small></div>
+        <div class="val" id="r1">—</div>
+      </div>
+      <div class="ratio">
+        <div class="lbl">Ratio 2 — Compliance cost ÷ net turnover
+          <small>Annex VI: net cost of compliance relative to net turnover of the economic operator</small></div>
+        <div class="val" id="r2">—</div>
+      </div>
+      <div class="ratio">
+        <div class="lbl">Ratio 3 — Cost per user with a disability, year one
+          <small>Annex VI: estimated costs and benefits relative to the estimated benefit for persons with disabilities</small></div>
+        <div class="val" id="r3">—</div>
+      </div>
+    </div>
+
+    <div id="verdict"></div>
+  </div>
+
+  <h2>Step 4 — What you will still do</h2>
+  <div class="card">
+    <p class="hint" style="margin-top:0">
+      Claiming disproportionate burden does not remove the duty to make the service as accessible as
+      possible. Record what you <em>are</em> doing, with dates. An assessment with an empty
+      remediation plan is the weakest possible position.
+    </p>
+    <div class="field">
+      <label for="doing">Accessibility improvements committed, with target dates</label>
+      <textarea id="doing" placeholder="Q4 2026 — keyboard navigation and focus order on checkout&#10;Q1 2027 — alt text across product catalogue&#10;Q2 2027 — colour contrast to WCAG 2.1 AA"></textarea>
+    </div>
+    <div class="field">
+      <label for="alt">Accessible alternative offered in the meantime</label>
+      <textarea id="alt" placeholder="Staffed phone ordering line, published on every page; email order channel with 1 working day response."></textarea>
+    </div>
+    <div class="field">
+      <label for="basis">Basis and sources for the figures above</label>
+      <textarea id="basis" placeholder="Remediation cost: quote from [supplier], dated [date], ref [number].&#10;Opex/capex: FY2025 statutory accounts, page X.&#10;User estimate: [analytics / national statistics source]."></textarea>
+    </div>
+  </div>
+
+  <h2>Step 5 — Retention and review</h2>
+  <div class="card">
+    <table>
+      <tr><th>Duty</th><th>Requirement</th></tr>
+      <tr><td>Retain this assessment</td><td><strong>5 years</strong> from the last time the service was provided</td></tr>
+      <tr><td>Reassess</td><td>When the service is altered, on authority request, and <strong>at least every 5 years</strong></td></tr>
+      <tr><td>Notify</td><td>Inform the relevant market surveillance authority that you rely on the exception</td></tr>
+      <tr><td>Produce on request</td><td>Supply a copy of the assessment and its evidence when asked</td></tr>
+    </table>
+    <p class="cite" style="margin-bottom:0">Requirements above reflect Directive (EU) 2019/882. Verify the transposing
+      national law in each Member State where you offer the service — penalties and procedure are set nationally.</p>
+  </div>
+
+  <div class="btns noprint">
+    <button onclick="window.print()">Save as PDF</button>
+    <button class="ghost" onclick="loadExample()">Load worked example</button>
+    <button class="ghost" onclick="clearAll()">Clear</button>
+  </div>
+
+  <h2>Worked example</h2>
+  <div class="card">
+    <p style="margin-top:0;font-size:14.5px">
+      A mid-sized EU retailer, 24 staff, €8.4m turnover. Not a micro-enterprise, so in scope.
+      A remediation quote comes to €46,000 one-off plus €9,000 a year, against €6.1m of total expenditure.
+    </p>
+    <table>
+      <tr><th>Ratio</th><th class="num">Value</th><th>How this reads</th></tr>
+      <tr><td>Cost ÷ expenditure</td><td class="num">0.90%</td><td>Under one percent of what the business already spends</td></tr>
+      <tr><td>Cost ÷ turnover</td><td class="num">0.65%</td><td>Well inside normal project variance</td></tr>
+      <tr><td>Cost per user served</td><td class="num">€4.58</td><td>Against 12,000 users with disabilities a year</td></tr>
+    </table>
+    <p style="font-size:14.5px;margin-bottom:0">
+      <strong>How to read this honestly:</strong> these ratios do not support a disproportionate burden claim.
+      That is the most common real outcome, and it is useful — it tells the business to budget the remediation
+      rather than build a case that would not survive scrutiny. A workbook that only ever produced
+      "you are exempt" would be worthless to the person relying on it.
+    </p>
+  </div>
+
+  <div class="foot">
+    <p><strong>Scope and limits.</strong> This workbook structures an assessment against the Annex VI criteria.
+    It does not audit your website, does not determine compliance, and is not legal advice.
+    Whether a burden is disproportionate is judged by the relevant national authority against the
+    transposing law in that Member State.</p>
+    <p><strong>Enforcement status, stated plainly.</strong> As of mid-2026, public reporting indicates that
+    <strong>no fines had been issued under any national EAA transposition</strong>. There has been real
+    activity — a French court ordered a major retailer to remediate within six months under daily penalties,
+    Sweden's regulator opened investigations on its own initiative, and the Netherlands ran a mandatory
+    self-reporting cycle and is auditing non-responders. Enforcement to date has focused on large operators.
+    Anyone quoting six-figure fines at a small shop is selling fear rather than facts.</p>
+    <p>Version 0.1 · Directive (EU) 2019/882 · This file contains no tracking and no external requests.</p>
+  </div>
+</div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const eur = n => '€' + n.toLocaleString('en-IE', {minimumFractionDigits:2, maximumFractionDigits:2});
+  const pct = n => n.toFixed(2) + '%';
+
+  function num(id){ const v = parseFloat($(id).value); return isFinite(v) ? v : null; }
+
+  function recalc(){
+    const staff = num('staff'), turnover = num('turnover');
+    const cost = num('cost'), recur = num('recur') || 0;
+    const opex = num('opex'), users = num('users');
+
+    // Micro-enterprise: BOTH conditions must hold.
+    const m = $('microOut');
+    if (staff !== null && turnover !== null){
+      const micro = staff < 10 && turnover <= 2000000;
+      m.className = 'verdict ' + (micro ? 'v-strong' : 'v-weak');
+      m.innerHTML = micro
+        ? '<strong>Likely a micro-enterprise.</strong> Fewer than 10 staff and turnover at or below €2m. '
+          + 'Service providers meeting both conditions are exempt. Keep evidence of this — an authority may still ask.'
+        : '<strong>Not a micro-enterprise.</strong> The exemption needs <em>both</em> fewer than 10 staff '
+          + '<em>and</em> turnover at or below €2m. Continue with the assessment below.';
+    } else { m.className=''; m.innerHTML=''; }
+
+    const total = cost === null ? null : cost + recur;
+    const r1 = (total !== null && opex) ? (total / opex) * 100 : null;
+    const r2 = (total !== null && turnover) ? (total / turnover) * 100 : null;
+    const r3 = (total !== null && users) ? (total / users) : null;
+
+    $('r1').textContent = r1 === null ? '—' : pct(r1);
+    $('r2').textContent = r2 === null ? '—' : pct(r2);
+    $('r3').textContent = r3 === null ? '—' : eur(r3);
+
+    const v = $('verdict');
+    if (r1 === null && r2 === null){ v.className=''; v.innerHTML=''; return; }
+    // Deliberately framed as "how this reads", not as a pass/fail determination —
+    // the directive sets no numeric threshold and no tool can supply one.
+    const worst = Math.max(r1 ?? 0, r2 ?? 0);
+    if (worst < 2){
+      v.className = 'verdict v-weak';
+      v.innerHTML = '<strong>These figures do not look like a disproportionate burden.</strong> '
+        + 'Compliance costs sit at a small fraction of what the organisation already spends. '
+        + 'A claim on these numbers would be difficult to defend. The realistic action is to budget the work.';
+    } else if (worst < 8){
+      v.className = 'verdict v-weak';
+      v.innerHTML = '<strong>Borderline, and it depends on evidence quality.</strong> '
+        + 'Ratios in this range are argued case by case. The deciding factor is usually how well the cost '
+        + 'estimate is sourced and how credible the remediation plan is — not the percentage itself.';
+    } else {
+      v.className = 'verdict v-strong';
+      v.innerHTML = '<strong>The figures may support a claim — if the evidence holds.</strong> '
+        + 'Costs are a substantial share of total expenditure. Document every input, notify the authority, '
+        + 'and record what you will still do. Note there is no numeric threshold in the directive; '
+        + 'the authority decides.';
+    }
+  }
+
+  function loadExample(){
+    const ex = {org:'Example Retail BV', svc:'example.com e-commerce website',
+      date:new Date().toISOString().slice(0,10), state:'Netherlands, Germany',
+      staff:24, turnover:8400000, cost:46000, recur:9000, opex:6100000, users:12000,
+      doing:'Q4 2026 — keyboard navigation and focus order on checkout\nQ1 2027 — alt text across product catalogue\nQ2 2027 — colour contrast to WCAG 2.1 AA',
+      alt:'Staffed phone ordering line, published on every page; email order channel with 1 working day response.',
+      basis:'Remediation cost: supplier quote, dated 2026-08-14, ref Q-2291.\nOpex/capex: FY2025 statutory accounts, p.14.\nUser estimate: site analytics plus national disability prevalence statistics.'};
+    for (const k in ex) if ($(k)) $(k).value = ex[k];
+    recalc();
+  }
+
+  function clearAll(){
+    document.querySelectorAll('input,textarea').forEach(el => el.value = '');
+    recalc();
+  }
+
+  document.querySelectorAll('input,textarea').forEach(el => el.addEventListener('input', recalc));
+  recalc();
+</script>
+
+<div class="wrap noprint" style="padding-top:0">
+  <p class="sub" style="margin:0;font-size:14px">
+    Built and maintained by <a href="https://anqulas.com" style="color:var(--accent)">Anqulas</a>.
+    Free to use. No signup, no tracking.
+  </p>
+</div>
+</body>
+</html>
