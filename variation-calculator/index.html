@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Variation exposure calculator — what undocumented variations cost</title>
+<meta name="description" content="Free calculator for UK fit-out contractors: put in your turnover, your typical job and your variations, and see what the ones agreed on site without a written instruction are costing you a year. No signup, nothing sent anywhere.">
+<link rel="canonical" href="https://anqulas.com/variation-calculator/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://anqulas.com/variation-calculator/">
+<meta property="og:title" content="Variation exposure calculator — what undocumented variations cost">
+<meta property="og:description" content="Free calculator for UK fit-out contractors: put in your turnover, your typical job and your variations, and see what the ones agreed on site without a written instruction are costing you a year. No signup, nothing sent anywhere.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Ctext%20y%3D%2252%22%20font-size%3D%2252%22%3E%F0%9F%A7%AE%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap"></noscript>
+<style>
+  :root {
+    --room:#FBFAF8; --paper:#FBFAF8; --paper-2:#EFEBE4; --card:#FFFFFF; --panel:#FFFFFF;
+    --ink:#171310; --ink-2:#57504A; --ink-3:#6A625A;
+    --line:rgba(23,19,16,.11); --line-2:rgba(23,19,16,.18);
+    --rule:rgba(23,19,16,.11);
+    --hue:#B44917; --hue-ink:#FFFFFF; --hue-wash:#B4491712; --hue-line:#B449172E;
+    --hue-tint:#B449170A;
+    --two:#1F4B73; --two-wash:#1F4B7312;
+    --ok:#456E00; --ok-wash:rgba(69,110,0,.08);
+    --shadow:0 18px 40px -28px rgba(23,19,16,.35);
+    --hard:0 18px 40px -28px rgba(23,19,16,.35);
+    --display:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --poster:var(--display);
+    --body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --ser:"Newsreader",Georgia,"Iowan Old Style",serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"DejaVu Sans Mono",monospace;
+    --col:1140px; --measure:60ch;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.68;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--hue);color:var(--hue-ink)}
+  p{margin:0} a{color:inherit}
+  :focus-visible{outline:3px solid var(--two);outline-offset:3px}
+  h1,h2,h3{font-family:var(--poster);margin:0;text-wrap:balance;letter-spacing:-.04em;line-height:.98}
+  h1{font-size:clamp(2.2rem,6.2vw,4.2rem);text-transform:uppercase}
+  h2{font-size:clamp(1.7rem,4vw,2.7rem);text-transform:uppercase}
+  h3{font-size:1.05rem;letter-spacing:-.02em;line-height:1.2}
+  .wrap{max-width:var(--col);margin:0 auto;padding:0 24px}
+  .lede{font-size:clamp(1.05rem,1.8vw,1.25rem);color:var(--ink-2);max-width:var(--measure)}
+  .tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase}
+  section{padding:52px 0;border-bottom:2px solid var(--rule)}
+  .eyebrow{color:var(--hue);margin-bottom:18px}
+
+  .mast{border-bottom:3px solid var(--ink);background:var(--paper);position:sticky;top:0;z-index:20}
+  .mast .in{max-width:var(--col);margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:14px}
+  .logo{font-family:var(--poster);font-size:1rem;letter-spacing:-.04em;text-transform:uppercase;display:flex;align-items:center;gap:8px;text-decoration:none}
+  .mk{width:25px;height:25px;flex:none}
+  .mast nav{margin-left:auto;display:flex;align-items:center;gap:18px}
+  .mast nav a:not(.btn){font-family:var(--mono);font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-2);text-decoration:none}
+  .mast nav a:not(.btn):hover{color:var(--hue)}
+  @media(max-width:760px){.mast nav a.sm{display:none}}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--poster);font-size:.82rem;text-transform:uppercase;letter-spacing:-.01em;padding:13px 20px;text-decoration:none;border:2px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--hard);transition:transform .12s ease,box-shadow .12s ease}
+  .btn:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+  .btn-hot{background:var(--hue);color:var(--hue-ink)}
+
+  /* ── the calculator ──────────────────────────────────────────────────────
+     Two columns on a desktop, with the answer pinned so it never scrolls out
+     of sight while the inputs are being moved — watching the number react is
+     the entire experience, and a result you have to scroll back to find is a
+     result nobody watches.
+
+     Below 900px the order is reversed rather than the layout collapsing
+     naturally: the answer comes FIRST in the flow and sticks under the
+     masthead, so the same thing is true on a phone. the order property does it without
+     moving the fields out of source order, which is what a screen reader and
+     the tab sequence follow.                                               */
+  .calc{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start;margin-top:34px}
+  .out{border:3px solid var(--ink);background:var(--card);box-shadow:8px 8px 0 var(--hue);padding:24px 22px;position:sticky;top:76px}
+  @media(max-width:900px){
+    .calc{grid-template-columns:1fr;gap:26px}
+    .fields{order:2}
+    .out{order:1;top:60px;box-shadow:5px 5px 0 var(--hue)}
+  }
+
+  .field{display:grid;gap:7px;margin-bottom:22px}
+  .field label{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+  .field .hint{font-size:.83rem;line-height:1.45;color:var(--ink-3);max-width:46ch}
+  .money{display:flex;align-items:stretch;border:2px solid var(--ink);background:var(--card);box-shadow:var(--hard);max-width:320px}
+  .money .cur{font-family:var(--poster);font-size:1rem;padding:0 13px;border-right:2px solid var(--ink);display:grid;place-items:center;background:var(--hue-wash);color:var(--hue)}
+  .money .cur-n{background:var(--two-wash);color:var(--two)}
+  .money input{border:0;background:transparent;font-family:var(--poster);font-size:1.15rem;letter-spacing:-.02em;color:var(--ink);padding:11px 13px;width:100%;min-width:0}
+  .money input:focus{outline:none}
+  .money:focus-within{box-shadow:3px 3px 0 var(--hue)}
+
+  .slider{display:flex;align-items:center;gap:16px;max-width:320px}
+  .slider input[type=range]{flex:1;min-width:0;accent-color:var(--hue);height:26px}
+  .slider .val{font-family:var(--poster);font-size:1.15rem;letter-spacing:-.02em;min-width:3.4em;text-align:right;color:var(--hue)}
+
+  .out .k{font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  .out .big{font-family:var(--poster);font-size:clamp(2.3rem,5.4vw,3.2rem);letter-spacing:-.045em;line-height:1;color:var(--hue);margin-top:8px}
+  .out .meaning{margin-top:12px;font-size:.95rem;color:var(--ink-2);line-height:1.5}
+  .chain{margin:22px 0 0;padding:0;border-top:2px solid var(--ink)}
+  .chain li{list-style:none;display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:9px 0;border-bottom:1px solid var(--line)}
+  .chain .lb{font-size:.85rem;color:var(--ink-2);line-height:1.35}
+  .chain .nb{font-family:var(--poster);font-size:1rem;letter-spacing:-.025em;white-space:nowrap}
+  .chain li.hi{background:var(--hue-tint);margin:0 -10px;padding-left:10px;padding-right:10px;border-bottom:2px solid var(--ink)}
+  .chain li.hi .lb{color:var(--ink)}
+  .chain li.hi .nb{color:var(--hue)}
+  .out .foot{margin-top:16px;font-family:var(--mono);font-size:.72rem;line-height:1.55;color:var(--ink-3)}
+  .out .foot a{color:var(--hue)}
+
+  .honest{margin-top:30px;border-left:3px solid var(--two);padding:2px 0 2px 18px;max-width:62ch}
+  .honest p{font-size:.95rem;color:var(--ink-2);line-height:1.6}
+  .honest p + p{margin-top:12px}
+  .honest b{color:var(--ink)}
+
+  .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:32px}
+  .why article{border:2px solid var(--ink);background:var(--card);box-shadow:var(--hard);padding:20px 19px;display:grid;gap:9px;align-content:start}
+  .why .n{font-family:var(--mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--two)}
+  .why p{font-size:.95rem;color:var(--ink-2);line-height:1.55}
+
+  .cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+  .fine{margin-top:14px;font-family:var(--mono);font-size:.76rem;color:var(--ink-3)}
+
+  footer{padding:26px 0 50px;background:#F6F4F0;border-top:1px solid rgba(23,19,16,.11)}
+  footer .in{max-width:var(--col);margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;color:var(--ink-3)}
+
+
+  /* ── let's talk ───────────────────────────────────────────────────────
+     The photograph is a horizon at the foot of the section, not a ground
+     under the form. Behind form labels and input text it would need a scrim
+     heavy enough to make it a smudge, and there is no version of "washed-out
+     mountain behind a text field" that reads as anything but a mistake. Below
+     the content it costs nothing and does the whole job. */
+  section.talk{position:relative;padding:64px 0 300px;overflow:hidden;scroll-margin-top:100px}
+  /* An <img> rather than a background-image, for one reason: a CSS background
+     is fetched as soon as its element enters the render tree, off-screen or
+     not. Measured on the deployed front page, the old plate was in the 513KB
+     the browser pulled before a visitor scrolled a pixel — for a picture at
+     the very bottom of the page. loading="lazy" defers it to the moment
+     somebody actually approaches this section, so a plate six times sharper
+     costs nothing at all on first paint. (In the committed copies the image is
+     inlined and this is moot; pages.mjs pulls it out into /assets on deploy,
+     which is where it matters.)
+     
+     The band reaches 600px up — past the form card, not to it. Anchored to
+     the card's lower edge it drew a line across the page; rising behind the
+     card there is no edge to see. */
+  .talk-bg{position:absolute;left:0;right:0;bottom:0;height:600px;z-index:0;
+    pointer-events:none;overflow:hidden}
+  .talk-bg img{position:absolute;inset:0;width:100%;height:100%;display:block;
+    object-fit:cover;object-position:center bottom}
+  /* The scrim, painted over the photograph. Eight stops with no flat run and
+     no step: the eye cannot find an edge, so the picture grows out of the
+     paper rather than starting somewhere. It eases back toward paper over the
+     last 15% as well: the footer below is plain ground, and a photograph at
+     full strength meeting it draws the same hard line at the bottom that the
+     old band drew at the top. The warm wash is not decoration —
+     the plate is grey rock under white mist and this site is cream and warm
+     brown, so untinted it reads as a photograph borrowed from elsewhere. */
+  .talk-bg::after{content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, var(--room) 0%, rgba(251,250,248,.965) 13%,
+        rgba(251,250,248,.87) 28%, rgba(251,250,248,.68) 44%, rgba(251,250,248,.44) 60%,
+        rgba(251,250,248,.22) 74%, rgba(251,250,248,.10) 84%,
+        rgba(251,250,248,.26) 93%, rgba(251,250,248,.62) 100%),
+      linear-gradient(180deg, rgba(255,206,158,.16), rgba(214,148,88,.11))}
+  .talk .wrap{position:relative;z-index:1}
+  .talk-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:52px;align-items:start}
+  @media(max-width:900px){.talk-grid{grid-template-columns:1fr;gap:32px}
+    section.talk{padding:52px 0 250px}.talk-bg{height:470px}}
+
+  .talk-facts{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px}
+  .talk-facts li{display:grid;gap:2px}
+  .talk-facts .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-2)}
+  .talk-facts .v{font-size:.97rem;color:var(--ink)}
+  .talk-facts a{color:var(--ink);text-decoration:none;border-bottom:1px solid var([object Object])}
+  .talk-facts a:hover{color:var([object Object])}
+
+  .talk-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 26px 24px;
+    box-shadow:0 30px 64px -34px rgba(23,19,16,.40)}
+  .talk-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:520px){.talk-row{grid-template-columns:1fr}}
+  .talk-field{display:grid;gap:6px;margin-top:14px}
+  .talk-field:first-child,.talk-row .talk-field{margin-top:0}
+  .talk-row{margin-bottom:14px}
+  .talk-field label{font-size:.85rem;font-weight:600;color:var(--ink)}
+  .talk-field input,.talk-field textarea{font:inherit;font-size:.95rem;color:var(--ink);
+    background:#FDFCFA;border:1px solid var(--line-2, var(--line));border-radius:10px;
+    padding:11px 13px;width:100%;box-sizing:border-box;
+    transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
+  .talk-field textarea{min-height:118px;resize:vertical;line-height:1.55}
+  .talk-field input:focus,.talk-field textarea:focus{outline:none;background:#fff;
+    border-color:var([object Object]);box-shadow:0 0 0 3px color-mix(in srgb, var([object Object]) 18%, transparent)}
+  .talk-field input::placeholder,.talk-field textarea::placeholder{color:var(--ink-3)}
+
+  /* Off-screen rather than display:none — a bot reading the DOM fills what it
+     can see in the markup, and a hidden input is the tell. */
+  .talk-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .talk-send{margin-top:16px;width:100%;justify-content:center}
+  .talk-send[disabled]{opacity:.62;cursor:progress}
+  .talk-note{margin-top:12px;font-family:var(--mono);font-size:.72rem;line-height:1.6;
+    color:var(--ink-3);text-align:center}
+  .talk-note a{color:var(--ink-2);text-decoration:underline;text-underline-offset:2px}
+  .talk-msg{margin-top:12px;font-size:.9rem;line-height:1.55;padding:11px 13px;border-radius:10px;display:none}
+  .talk-msg.on{display:block}
+  .talk-msg.ok{background:#EFF6EF;border:1px solid #BFD8BF;color:#2C5530}
+  .talk-msg.warn{background:#FDF4E8;border:1px solid #E6CFA8;color:#6B4A17}
+
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="in">
+    <a class="logo" href="/construction/"><svg class="mk" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="mkw" gradientUnits="userSpaceOnUse" x1="10" y1="8" x2="52" y2="58"><stop offset="0" stop-color="#E8913F"/><stop offset=".55" stop-color="#C9571A"/><stop offset="1" stop-color="#8F3609"/></linearGradient><linearGradient id="mkt" gradientUnits="userSpaceOnUse" x1="18" y1="48" x2="54" y2="18"><stop offset="0" stop-color="#3AA5A0"/><stop offset="1" stop-color="#14615F"/></linearGradient></defs><path d="M10 57 31 9 52 57" fill="none" stroke="url(#mkw)" stroke-width="8" stroke-linejoin="miter" stroke-miterlimit="8" stroke-linecap="butt"/><path d="M19 45 L43.5 26.3" fill="none" stroke="url(#mkt)" stroke-width="6.5" stroke-linecap="butt"/><path d="M52 20 L47.7 32.7 L38.7 20.7 Z" fill="url(#mkt)"/></svg>Site OS</a>
+    <nav>
+      <a href="/construction/" class="sm">For fit-out contractors</a>
+      <a href="#why" class="sm">Why it happens</a>
+      <a class="btn btn-hot" href="#talk">Book 20 minutes</a>
+    </nav>
+  </div>
+</header>
+
+<section id="calc">
+  <div class="wrap">
+    <p class="eyebrow tag">Variation exposure calculator · free, no signup</p>
+    <h1>What the<br>undocumented<br>ones cost.</h1>
+    <p class="lede" style="margin-top:24px;">Every fit-out contractor writes off variations they agreed on site and could not evidence later. Almost nobody knows the annual number, because it never appears as a line on anything. Put your own figures in and it does.</p>
+
+    <div class="calc">
+      <div class="fields">
+
+      <div class="field">
+        <label for="turnover">Annual turnover</label>
+        <div class="money">
+          <span class="cur" aria-hidden="true">£</span>
+          <input id="turnover" type="text" inputmode="numeric" value="5000000"
+            autocomplete="off" spellcheck="false">
+        </div>
+        <p class="hint">Last full year, near enough.</p>
+      </div>
+      <div class="field">
+        <label for="project">Typical project value</label>
+        <div class="money">
+          <span class="cur" aria-hidden="true">£</span>
+          <input id="project" type="text" inputmode="numeric" value="250000"
+            autocomplete="off" spellcheck="false">
+        </div>
+        <p class="hint">The size of job you do most of, not the biggest one you have done.</p>
+      </div>
+      <div class="field">
+        <label for="varvalue">Average value of a variation</label>
+        <div class="money">
+          <span class="cur" aria-hidden="true">£</span>
+          <input id="varvalue" type="text" inputmode="numeric" value="3500"
+            autocomplete="off" spellcheck="false">
+        </div>
+        <p class="hint">Across the small ones and the occasional large one.</p>
+      </div>
+
+      <div class="field">
+        <label for="pervar">Variations per project</label>
+        <div class="money">
+          <span class="cur cur-n" aria-hidden="true">#</span>
+          <input id="pervar" type="text" inputmode="numeric" value="8"
+            autocomplete="off" spellcheck="false">
+        </div>
+        <p class="hint">Every change to the contracted scope, including the ones that never got priced.</p>
+      </div>
+
+      <div class="field">
+        <label for="verbal">Agreed on site without a written instruction</label>
+        <div class="slider">
+          <input id="verbal" type="range" min="0" max="100" step="5" value="35">
+          <span class="val" id="verbal-v">35%</span>
+        </div>
+        <p class="hint">Someone said go ahead, the programme would not wait, and nothing was raised at the time.</p>
+      </div>
+      <div class="field">
+        <label for="writeoff">Of those, the share you write off or discount</label>
+        <div class="slider">
+          <input id="writeoff" type="range" min="0" max="100" step="5" value="40">
+          <span class="val" id="writeoff-v">40%</span>
+        </div>
+        <p class="hint">At final account, the ones you cannot evidence well enough to hold.</p>
+      </div>
+      <div class="field">
+        <label for="margin">Net margin</label>
+        <div class="slider">
+          <input id="margin" type="range" min="0" max="15" step="0.5" value="3">
+          <span class="val" id="margin-v">3%</span>
+        </div>
+        <p class="hint">Used only to express the result as a share of profit.</p>
+      </div>
+        <p><a href="#" id="reset" class="tag" style="color:var(--two)">↺ Back to the starting figures</a></p>
+      </div>
+
+      <aside class="out" aria-live="polite">
+        <span class="k">Written off in a year</span>
+        <p class="big" id="out-big">—</p>
+        <p class="meaning" id="meaning"></p>
+
+        <ul class="chain">
+          <li><span class="lb">Projects a year</span><span class="nb" id="r-projects">—</span></li>
+          <li><span class="lb">Variations a year</span><span class="nb" id="r-variations">—</span></li>
+          <li><span class="lb">Worth</span><span class="nb" id="r-varvalue">—</span></li>
+          <li><span class="lb">Agreed with nothing in writing</span><span class="nb" id="r-undoc">—</span></li>
+          <li class="hi"><span class="lb">Written off or discounted</span><span class="nb" id="r-lost">—</span></li>
+        </ul>
+
+        <p class="foot">The arithmetic is on this page and it is yours to argue with. Nothing is posted anywhere — no analytics on this page, no address asked for, and the numbers never leave the browser.</p>
+      </aside>
+    </div>
+
+    <div class="honest">
+      <p><b>These starting figures are starting figures, not research.</b> They are a plausible mid-size fit-out contractor and nothing more. There is no study behind them and this page will not pretend otherwise — the result is worth exactly what your inputs are worth, which is why all seven are yours to change.</p>
+      <p>The two percentages are where the argument actually lives. A variation becomes a write-off in <b>two steps, not one</b>: it gets agreed without a written instruction, and then at final account you cannot evidence it well enough to hold it. Most contractors put the first number higher than they expect to and the second lower. Both are worth arguing about honestly.</p>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <h2>Why a variation<br>becomes a write-off.</h2>
+    <p class="lede" style="margin-top:20px;">Nothing here is a process failure. It is what happens when a programme moves faster than paperwork, which is every programme.</p>
+
+    <div class="why">
+      <article>
+        <span class="n">One</span>
+        <h3>The programme will not wait</h3>
+        <p>Something has to change and it has to change today. It gets agreed on site between two people who both mean it. Raising it properly takes a day the job does not have, so it is done and the paperwork is left for later.</p>
+      </article>
+      <article>
+        <span class="n">Two</span>
+        <h3>Later never arrives</h3>
+        <p>The next thing happens. The instruction stays in a phone call, a WhatsApp message, or a photograph of a marked-up drawing on somebody's camera roll. It is not lost, exactly. It is just not anywhere a second person would look.</p>
+      </article>
+      <article>
+        <span class="n">Three</span>
+        <h3>Final account</h3>
+        <p>Months later, two reasonable parties remember it differently, and the one with the better record wins. Usually neither has one, so it gets split — and splitting it is the write-off. The relationship survives it. The margin does not.</p>
+      </article>
+    </div>
+
+    <h2 style="margin-top:52px;">What a record<br>has to have.</h2>
+    <p class="lede" style="margin-top:20px;">Four things, and the fourth is the one that decides whether it is worth anything at final account.</p>
+    <div class="why">
+      <article>
+        <span class="n">Who</span>
+        <h3>A name, not a company</h3>
+        <p>"The client agreed" is not a record. A person agreed, and the record has to say which one.</p>
+      </article>
+      <article>
+        <span class="n">When</span>
+        <h3>The date it was agreed</h3>
+        <p>Not the date it was written up. Those are different dates and the gap between them is what gets attacked.</p>
+      </article>
+      <article>
+        <span class="n">What</span>
+        <h3>The price at that moment</h3>
+        <p>A change agreed without a number attached is an argument scheduled for later.</p>
+      </article>
+      <article>
+        <span class="n">And</span>
+        <h3>That nobody can edit it afterwards</h3>
+        <p>A record either side could have changed after the fact proves nothing. This is the part a spreadsheet and an email thread cannot do, and it is the whole difference.</p>
+      </article>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-hot" href="/construction/">See what that looks like</a>
+      <a class="btn" href="https://app.anqulas.com/login" target="_blank" rel="noopener">Open the demo</a>
+    </div>
+    <p class="fine">The demo login and password are printed on the page. No form, no call to book.</p>
+  </div>
+</section>
+
+
+<section class="talk" id="talk">
+  <div class="talk-bg" aria-hidden="true">
+    <img src="/assets/0a86312d6b.webp" alt="" width="1600" height="724" loading="lazy" decoding="async">
+  </div>
+  <div class="wrap">
+    <div class="talk-grid">
+      <div>
+        <h2>Let's talk</h2>
+        <p class="lede" style="margin-top:18px;">If the number this gave you is wrong, that is the most useful thing you could tell me — I would rather have one contractor's real write-off percentage than another guess at it. Twenty minutes, no slides, and a reply from the person who built it.</p>
+        <ul class="talk-facts">
+          <li><span class="k">Email</span><span class="v"><a href="mailto:contact@anqulas.com">contact@anqulas.com</a></span></li>
+          <li><span class="k">Replies</span><span class="v">Same working day, Monday to Friday</span></li>
+          <li><span class="k">Where</span><span class="v">India — working with clients worldwide</span></li>
+        </ul>
+      </div>
+
+      <form class="talk-card" id="talk-form" novalidate>
+        <div class="talk-row">
+          <div class="talk-field">
+            <label for="talk-name">Your name</label>
+            <input id="talk-name" name="name" type="text" autocomplete="name" maxlength="120" required>
+          </div>
+          <div class="talk-field">
+            <label for="talk-company">Company</label>
+            <input id="talk-company" name="company" type="text" autocomplete="organization" maxlength="160">
+          </div>
+        </div>
+        <div class="talk-field">
+          <label for="talk-email">Your email</label>
+          <input id="talk-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+        </div>
+        <div class="talk-field">
+          <label for="talk-message">What's the situation?</label>
+          <textarea id="talk-message" name="message" maxlength="5000" required
+            placeholder="The number this gave me, and what it gets wrong…"></textarea>
+        </div>
+        <p class="talk-hp" aria-hidden="true">
+          <label for="talk-website">Leave this empty</label>
+          <input id="talk-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </p>
+        <button class="btn btn-hot talk-send" type="submit">Send it</button>
+        <div class="talk-msg" id="talk-msg" role="status" aria-live="polite"></div>
+        <p class="talk-note">Goes straight to a person, not a CRM sequence.<br>
+          Or write to <a href="mailto:contact@anqulas.com">contact@anqulas.com</a> yourself.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer><div class="in">
+  <span class="tag">Site OS — same software, your vocabulary</span>
+  <span class="tag"><a href="mailto:contact@anqulas.com">contact@anqulas.com</a></span>
+</div></footer>
+
+<script>
+
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var fmt = new Intl.NumberFormat("en-GB",{style:"currency",currency:"GBP",maximumFractionDigits:0});
+  var gbp = function(n){ return isFinite(n) ? fmt.format(Math.round(n)) : "—"; };
+  var num = function(id){
+    var v = parseFloat(String($(id).value).replace(/[^0-9.]/g,""));
+    return isFinite(v) && v >= 0 ? v : 0;
+  };
+  var pct1 = function(n){ return (Math.round(n*10)/10) + "%"; };
+
+  var DEFAULTS = {"turnover":5000000,"project":250000,"varvalue":3500,"pervar":8,"verbal":35,"writeoff":40,"margin":3};
+  var IDS = Object.keys(DEFAULTS);
+
+  function run(){
+    var turnover = num("turnover"), project = num("project");
+    var pervar = num("pervar"), varvalue = num("varvalue");
+    var verbal = num("verbal")/100, writeoff = num("writeoff")/100, margin = num("margin")/100;
+
+    $("verbal-v").textContent = Math.round(verbal*100) + "%";
+    $("writeoff-v").textContent = Math.round(writeoff*100) + "%";
+    $("margin-v").textContent = pct1(margin*100);
+
+    var projects  = project > 0 ? turnover/project : 0;
+    var variations = projects * pervar;
+    var varValue  = variations * varvalue;
+    var undoc     = varValue * verbal;
+    var lost      = undoc * writeoff;
+    var profit    = turnover * margin;
+
+    $("r-projects").textContent   = projects > 0
+      ? (projects < 10 ? (Math.round(projects*10)/10).toString() : Math.round(projects).toLocaleString("en-GB"))
+      : "—";
+    $("r-variations").textContent = Math.round(variations).toLocaleString("en-GB");
+    $("r-varvalue").textContent   = gbp(varValue);
+    $("r-undoc").textContent      = gbp(undoc);
+    $("r-lost").textContent       = gbp(lost);
+    $("out-big").textContent      = gbp(lost);
+
+    var m = $("meaning");
+    if (!(turnover > 0 && project > 0)) {
+      m.textContent = "Put in a turnover and a typical project value, and the rest follows.";
+      return;
+    }
+    var s = gbp(lost/projects) + " a project. Every project.";
+    if (profit > 0) {
+      var share = lost/profit*100;
+      s += share >= 100
+        ? " At a " + pct1(margin*100) + " margin, that is more than your entire net profit for the year."
+        : " At a " + pct1(margin*100) + " margin, that is " + Math.round(share) + "% of your net profit.";
+    }
+    m.textContent = s;
+  }
+
+  IDS.forEach(function(id){
+    var el = $(id);
+    if (el) el.addEventListener("input", run);
+  });
+
+  /* Thousand separators on the money fields.
+     Grouped on blur and stripped on focus, rather than reformatted on every
+     keystroke: reformatting mid-type means putting the caret back by hand,
+     and every implementation of that gets it wrong somewhere — usually when
+     a separator is inserted to the left of the cursor. Nobody needs to read
+     "5,000,000" while they are still typing it; they need to read it
+     afterwards, which is exactly when this runs. */
+  var MONEY = ["turnover","project","varvalue","pervar"];
+  var group = function(n){ return Math.round(n).toLocaleString("en-GB"); };
+  var paint = function(){
+    MONEY.forEach(function(id){
+      var el = $(id);
+      if (el && el !== document.activeElement) el.value = group(num(id));
+    });
+  };
+  MONEY.forEach(function(id){
+    var el = $(id);
+    if (!el) return;
+    el.addEventListener("focus", function(){ el.value = String(el.value).replace(/[^0-9.]/g,""); });
+    el.addEventListener("blur", paint);
+  });
+
+  var reset = $("reset");
+  if (reset) reset.addEventListener("click", function(e){
+    e.preventDefault();
+    IDS.forEach(function(id){ $(id).value = DEFAULTS[id]; });
+    paint();
+    run();
+  });
+
+  paint();
+  run();
+})();
+
+(() => {
+  const form = document.getElementById("talk-form");
+  if (!form) return;
+  const msg = document.getElementById("talk-msg");
+  const btn = form.querySelector("button[type=submit]");
+  const label = btn.textContent;
+
+  const say = (kind, text) => {
+    msg.className = "talk-msg on " + kind;
+    msg.textContent = text;
+  };
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const val = (n) => String(new FormData(form).get(n) || "").trim();
+
+    if (!val("name") || !val("email") || !val("message")) {
+      say("warn", "Name, email and a message, and it's on its way.");
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+    msg.className = "talk-msg";
+
+    try {
+      const res = await fetch("https://visionos-api.onrender.com/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: val("name"), company: val("company"), email: val("email"),
+          message: val("message"), website: val("website"),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (res.ok && data.delivered) {
+        form.reset();
+        say("ok", "Sent. You'll get a reply the same working day — from the person who built it.");
+      } else if (res.ok) {
+        say("warn", "That reached us but the mail didn't go out. Email contact@anqulas.com and it won't get lost.");
+      } else {
+        say("warn", "That didn't send. Email contact@anqulas.com instead and I'll pick it up.");
+      }
+    } catch {
+      say("warn", "Couldn't reach the server. Email contact@anqulas.com instead — that always works.");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  });
+})();
+
+</script>
+</body>
+</html>
