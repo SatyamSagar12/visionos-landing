@@ -6,7 +6,7 @@
 <title>Variation exposure calculator — what undocumented variations cost</title>
 <meta name="description" content="Free calculator for UK fit-out contractors: put in your turnover, your typical job and your variations, and see what the ones agreed on site without a written instruction are costing you a year. No signup, nothing sent anywhere.">
 <link rel="canonical" href="https://anqulas.com/variation-calculator/">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:url" content="https://anqulas.com/variation-calculator/">
 <meta property="og:title" content="Variation exposure calculator — what undocumented variations cost">
 <meta property="og:description" content="Free calculator for UK fit-out contractors: put in your turnover, your typical job and your variations, and see what the ones agreed on site without a written instruction are costing you a year. No signup, nothing sent anywhere.">
@@ -63,6 +63,22 @@
   .btn:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
   .btn-hot{background:var(--hue);color:var(--hue-ink)}
 
+  .honest{margin-top:30px;border-left:3px solid var(--two);padding:2px 0 2px 18px;max-width:62ch}
+  .honest p{font-size:.95rem;color:var(--ink-2);line-height:1.6}
+  .honest p + p{margin-top:12px}
+  .honest b{color:var(--ink)}
+
+  .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:32px}
+  .why article{border:2px solid var(--ink);background:var(--card);box-shadow:var(--hard);padding:20px 19px;display:grid;gap:9px;align-content:start}
+  .why .n{font-family:var(--mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--two)}
+  .why p{font-size:.95rem;color:var(--ink-2);line-height:1.55}
+
+  .cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
+  .fine{margin-top:14px;font-family:var(--mono);font-size:.76rem;color:var(--ink-3)}
+
+  footer{padding:26px 0 50px;background:#F6F4F0;border-top:1px solid rgba(23,19,16,.11)}
+  footer .in{max-width:var(--col);margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;color:var(--ink-3)}
+
   /* ── the calculator ──────────────────────────────────────────────────────
      Two columns on a desktop, with the answer pinned so it never scrolls out
      of sight while the inputs are being moved — watching the number react is
@@ -108,22 +124,6 @@
   .chain li.hi .nb{color:var(--hue)}
   .out .foot{margin-top:16px;font-family:var(--mono);font-size:.72rem;line-height:1.55;color:var(--ink-3)}
   .out .foot a{color:var(--hue)}
-
-  .honest{margin-top:30px;border-left:3px solid var(--two);padding:2px 0 2px 18px;max-width:62ch}
-  .honest p{font-size:.95rem;color:var(--ink-2);line-height:1.6}
-  .honest p + p{margin-top:12px}
-  .honest b{color:var(--ink)}
-
-  .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:32px}
-  .why article{border:2px solid var(--ink);background:var(--card);box-shadow:var(--hard);padding:20px 19px;display:grid;gap:9px;align-content:start}
-  .why .n{font-family:var(--mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--two)}
-  .why p{font-size:.95rem;color:var(--ink-2);line-height:1.55}
-
-  .cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
-  .fine{margin-top:14px;font-family:var(--mono);font-size:.76rem;color:var(--ink-3)}
-
-  footer{padding:26px 0 50px;background:#F6F4F0;border-top:1px solid rgba(23,19,16,.11)}
-  footer .in{max-width:var(--col);margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;color:var(--ink-3)}
 
 
   /* ── let's talk ───────────────────────────────────────────────────────
@@ -212,6 +212,7 @@
 </style>
 </head>
 <body>
+
 
 <header class="mast">
   <div class="in">
@@ -370,6 +371,21 @@
       </article>
     </div>
 
+    <h2 style="margin-top:52px;">Two short<br>guides.</h2>
+    <p class="lede" style="margin-top:20px;">The contractual half of the same subject, written for the same reader. Neither asks for anything either.</p>
+    <div class="why">
+      <article>
+        <span class="n">Guide</span>
+        <h3><a href="/confirmation-of-verbal-instruction/" style="color:var(--hue)">Confirmation of verbal instruction</a></h3>
+        <p>A verbal instruction is not an instruction until somebody writes it down. What a CVI is under JCT and NEC, the deadlines that bite, the eight fields it needs, and a template you can copy.</p>
+      </article>
+      <article>
+        <span class="n">Guide</span>
+        <h3><a href="/variation-instruction-change-order/" style="color:var(--hue)">Variation, instruction, change order</a></h3>
+        <p>The same event has four names depending on what you signed. Which word your contract actually uses, and the very different deadlines each one attaches.</p>
+      </article>
+    </div>
+
     <div class="cta">
       <a class="btn btn-hot" href="/construction/">See what that looks like</a>
       <a class="btn" href="https://app.anqulas.com/login" target="_blank" rel="noopener">Open the demo</a>
@@ -427,6 +443,7 @@
     </div>
   </div>
 </section>
+
 
 <footer><div class="in">
   <span class="tag">Site OS — same software, your vocabulary</span>
