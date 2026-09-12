@@ -11,6 +11,7 @@
 <meta property="og:title" content="Annex VI Assessment Workbook">
 <meta property="og:description" content="Free tool for the European Accessibility Act disproportionate-burden assessment. No signup.">
 <meta name="twitter:card" content="summary">
+
 <style>
   :root{
     --ink:#14171a; --mut:#5b6570; --line:#dfe4e9; --bg:#ffffff;
@@ -76,6 +77,21 @@
     .noprint{display:none!important}
     .card,.note{break-inside:avoid}
   }
+
+  .btn{background:var(--accent);color:#fff;border:0;border-radius:8px;
+    padding:12px 22px;font:inherit;font-weight:600;font-size:15px;cursor:pointer;
+    margin-top:6px}
+  .btn:hover{filter:brightness(1.08)}
+  ul.ck{list-style:none;padding:0;margin:0}
+  ul.ck li{position:relative;padding:13px 0 13px 32px;border-bottom:1px solid var(--line);
+    font-size:15px;line-height:1.55}
+  ul.ck li:last-child{border-bottom:0}
+  ul.ck li input{position:absolute;left:0;top:16px;width:17px;height:17px;cursor:pointer}
+  ul.ck li.done{opacity:.55}
+  ul.ck li.done strong{text-decoration:line-through}
+  .card ul{margin:10px 0;padding-left:20px}
+  .card ul li{margin:7px 0;font-size:15px}
+  pre{overflow-x:auto}
 </style>
 </head>
 <body>
@@ -120,11 +136,23 @@
   <h2>Step 2 — Check the micro-enterprise exemption first</h2>
   <div class="card">
     <p class="hint" style="margin-top:0">
-      A micro-enterprise providing <em>services</em> is exempt. The test is
-      <strong>fewer than 10 staff AND turnover or balance sheet total not above €2 million</strong>.
-      Both conditions must hold. If you are exempt, you do not need the rest of this workbook —
-      but keep evidence of the exemption.
+      The micro-enterprise exemption reaches <strong>service providers only</strong>. A
+      micro-enterprise that manufactures, imports or distributes a <em>product</em> is
+      <strong>not</strong> exempt — so answer the first question carefully.
+      <br><br>
+      The size test is <strong>fewer than 10 staff AND (turnover not above €2 million
+      <em>or</em> balance sheet total not above €2 million)</strong>. The financial limb is
+      satisfied if <em>either</em> figure is at or below €2m. If you are exempt you do not need
+      the rest of this workbook — but keep evidence of the exemption.
     </p>
+    <div class="field">
+      <label for="kind">Is the thing you are assessing a service or a product?</label>
+      <select id="kind">
+        <option value="">— Select —</option>
+        <option value="service">A service (e.g. e-commerce, banking, transport, ebooks)</option>
+        <option value="product">A product (e.g. hardware, terminals, e-readers)</option>
+      </select>
+    </div>
     <div class="row">
       <div class="field">
         <label for="staff">Headcount</label>
@@ -134,6 +162,10 @@
         <label for="turnover">Annual net turnover (€)</label>
         <input type="number" id="turnover" min="0" step="1000" placeholder="8400000">
       </div>
+    </div>
+    <div class="field">
+      <label for="balance">Balance sheet total (€) — optional, but it can qualify you on its own</label>
+      <input type="number" id="balance" min="0" step="1000" placeholder="1800000">
     </div>
     <div id="microOut"></div>
   </div>
@@ -254,8 +286,7 @@
     It does not audit your website, does not determine compliance, and is not legal advice.
     Whether a burden is disproportionate is judged by the relevant national authority against the
     transposing law in that Member State.</p>
-    <p><strong>Enforcement status, stated plainly.</strong> As of mid-2026, public reporting indicates that
-    <strong>no fines had been issued under any national EAA transposition</strong>. There has been real
+    <p><strong>Enforcement status, stated plainly. As of the research date for this workbook, no EAA penalty had been reported in the sources reviewed — but that is an absence of reporting across 27 national transpositions, not proof that none exists, and enforcement activity has been increasing. There has been real
     activity — a French court ordered a major retailer to remediate within six months under daily penalties,
     Sweden's regulator opened investigations on its own initiative, and the Netherlands ran a mandatory
     self-reporting cycle and is auditing non-responders. Enforcement to date has focused on large operators.
@@ -273,19 +304,42 @@
 
   function recalc(){
     const staff = num('staff'), turnover = num('turnover');
+    const balance = num('balance'), kind = $('kind') ? $('kind').value : '';
     const cost = num('cost'), recur = num('recur') || 0;
     const opex = num('opex'), users = num('users');
 
     // Micro-enterprise: BOTH conditions must hold.
     const m = $('microOut');
-    if (staff !== null && turnover !== null){
-      const micro = staff < 10 && turnover <= 2000000;
-      m.className = 'verdict ' + (micro ? 'v-strong' : 'v-weak');
-      m.innerHTML = micro
-        ? '<strong>Likely a micro-enterprise.</strong> Fewer than 10 staff and turnover at or below €2m. '
-          + 'Service providers meeting both conditions are exempt. Keep evidence of this — an authority may still ask.'
-        : '<strong>Not a micro-enterprise.</strong> The exemption needs <em>both</em> fewer than 10 staff '
-          + '<em>and</em> turnover at or below €2m. Continue with the assessment below.';
+    if (staff !== null && (turnover !== null || balance !== null)){
+      // Financial limb is satisfied by EITHER figure being at or below €2m.
+      const financeOk = (turnover !== null && turnover <= 2000000)
+                     || (balance  !== null && balance  <= 2000000);
+      const sizeOk = staff < 10 && financeOk;
+      if (!kind){
+        m.className = 'verdict v-weak';
+        m.innerHTML = '<strong>Answer the service-or-product question first.</strong> '
+          + 'The micro-enterprise exemption reaches service providers only, so the answer changes '
+          + 'entirely depending on which this is.';
+      } else if (kind === 'product'){
+        m.className = 'verdict v-weak';
+        m.innerHTML = '<strong>The micro-enterprise exemption does not apply to products.</strong> '
+          + 'It is available to service providers only. A micro-enterprise that manufactures, imports '
+          + 'or distributes a product remains in scope regardless of headcount or turnover. '
+          + 'Continue with the assessment below.';
+      } else if (sizeOk){
+        m.className = 'verdict v-strong';
+        m.innerHTML = '<strong>Likely a micro-enterprise, and services are exempt.</strong> '
+          + 'Fewer than 10 staff, and turnover or balance sheet total at or below €2m — the financial '
+          + 'limb is met if <em>either</em> figure qualifies. Keep dated evidence of both figures; an '
+          + 'authority may still ask you to show them.'
+          + '<br><br><em>This reflects the size test only. If your circumstances are near the boundary, '
+          + 'or you operate in several Member States, take advice rather than relying on this page.</em>';
+      } else {
+        m.className = 'verdict v-weak';
+        m.innerHTML = '<strong>Does not meet the micro-enterprise size test.</strong> '
+          + 'It needs fewer than 10 staff <em>and</em> either turnover or balance sheet total at or '
+          + 'below €2m. Continue with the assessment below.';
+      }
     } else { m.className=''; m.innerHTML=''; }
 
     const total = cost === null ? null : cost + recur;
@@ -301,24 +355,23 @@
     if (r1 === null && r2 === null){ v.className=''; v.innerHTML=''; return; }
     // Deliberately framed as "how this reads", not as a pass/fail determination —
     // the directive sets no numeric threshold and no tool can supply one.
-    const worst = Math.max(r1 ?? 0, r2 ?? 0);
-    if (worst < 2){
-      v.className = 'verdict v-weak';
-      v.innerHTML = '<strong>These figures do not look like a disproportionate burden.</strong> '
-        + 'Compliance costs sit at a small fraction of what the organisation already spends. '
-        + 'A claim on these numbers would be difficult to defend. The realistic action is to budget the work.';
-    } else if (worst < 8){
-      v.className = 'verdict v-weak';
-      v.innerHTML = '<strong>Borderline, and it depends on evidence quality.</strong> '
-        + 'Ratios in this range are argued case by case. The deciding factor is usually how well the cost '
-        + 'estimate is sourced and how credible the remediation plan is — not the percentage itself.';
-    } else {
-      v.className = 'verdict v-strong';
-      v.innerHTML = '<strong>The figures may support a claim — if the evidence holds.</strong> '
-        + 'Costs are a substantial share of total expenditure. Document every input, notify the authority, '
-        + 'and record what you will still do. Note there is no numeric threshold in the directive; '
-        + 'the authority decides.';
-    }
+    // No numeric bands. The directive sets no threshold, so this tool must not
+    // invent one — it summarises what an authority weighs and leaves the
+    // judgement where it belongs.
+    v.className = 'verdict v-weak';
+    v.innerHTML = '<strong>There is no pass mark for these ratios.</strong> '
+      + 'The directive sets no numeric threshold, and neither does this workbook — any tool that '
+      + 'gives you a percentage cut-off has invented it.'
+      + '<br><br>What an authority weighs, per Annex VI: the ratio of costs to your overall costs '
+      + 'and turnover; the estimated costs and benefits <em>relative to the estimated benefit for '
+      + 'persons with disabilities, including the frequency and duration of use</em>; and whether '
+      + 'the requirement would force a fundamental alteration to the basic nature of the product '
+      + 'or service.'
+      + '<br><br>The deciding factor in practice is rarely the percentage. It is whether every '
+      + 'input is sourced and dated, whether the remediation plan is credible, and whether you '
+      + 'documented what you will still do for disabled users in the meantime.'
+      + '<br><br><em>This is a structured record of your own figures, not a legal opinion. '
+      + 'Disproportionate burden is assessed by the national authority.</em>';
   }
 
   function loadExample(){
@@ -341,11 +394,5 @@
   recalc();
 </script>
 
-<div class="wrap noprint" style="padding-top:0">
-  <p class="sub" style="margin:0;font-size:14px">
-    Built and maintained by <a href="https://anqulas.com" style="color:var(--accent)">Anqulas</a>.
-    Free to use. No signup, no tracking.
-  </p>
-</div>
 </body>
 </html>
