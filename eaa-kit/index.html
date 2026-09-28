@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EAA Compliance Kit: Are You in Scope of the European Accessibility Act? — Anqulas</title>
+<meta name="description" content="Five browser tools for the European Accessibility Act. Find out if you're in scope, what 'accessible' means for your site, and generate the accessibility statement regulators ask for first. €99, one payment.">
+<link rel="canonical" href="https://anqulas.com/eaa-kit/">
+<meta property="og:type" content="product">
+<meta property="og:url" content="https://anqulas.com/eaa-kit/">
+<meta property="og:title" content="EAA Compliance Kit: Are you in scope?">
+<meta property="og:description" content="Find out if the European Accessibility Act applies to you, then produce the paperwork regulators ask for first.">
+<meta property="og:image" content="https://anqulas.com/eaa-kit/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0A0F1E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"EAA Compliance Kit",
+ "description":"Five browser tools for the European Accessibility Act: scope check, requirements, accessibility statement generator, regulator playbook and Annex VI assessment.",
+ "image":"https://anqulas.com/eaa-kit/og.jpg","brand":{"@type":"Brand","name":"Anqulas"},
+ "offers":{"@type":"Offer","price":"99","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://anqulas.com/eaa-kit/"}}
+</script>
+<style>
+:root{
+  --bg:#0A0F1E; --bg2:#0F1628; --card:#131B2F; --line:#26324A;
+  --ink:#EEF2F8; --mut:#B4C0D3; --teal:#2DD4BF; --amber:#F5A524; --amber-ink:#1A1204;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);
+  font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--amber);color:var(--amber-ink);
+  padding:10px 16px;border-radius:8px;font-weight:700;z-index:10}
+.skip:focus{left:12px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.narrow{max-width:760px}
+
+/* top bar */
+.bar{border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:800;letter-spacing:-.01em}
+.brand svg{width:30px;height:30px;flex:none}
+.bar .buy-sm{font-size:15px;padding:9px 16px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:64px 0 72px}
+.hero::before{content:"";position:absolute;width:900px;height:900px;left:-320px;top:-420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(45,212,191,.28),transparent 65%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.pill{display:inline-block;background:var(--amber);color:var(--amber-ink);font-weight:800;font-size:13px;
+  letter-spacing:.12em;text-transform:uppercase;padding:7px 12px;border-radius:8px}
+h1{font-size:clamp(44px,7vw,80px);line-height:.98;letter-spacing:-.045em;font-weight:900;margin:22px 0 20px}
+h1 span{color:var(--teal)}
+.lede{font-size:20px;line-height:1.5;color:var(--ink);max-width:34ch}
+.lede b{color:var(--amber)}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:30px}
+.buy{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:var(--amber-ink);
+  font-weight:800;font-size:18px;text-decoration:none;padding:15px 26px;border-radius:12px;min-height:48px}
+.buy:hover{filter:brightness(1.06)}
+.fine{color:var(--mut);font-size:14px}
+.since{margin-top:22px;color:var(--mut);font-size:15px}
+
+/* browser frame */
+.win{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.1)}
+.win .top{height:34px;background:#1B2334;display:flex;align-items:center;gap:7px;padding:0 13px}
+.win .top i{width:10px;height:10px;border-radius:50%;background:#3A4560;display:block}
+.win .top span{margin-left:10px;font-size:12.5px;font-weight:600;color:#A3AEC2}
+.win img{display:block;width:100%;height:auto}
+.hero .win{transform:rotate(2deg)}
+@media (prefers-reduced-motion:reduce){.hero .win{transform:none}}
+
+section{padding:72px 0;border-top:1px solid var(--line)}
+.kick{color:var(--teal);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+h2{font-size:clamp(30px,4.2vw,44px);line-height:1.08;letter-spacing:-.03em;font-weight:900;margin:12px 0 16px}
+h3{font-size:20px;line-height:1.3;letter-spacing:-.01em;font-weight:800;margin:0 0 6px}
+.intro{color:var(--mut);font-size:18px;max-width:62ch}
+p+p{margin-top:12px}
+
+/* enforcement */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:28px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card p{color:var(--mut);font-size:16px}
+.card .c{display:block;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
+.callout{margin-top:28px;background:var(--bg2);border-left:4px solid var(--amber);border-radius:0 12px 12px 0;padding:18px 22px;font-size:18px}
+
+/* steps */
+.step{display:grid;grid-template-columns:1fr 1.1fr;gap:44px;align-items:center;margin-top:56px}
+.step:nth-of-type(even) .shot{order:-1}
+.num{font:800 15px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--teal);letter-spacing:.08em}
+.step p{color:var(--mut)}
+.mini{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:48px}
+.mini .card h3{font-size:18px}
+
+/* who / how */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:8px}
+ul.tick{list-style:none;padding:0;margin-top:18px}
+ul.tick li{position:relative;padding:9px 0 9px 32px;border-bottom:1px solid var(--line)}
+ul.tick li:last-child{border-bottom:0}
+ul.tick li::before{content:"";position:absolute;left:2px;top:17px;width:16px;height:9px;
+  border-left:3px solid var(--teal);border-bottom:3px solid var(--teal);transform:rotate(-45deg)}
+
+/* price */
+.price{background:linear-gradient(160deg,#142039,#0F1628);border:1px solid #2F3E5C;border-radius:20px;
+  padding:40px;display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center}
+.amount{font-size:72px;font-weight:900;letter-spacing:-.04em;line-height:1}
+.amount small{font-size:18px;font-weight:600;color:var(--mut);letter-spacing:0;margin-left:8px}
+
+/* faq */
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;font-weight:800;font-size:18px;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:15px;font-size:26px;font-weight:400;color:var(--teal)}
+details[open] summary::after{content:"−"}
+details p{color:var(--mut);padding:0 0 20px}
+
+footer{border-top:1px solid var(--line);padding:40px 0 56px;color:var(--mut);font-size:14.5px}
+footer p+p{margin-top:8px}
+
+@media (max-width:860px){
+  .hero{padding:40px 0 56px}
+  .hero .wrap,.step,.two,.price{grid-template-columns:1fr;gap:32px}
+  .step:nth-of-type(even) .shot{order:0}
+  .hero .win{transform:none}
+  .price{padding:28px}
+  .amount{font-size:60px}
+  .bar .buy-sm{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Anqulas home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="18" y="20" width="56" height="70" rx="9" fill="#0F1A2B" stroke="#2DD4BF" stroke-width="6"/><path d="M31 40h30M31 52h22" stroke="#2DD4BF" stroke-width="5" stroke-linecap="round" opacity=".55"/><circle cx="62" cy="70" r="15" fill="#2DD4BF"/><path d="M55 70l5 5 9-10" stroke="#04201c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      EAA Compliance Kit
+    </a>
+    <a class="buy buy-sm" href="https://dodo.pe/eaa-compliance-kit" data-checkout>Get the kit — €99</a>
+  </div>
+</header>
+
+<main id="main">
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill">EU Accessibility Act</span>
+      <h1>Are you <span>in scope?</span></h1>
+      <p class="lede">Find out in four questions — then produce the paperwork <b>regulators ask for first.</b></p>
+      <div class="cta">
+        <a class="buy" href="https://dodo.pe/eaa-compliance-kit" data-checkout>Get the kit — €99</a>
+        <span class="fine">One payment · instant download · VAT included</span>
+      </div>
+      <p class="since">In force across all 27 EU countries since 28 June 2025.</p>
+    </div>
+    <div class="win">
+      <div class="top" aria-hidden="true"><i></i><i></i><i></i><span>Step 1 · Are you in scope?</span></div>
+      <img src="scope-result.webp" width="1200" height="781" alt="The kit's scope check showing the result 'In scope.' for a 24-person online store selling to EU consumers, with what to do next.">
+    </div>
+  </div>
+</div>
+
+<section aria-labelledby="enf">
+  <div class="wrap">
+    <p class="kick">Enforcement has started</p>
+    <h2 id="enf">It already applies. And it's being enforced.</h2>
+    <p class="intro">If you sell online to EU consumers, the Act probably reaches you — even if your business is outside the EU. It follows the market, not your address.</p>
+    <div class="grid">
+      <div class="card"><span class="c">France</span><p>Retailers received legal notices. A court ordered one to make its website and app accessible within six months, with daily fines if it didn't.</p></div>
+      <div class="card"><span class="c">Germany</span><p>Competitors are sending warning letters under competition law. No regulator needed.</p></div>
+      <div class="card"><span class="c">Sweden</span><p>The regulator has been opening cases focused on e-commerce since October 2025.</p></div>
+      <div class="card"><span class="c">Netherlands</span><p>Formal information requests have gone to online stores — including ones based abroad.</p></div>
+    </div>
+    <p class="callout">When a regulator gets in touch, the first request is paperwork: your accessibility statement and the assessment behind it. <strong>Do you have both today?</strong></p>
+  </div>
+</section>
+
+<section aria-labelledby="inside">
+  <div class="wrap">
+    <p class="kick">What's inside</p>
+    <h2 id="inside">Five tools. One folder. Works offline.</h2>
+    <p class="intro">Used in order, they take you from "does this apply to me?" to having the documents on file.</p>
+
+    <div class="step">
+      <div>
+        <p class="num">STEP 1</p>
+        <h3>Are you actually in scope?</h3>
+        <p>Four questions covering the full category list, products versus services, and the micro-enterprise exemption done properly. That exemption only covers services — most online summaries get it wrong.</p>
+      </div>
+      <div class="win shot">
+        <div class="top" aria-hidden="true"><i></i><i></i><i></i><span>Step 1 · Scope check</span></div>
+        <img src="scope-result.webp" width="1200" height="781" loading="lazy" alt="Scope check result: In scope, with the reason and the next steps.">
+      </div>
+    </div>
+
+    <div class="step">
+      <div>
+        <p class="num">STEP 3</p>
+        <h3>Your accessibility statement, written for you</h3>
+        <p>Fill in your details and it writes the Article 13 accessibility statement you publish, plus the internal conformity record you keep on file — the documents a market surveillance authority asks for first.</p>
+      </div>
+      <div class="win shot">
+        <div class="top" aria-hidden="true"><i></i><i></i><i></i><span>Step 3 · Accessibility statement</span></div>
+        <img src="statement.webp" width="1200" height="837" loading="lazy" alt="A generated accessibility statement for a sample shop, with conformance status, known limitations and alternative access sections.">
+      </div>
+    </div>
+
+    <div class="step">
+      <div>
+        <p class="num">STEP 5</p>
+        <h3>Annex VI disproportionate-burden assessment</h3>
+        <p>If full compliance would be a disproportionate burden, you can only rely on that if the assessment is documented. Enter your figures; it calculates the ratios and produces the record.</p>
+      </div>
+      <div class="win shot">
+        <div class="top" aria-hidden="true"><i></i><i></i><i></i><span>Step 5 · Annex VI assessment</span></div>
+        <img src="annex.webp" width="1200" height="781" loading="lazy" alt="The Annex VI workbook with example cost and turnover figures entered.">
+      </div>
+    </div>
+
+    <div class="mini">
+      <div class="card">
+        <p class="num">STEP 2</p>
+        <h3>What "accessible" actually means</h3>
+        <p>The Act never names a technical standard. This bridges it to EN 301 549 and WCAG 2.1 AA — then narrows it to the eight failures that most often stop a disabled customer completing a purchase, with a checklist.</p>
+      </div>
+      <div class="card">
+        <p class="num">STEP 4</p>
+        <h3>If a regulator contacts you</h3>
+        <p>The two routes enforcement arrives by, what has happened to companies so far, and a first-week checklist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="who">
+  <div class="wrap two">
+    <div>
+      <p class="kick">Who it's for</p>
+      <h2 id="who">Built for businesses that sell to EU consumers</h2>
+      <ul class="tick">
+        <li>Online stores, marketplaces and SaaS businesses</li>
+        <li>Businesses outside the EU — US, UK, India and elsewhere — that sell into it</li>
+        <li>Small businesses assuming they're exempt. Find out in two minutes.</li>
+        <li>Agencies and freelancers building sites for EU clients</li>
+      </ul>
+    </div>
+    <div>
+      <p class="kick">How it works</p>
+      <h2>Private by design</h2>
+      <ul class="tick">
+        <li><strong>Everything runs on your computer.</strong> Nothing you type is uploaded anywhere.</li>
+        <li>One small download. Works offline, in any browser.</li>
+        <li>No account, no installs, no subscription.</li>
+        <li>Free updates as enforcement develops.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="buy">
+  <div class="wrap">
+    <div class="price">
+      <div>
+        <p class="kick">Get the kit</p>
+        <h2 id="buy">Find out where you stand — before a regulator or competitor does.</h2>
+      </div>
+      <div>
+        <p class="amount">€99<small>VAT included</small></p>
+        <ul class="tick">
+          <li>All five tools, instant download</li>
+          <li>One payment, no subscription</li>
+          <li>Free updates</li>
+          <li><a href="/refund-policy/">30-day refund</a> if it's not for you</li>
+        </ul>
+        <div class="cta"><a class="buy" href="https://dodo.pe/eaa-compliance-kit" data-checkout>Get the kit — €99</a></div>
+        <p class="fine" style="margin-top:12px">Secure checkout by Dodo Payments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="faq">
+  <div class="wrap narrow">
+    <p class="kick">Questions</p>
+    <h2 id="faq">Before you buy</h2>
+    <details><summary>Does this make my website compliant?</summary>
+      <p>It tells you where you stand, what the law asks for, and gives you the documents you're expected to have. Fixing the site itself is work for you or your developer — Step 2 shows exactly where to start.</p></details>
+    <details><summary>We're not based in the EU. Does it still apply?</summary>
+      <p>If you sell to consumers in the EU, yes — on the same terms as an EU business. Step 1 walks you through it.</p></details>
+    <details><summary>We're a small business. Aren't we exempt?</summary>
+      <p>Only if you pass both tests — under 10 staff and under €2m turnover or balance sheet — and only for services. Products stay in scope regardless of size. Step 1 checks this properly.</p></details>
+    <details><summary>How do I get it?</summary>
+      <p>Straight after payment you get a download link by email. Unzip it and open index.html in any browser.</p></details>
+    <details><summary>Is it legal advice?</summary>
+      <p>No. Every EU country has its own implementing law. If you've already received a formal letter, have your position checked against that country's law as well.</p></details>
+    <details><summary>Can I try something first?</summary>
+      <p>Yes — the <a href="/eaa/">Annex VI workbook</a> is free to use. The kit adds the other four tools — including the statement generator — and the full process around them.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Not legal advice. Not affiliated with the European Union or any national authority.</p>
+    <p>© 2026 Anqulas (Satyam Sagar, trading as Anqulas, India) · <a href="mailto:sales@anqulas.com">sales@anqulas.com</a></p>
+    <p><a href="/terms/">Terms of Sale</a> · <a href="/refund-policy/">Refund policy</a> · <a href="/privacy/">Privacy</a></p>
+  </div>
+</footer>
+</body>
+</html>
