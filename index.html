@@ -3,1036 +3,409 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Anqulas — one system you run on, one login they use</title>
-<meta name="description" content="Projects, approvals, contracts and invoices behind one client login, under your own logo and domain. Live in five days. Open the demo — no booking form.">
+<title>Anqulas — websites and software for studios and firms</title>
+<meta name="description" content="A digital studio from India. Websites for architecture and interior design studios and professional firms, a client operations system, and self-serve tools. Designed and built in days.">
 <link rel="canonical" href="https://anqulas.com/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anqulas.com/">
-<meta property="og:title" content="Anqulas — one system you run on, one login they use">
-<meta property="og:description" content="Decisions with a name and a date on them. Live in five days, under your own brand. Open the demo before you talk to anyone.">
-<meta property="og:image" content="https://anqulas.com/assets/og-index.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:title" content="Anqulas — websites and software for studios and firms">
+<meta property="og:description" content="24 websites for studios and firms across ten countries, a client operations system and self-serve tools. Designed and built in days.">
+<meta property="og:image" content="https://anqulas.com/assets/work/studio-deia.webp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0B0906">
-<meta name="color-scheme" content="dark">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22fw%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%224%22%20y1%3D%224%22%20x2%3D%2260%22%20y2%3D%2260%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%23FFD3AE%22%2F%3E%3Cstop%20offset%3D%22.55%22%20stop-color%3D%22%23F0A868%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23D2621F%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22url(%23fw)%22%2F%3E%3Cg%20transform%3D%22translate(32%2032)%20scale(.78)%20translate(-32%20-32)%22%20fill%3D%22%23160F09%22%20stroke%3D%22%23160F09%22%3E%3Cpath%20d%3D%22M10%2057%2031%209%2052%2057%22%20fill%3D%22none%22%20stroke-width%3D%228.5%22%20stroke-linejoin%3D%22miter%22%20stroke-miterlimit%3D%228%22%20stroke-linecap%3D%22butt%22%2F%3E%3Cpath%20d%3D%22M19%2045%20L43.5%2026.3%22%20fill%3D%22none%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22butt%22%2F%3E%3Cpath%20d%3D%22M52%2020%20L47.7%2032.7%20L38.7%2020.7%20Z%22%20stroke%3D%22none%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<meta name="theme-color" content="#FBFAF8">
+<link rel="icon" href="/assets/anqulas-mark.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Fonts load without blocking the first paint.
-     They used to be a plain stylesheet link, which is render-blocking: the
-     browser will not paint until it has the CSS. Measured on this page,
-     with fonts.googleapis.com unreachable, that was 12,663ms to
-     DOMContentLoaded against 77ms without it. Unreachable is the extreme,
-     but it is not hypothetical — corporate networks proxy or block Google
-     CDNs, and these pages are emailed to contractors sitting behind exactly
-     that kind of network.
-     media="print" makes it non-blocking; onload promotes it to all. Every
-     family already has a real fallback stack in --display/--sans/--ser, and
-     the URL carries display=swap, so the page renders immediately in the
-     fallback and swaps when the webfont lands. -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap" media="print" onload="this.media='all';this.onload=null">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300..500&display=swap"></noscript>
+<!-- Non-blocking, as on the other pages: every family has a fallback stack. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" media="print" onload="this.media='all';this.onload=null">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..500;1,9..144,300..400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></noscript>
 <style>
   :root{
-    /* One copy of the photograph, used twice: as the hero ground on a wide
-       screen and as the .deskband strip on a narrow one. */
-    --desk: url("/assets/caa914dd39.webp");
-    /* Brown-dark, not black-dark. Every neutral below carries a little red and
-       yellow in it, which is what makes the page feel lamp-lit. */
-    /* Lifted out of near-black, twice. #0B0906 against the #F6F4F0 body was a
-       jump of roughly 18:1 at the seam, which reads as two different websites
-       stapled together; #221A14 was better and still read as black-brown in a
-       bright room. These are the same hues again, lighter still.
-
-       The ceiling is set by the rotating accent line, not by taste: the
-       studios pink #FF6E9C sits on the gradient's middle stop and needs 4.5:1
-       there. #413429 is the lightest warm brown that holds it (4.56). The
-       two muted inks are raised to match, so lifting the ground did not cost
-       the body copy any contrast — every pairing on the hero is better than
-       it was:
-                            was   now
-         --ink   on mid    14.77  11.6
-         --ink-2 on mid     7.28   8.6
-         --ink-3 on bottom  3.78   5.4   (was below AA, now above)          */
-    --room:#FBFAF8; --room-2:#F3F0EA; --paper-2:#EFEBE4; --card:#FFFFFF; --panel:#FFFFFF;
-    /* --ink-3 was #857C74, which is 3.97:1 on the hero's cream and was
-       already under AA in the old light half — 40-odd small labels, role
-       names and captions sat below the line. #756D65 reads the same weight
-       and clears 4.5 on every ground here. */
-    --ink:#171310; --ink-2:#57504A; --ink-3:#756D65;
-    --line:rgba(23,19,16,.11); --line-2:rgba(23,19,16,.18);
-    --lamp:#B8460F; --lamp-2:#8F3609;
-    /* --lamp at low alpha. Written out rather than color-mix()'d so the value
-       is greppable next to the hex it comes from. */
-    --lamp-wash:rgba(184,70,15,.085); --lamp-wash-2:rgba(184,70,15,.025);
-    --lamp-line:rgba(184,70,15,.34);
-    --display:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    --ser:"Newsreader",Georgia,"Iowan Old Style",serif;
-    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"DejaVu Sans Mono",monospace;
-    --col:1240px; --measure:52ch;
-    --grain:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%22200%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.82%22%20numOctaves%3D%223%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20type%3D%22saturate%22%20values%3D%220%22%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20filter%3D%22url(%23n)%22%20opacity%3D%220.42%22%2F%3E%3C%2Fsvg%3E");
+    --bg:#FBFAF8; --bg-2:#F2F5F6; --card:#FFFFFF; --line:#DCE2E8;
+    --ink:#0E1116; --ink-2:#3A424D; --ink-3:#5E6773;
+    /* Two cyans: the bright one is decoration only (fails as text on white);
+       the deep one carries every link and label at 5.1:1. */
+    --acc:#3FC8D8; --acc-2:#22A6B8; --acc-ink:#0D7381;
+    --display:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+    --wrap:1180px;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  /* The gradient's TOP stop, not --room. The masthead sits outside the hero
-     section, so it is painted on the body — and with --room here that band
-     was the gradient's darkest colour butted against its lightest, which is
-     the dark strip that used to run across the top of the page. */
-  body{margin:0;background:var(--room);color:var(--ink);font-family:var(--sans);
-    font-size:17px;line-height:1.62;letter-spacing:-.011em;
-    -webkit-font-smoothing:antialiased;overflow-x:hidden}
-  p{margin:0} a{color:inherit}
-  h1,h2,h3,h4{margin:0;font-family:var(--display);font-weight:700;letter-spacing:-.04em;line-height:1.03;text-wrap:balance}
-  h1{font-size:clamp(2.4rem,4.1vw,3.65rem);letter-spacing:-.045em}
-  h2{font-size:clamp(1.95rem,3.7vw,3rem)}
-  h3{font-size:1.22rem;letter-spacing:-.03em;line-height:1.15}
-  h4{font-size:1rem;font-weight:600;letter-spacing:-.022em;line-height:1.3}
-  .ser{font-family:var(--ser);font-style:italic;font-weight:400;letter-spacing:-.015em}
-  .wrap{max-width:var(--col);margin:0 auto;padding:0 30px}
-  .lede{font-size:clamp(1.03rem,1.4vw,1.17rem);color:var(--ink-2);max-width:var(--measure)}
-  .kicker{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-2);border:1px solid var(--line-2);border-radius:999px;padding:7px 15px 7px 12px;background:rgba(255,255,255,.78);backdrop-filter:blur(8px)}
-  .kicker::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--lamp);box-shadow:0 0 10px var(--lamp)}
-  section{padding:120px 0;position:relative}
-  .rule{border-top:1px solid var(--line)}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:var(--acc-ink)}
+  a:hover{color:var(--ink)}
+  :focus-visible{outline:2px solid var(--acc-ink);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc-ink)}
+  h1,h2,h3{font-family:var(--display);font-weight:300;letter-spacing:-.015em;margin:0;color:var(--ink)}
+  h2{font-size:clamp(34px,4.6vw,56px);line-height:1.04}
+  h3{font-size:24px;font-weight:400;line-height:1.2}
+  .lede{font-size:19px;color:var(--ink-2);max-width:640px;margin:18px 0 0}
+  section{padding:104px 0 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
 
-  /* ── the room ─────────────────────────────────────────────────────────
-     Five layers, back to front: a warm floor wash, the lamp itself as a hot
-     off-screen source top-left, its bounce off the right wall, a vignette to
-     pull the corners down, and grain over everything.                     */
-  /* -110px so the room paints behind the masthead, which sits above the hero
-     in the flow and would otherwise show the flat body colour while the hero
-     right below it carries the lamp — a darker strip across the top of the
-     page. Nothing clips it and the bar is z-index 60, so it just extends the
-     lit area upward. The gradient stops are set against this taller box, not
-     the hero's own height. */
-  /* Five layers, front to back. The order matters and the alphas are the
-     whole design, so they are written out rather than folded together:
+  /* Header */
+  .mast{position:sticky;top:0;z-index:20;background:rgba(251,250,248,.86);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+  .mast.stuck{border-bottom-color:var(--line)}
+  .mast .wrap{display:flex;align-items:center;gap:28px;height:68px}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--display);font-size:24px;font-weight:400}
+  .brand img{width:34px;height:34px;object-fit:contain}
+  .nav{display:flex;gap:26px;margin-left:auto}
+  .nav a{color:var(--ink-2);text-decoration:none;font-size:15px}
+  .nav a:hover{color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:999px;font:500 15px/1 var(--sans);text-decoration:none;border:1px solid var(--ink);cursor:pointer;transition:background .15s,color .15s}
+  .btn-solid{background:var(--ink);color:#fff}
+  .btn-solid:hover{background:var(--acc-ink);border-color:var(--acc-ink);color:#fff}
+  .btn-line{background:transparent;color:var(--ink)}
+  .btn-line:hover{background:var(--ink);color:#fff}
+  .mast .btn{min-height:40px;padding:0 18px;font-size:14px}
+  @media (max-width:860px){.nav{display:none}.mast .btn{margin-left:auto}}
 
-       1. the lamp — the warm wash the page had before the photograph, kept so
-          the top-left still reads as lit rather than as a plain white corner;
-       2. a vertical fade, so the photograph ends in paper instead of a hard
-          horizontal edge where .room stops;
-       3. a horizontal scrim — opaque paper across the text column, clearing to
-          nothing by the right edge. This is what makes the photograph legible
-          AND the headline legible: the two never overlap;
-       4. the photograph, anchored right so the crop keeps the hands, the
-          laptop and the notebook rather than the empty floor;
-       5. the paper underneath, for the pixels the photograph does not reach.
+  /* Hero */
+  .hero{position:relative;overflow:hidden;padding:88px 0 0}
+  .hero .ribbon{position:absolute;right:-40px;top:-30px;width:520px;max-width:60vw;pointer-events:none}
+  @media (max-width:640px){.hero .ribbon{display:none}}
+  .hero h1{font-size:clamp(46px,7.4vw,96px);line-height:.98;max-width:900px;margin-top:22px}
+  .hero h1 i{font-style:italic;color:var(--acc-ink)}
+  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:72px}
+  .stats div{padding:22px 20px 22px 0}
+  .stats div+div{padding-left:20px;border-left:1px solid var(--line)}
+  .stats b{display:block;font-family:var(--display);font-weight:300;font-size:44px;line-height:1}
+  .stats span{display:block;font-size:14px;color:var(--ink-3);margin-top:8px;line-height:1.4}
+  @media (max-width:760px){.stats{grid-template-columns:1fr 1fr}.stats div:nth-child(3){padding-left:0;border-left:0}.stats div:nth-child(n+3){border-top:1px solid var(--line)}}
 
-     Measured on the rendered pixels afterwards, every piece of hero text sits
-     at or above its AA threshold — h1 17.55, lede 7.59, the mono line 4.87. */
-  .room{position:absolute;inset:-110px 0 0 0;overflow:hidden;z-index:0;pointer-events:none;
-    background:
-      radial-gradient(120% 88% at 8% 0%, rgba(255,206,158,.46), transparent 52%),
-      linear-gradient(180deg, rgba(251,250,248,0) 52%, rgba(251,250,248,.72) 82%, var(--room) 100%),
-      linear-gradient(95deg, var(--room) 0%, var(--room) 34%,
-        rgba(251,250,248,.62) 52%, rgba(251,250,248,.14) 76%, rgba(251,250,248,0) 100%),
-      var(--desk) right 38%/cover no-repeat,
-      var(--room)}
-  /* Every wash above is weaker than it was. They were mixed to carry a
-     near-black ground; over a lighter one the same alphas blow the top-left
-     corner out to cream and flatten the whole room. */
-  /* The vignette pulls the corners down. Each lift of the ground makes it
-     louder relative to everything else, so it comes down with them. */
-  /* No vignette. On a dark ground it pulled the corners down and read as
-     falloff; on paper the same gradient is a grey smudge in each corner. */
-  .grain{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background-image:var(--grain);background-size:200px 200px;opacity:.05;mix-blend-mode:multiply}
-  /* The lamp's own bloom, animated so the room breathes very slightly. */
-  .bloom{position:absolute;top:-24%;left:-6%;width:52vw;height:52vw;max-width:760px;max-height:760px;
-    border-radius:50%;background:radial-gradient(circle,rgba(255,206,152,.22),transparent 62%);
-    filter:blur(60px);z-index:1;pointer-events:none;animation:breathe 14s ease-in-out infinite alternate}
-  @keyframes breathe{to{transform:scale(1.1) translate(3%,2%);opacity:.82}}
+  /* Work */
+  .work{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 28px;margin-top:48px}
+  .work figure{margin:0}
+  .work .shot{border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--bg-2);aspect-ratio:16/10}
+  .work img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s ease}
+  .work figure:hover img{transform:scale(1.03)}
+  @media (prefers-reduced-motion:reduce){.work img{transition:none}.work figure:hover img{transform:none}}
+  .work figcaption{margin-top:12px;font-size:15px;color:var(--ink-2)}
+  .work figcaption b{display:block;font-family:var(--display);font-weight:400;font-size:19px;color:var(--ink)}
+  .work-note{margin-top:36px;font-size:14px;color:var(--ink-3);max-width:760px}
+  @media (max-width:900px){.work{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.work{grid-template-columns:1fr}}
 
-  /* ── nav ──────────────────────────────────────────────────────────── */
-  .mast{position:sticky;top:0;z-index:60;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease}
-  .mast.stuck{background:rgba(251,250,248,.72);backdrop-filter:blur(18px) saturate(1.5);border-bottom-color:var(--line)}
-  .mast .in{max-width:var(--col);margin:0 auto;padding:18px 30px;display:flex;align-items:center;gap:18px}
-  .logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;letter-spacing:-.035em;font-size:1.1rem;text-decoration:none}
-  /* A glass tile with the A cut in warm gradient. The crossbar is a
-     horizontal path, so the gradient MUST be userSpaceOnUse: on an
-     objectBoundingBox gradient a zero-height box is degenerate and the
-     bar silently disappears, leaving a chevron. */
-  .mk{width:25px;height:25px;flex:none}
-  .mast nav{margin-left:auto;display:flex;align-items:center;gap:28px}
-  .mast nav a:not(.btn){font-size:.9rem;font-weight:500;color:rgba(23,19,16,.72);text-decoration:none;transition:color .18s ease}
-  .mast nav a:not(.btn):hover{color:var(--ink)}
-  @media(max-width:960px){.mast nav a.sm{display:none}.mast nav{gap:12px}}
-  /* Below ~640 the two CTAs together are wider than the viewport and push the
-     document sideways. The demo link survives in the hero; the booking one is
-     the harder ask, so it is the one that stays in the bar. */
-  @media(max-width:640px){.mast nav .btn-glass{display:none}}
+  /* Services */
+  .svc{display:grid;grid-template-columns:1.25fr 1fr;gap:24px;margin-top:48px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:30px 30px 28px;display:flex;flex-direction:column}
+  .card.lead{grid-row:span 2;background:var(--ink);color:#E6EBEF;border-color:var(--ink);position:relative;overflow:hidden}
+  .card.lead h3{color:#fff;font-size:34px}
+  .card.lead p{color:#C9D1D9}
+  .card.lead .tag{color:var(--acc)}
+  .card.lead .more{color:var(--acc)}
+  .card.lead ul{color:#C9D1D9}
+  .card .tag{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc-ink);margin-bottom:14px}
+  .card p{color:var(--ink-2);margin:12px 0 0}
+  .card ul{margin:18px 0 0;padding:0;list-style:none}
+  .card li{padding-left:20px;position:relative;margin-bottom:8px;font-size:16px}
+  .card li:before{content:"";position:absolute;left:0;top:.75em;width:10px;height:1px;background:var(--acc)}
+  .card .more{margin-top:auto;padding-top:22px;font-weight:500;text-decoration:none}
+  .card .more:hover{text-decoration:underline}
+  .price{font-family:var(--mono);font-size:14px;color:var(--ink);margin-top:14px}
+  .card.lead .price{color:#fff}
+  @media (max-width:860px){.svc{grid-template-columns:1fr}.card.lead{grid-row:auto}}
 
-  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-size:.93rem;font-weight:600;letter-spacing:-.02em;padding:12px 22px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;
-    transition:transform .2s cubic-bezier(.2,.7,.3,1),background .2s ease,border-color .2s ease,box-shadow .2s ease}
-  .btn-solid{background:#171310;color:#FBFAF8;box-shadow:0 10px 26px -14px rgba(23,19,16,.55)}
-  .btn-solid:hover{transform:translateY(-2px);box-shadow:0 16px 34px -14px rgba(23,19,16,.68)}
-  .btn-glass{background:#fff;color:var(--ink);border-color:var(--line-2)}
-  .btn-glass:hover{transform:translateY(-2px);background:#fff;border-color:rgba(23,19,16,.34)}
-  .btn-lg{padding:15px 28px;font-size:1rem}
+  .products{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+  @media (max-width:860px){.products{grid-template-columns:1fr}}
 
-  /* ── hero ─────────────────────────────────────────────────────────── */
-  /* No overflow:hidden. It was clipping the room and the bloom to the hero
-     box, which left the masthead above them on the flat body colour — a
-     darker strip across the top of the page. The room now extends up behind
-     the bar instead (see .room). Nothing needs the clip: body already carries
-     overflow-x:hidden for the bloom's sideways bleed, and the bloom is
-     top-anchored so it never reaches the bottom edge. */
-  .hero{position:relative;padding:78px 0 122px}
-  /* On a phone the headline started 320px down a screen 844px tall — nearly
-     40% of the first view spent on empty gradient, because the space that
-     carries the photograph on a wide screen carries nothing on a narrow one. */
-  @media(max-width:720px){.hero{padding:26px 0 104px}}
-  /* 1040px, matching .stage — not 900. The hero collapses to one column at
-     1040, and between the two the text runs full width with the photograph
-     still behind it: a large out-of-focus crop of a chair sitting under the
-     headline. The photograph comes out at exactly the width the second column
-     disappears, and the ground falls back to the warm paper used before it. */
-  /* The photograph's narrow-screen home. Behind the copy it needs a scrim
-     that ruins it, so below 1040 it stops being a ground and becomes a band:
-     full-bleed, its own strip between the buttons and the product shot, with
-     the paper feathering into the top edge so it grows out of the page rather
-     than being pasted on. Same bytes as the desktop ground — the CSS variable
-     is set once on :root, so this costs no second copy. */
-  .deskband{display:none}
-  @media(max-width:1040px){
-    .deskband{display:block;margin:34px -24px 0;height:190px;position:relative;
-      background:var(--desk) center 42%/cover no-repeat}
-    .deskband::after{content:"";position:absolute;inset:0;
-      background:linear-gradient(180deg,rgba(251,250,248,.92) 0%,rgba(251,250,248,.30) 26%,rgba(251,250,248,0) 58%)}
-  }
-  @media(max-width:520px){.deskband{height:158px;margin-top:28px}}
+  /* Method */
+  .method{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:48px}
+  .method div{border-top:2px solid var(--ink);padding-top:18px}
+  .method b{display:block;font-weight:600;margin-bottom:6px}
+  .method p{margin:0;color:var(--ink-2);font-size:16px}
+  .method .n{font-family:var(--mono);font-size:13px;color:var(--acc-ink);display:block;margin-bottom:10px}
+  @media (max-width:900px){.method{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.method{grid-template-columns:1fr}}
 
-  @media(max-width:1040px){
-    .room{background:
-      radial-gradient(130% 95% at 10% 0%, rgba(255,206,158,.50), transparent 54%),
-      radial-gradient(80% 60% at 92% 30%, rgba(255,222,190,.34), transparent 60%),
-      linear-gradient(180deg,#FFFBF5 0%, #FBF5EB 56%, var(--room) 100%)}
-  }
-  .hero .wrap{position:relative;z-index:2}
-  .stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.04fr);gap:48px;align-items:center;padding-bottom:150px}
-  @media(max-width:1040px){.stage{grid-template-columns:1fr;gap:52px;padding-bottom:120px}}
-  .hero h1{margin-top:26px}
-  .hero h1 .ser{color:var(--lamp-2);font-size:1.02em}
-  /* Fixed height: a headline that shoves the page down every 2.9s reads as
-     broken rather than alive. */
-  /* weight 600, and that is a contrast decision rather than a typographic
-     one. This line is set in each vertical's accent, and the weakest of the
-     four — the studios pink #FF6E9C — measures 3.48:1 against the lamp-lit
-     ground it actually sits on. At 20px it needs 4.5:1 as normal text and
-     3:1 as bold, and bolding is the change that does not cost the brand
-     colour or darken the room back down. */
-  .rot{margin-top:22px;position:relative;height:calc(1.5em * 2);max-width:26ch;font-size:clamp(1.04rem,1.7vw,1.26rem);line-height:1.5;font-weight:600;letter-spacing:-.025em}
-  .rot-item{position:absolute;inset:0;opacity:0;transform:translateY(.4em);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.3,1);color:var(--d)}
-  .rot-item.on{opacity:1;transform:none}
-  .hero .lede{margin-top:24px}
-  .cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-  .fine{margin-top:20px;font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
+  /* Team */
+  .team{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+  .person{display:flex;gap:22px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px}
+  .avatar{flex:none;width:72px;height:72px;border-radius:50%;background:linear-gradient(200deg,var(--acc),var(--acc-2));display:grid;place-items:center;font-family:var(--display);font-size:26px;color:#0B2A30}
+  .role{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc-ink);margin:4px 0 10px}
+  .person p{margin:0;color:var(--ink-2);font-size:16px}
+  .person .contact{margin-top:12px;font-size:15px}
+  @media (max-width:760px){.team{grid-template-columns:1fr}}
 
-  /* The screen standing in the room. Perspective on the parent, rotation on
-     the child, so the shadow stays flat on the "desk" while the panel turns. */
-  .screen{perspective:1600px;position:relative}
-  .screen figure{margin:0;transform:rotateY(-11deg) rotateX(3deg) translateZ(0);
-    border-radius:14px;overflow:hidden;border:1px solid var(--line-2);
-    background:var(--panel);
-    box-shadow:0 46px 92px -38px rgba(23,19,16,.6), 0 2px 6px rgba(23,19,16,.08);
-    transition:transform .8s cubic-bezier(.2,.7,.3,1)}
-  .screen:hover figure{transform:rotateY(-6deg) rotateX(1.5deg)}
-  @media(max-width:1040px){.screen figure{transform:none}.screen:hover figure{transform:none}}
-  .screen-bar{display:flex;align-items:center;gap:7px;padding:11px 15px;border-bottom:1px solid var(--line);background:#F4F1EC}
-  .screen-bar i{width:9px;height:9px;border-radius:50%;background:rgba(23,19,16,.16);display:block}
-  .screen-bar span{margin-left:10px;font-family:var(--mono);font-size:.67rem;color:var(--ink-3)}
-  .screen img{display:block;width:100%;height:auto}
-  /* The warm overlay that used to bed the screenshot into a dark room is
-     gone. On paper the product is already the same brightness as the page;
-     tinting it only makes a clean UI look dirty. */
+  /* Contact */
+  .talk{margin-top:104px;background:var(--ink);color:#E6EBEF;padding:96px 0}
+  .talk h2{color:#fff}
+  .talk .lede{color:#C9D1D9}
+  .talk a{color:var(--acc)}
+  .talk-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+  .facts{list-style:none;padding:0;margin:32px 0 0}
+  .facts li{display:flex;gap:16px;padding:12px 0;border-top:1px solid #2A313A;font-size:16px}
+  .facts .k{width:90px;flex:none;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9AA4AF;padding-top:3px}
+  form{background:#161B22;border:1px solid #2A313A;border-radius:16px;padding:28px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+  label{font-size:14px;color:#C9D1D9}
+  input,textarea{font:inherit;font-size:16px;color:#fff;background:#0E1116;border:1px solid #3A434E;border-radius:10px;padding:12px 14px;width:100%}
+  input:focus,textarea:focus{outline:2px solid var(--acc);outline-offset:1px;border-color:transparent}
+  textarea{min-height:130px;resize:vertical}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .talk .btn-solid{background:var(--acc);border-color:var(--acc);color:#0B2A30;width:100%}
+  .talk .btn-solid:hover{background:#fff;border-color:#fff;color:var(--ink)}
+  .msg{display:none;margin-top:14px;font-size:15px;padding:10px 14px;border-radius:10px}
+  .msg.on{display:block}
+  .msg.ok{background:#12352F;color:#BFF2E2}
+  .msg.warn{background:#3A2A12;color:#FBDDA6}
+  .note{font-size:14px;color:#9AA4AF;margin:14px 0 0}
+  @media (max-width:860px){.talk-grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
 
-  /* ── the four doors, riding the hero's bottom edge ────────────────── */
-  /* The same card as the four doors above, in a row of three and without the
-     negative margin that lifts those into the hero. Reused rather than restyled
-     so the front page has one card, not two that nearly match. */
-  .toolrow{margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  @media(max-width:860px){.toolrow{grid-template-columns:1fr}}
+  footer{background:var(--ink);color:#9AA4AF;border-top:1px solid #2A313A;padding:40px 0 48px;font-size:14px}
+  .foot{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px}
+  .foot b{display:block;color:#fff;font-weight:500;margin-bottom:10px}
+  .foot a{display:block;color:#C9D1D9;text-decoration:none;margin-bottom:6px}
+  .foot a:hover{color:#fff}
+  @media (max-width:760px){.foot{grid-template-columns:1fr 1fr}}
 
-  .doors{position:relative;z-index:3;margin-top:-108px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-  @media(max-width:1040px){.doors{margin-top:-80px}}
-  @media(max-width:860px){.doors{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:520px){.doors{grid-template-columns:1fr;margin-top:-56px}}
-  .door{display:flex;flex-direction:column;gap:11px;padding:20px 20px 22px;border-radius:16px;text-decoration:none;
-    background:#fff;border:1px solid var(--line);
-    box-shadow:0 22px 46px -30px rgba(23,19,16,.34);
-    transition:transform .24s cubic-bezier(.2,.7,.3,1),background .24s ease,border-color .24s ease,box-shadow .24s ease}
-  .door:hover{transform:translateY(-6px);border-color:var(--line-2);box-shadow:0 30px 56px -28px rgba(23,19,16,.42)}
-  .door:focus-visible{outline:2px solid var(--d);outline-offset:3px}
-  /* One card is inverted — the campaign's current vertical. On a dark ground
-     it was the only light card and won that way; on paper the same trick
-     runs the other direction. */
-  .door.on{background:#171310;border-color:#171310;box-shadow:0 28px 56px -26px rgba(23,19,16,.5)}
-  .door.on .door-t{color:rgba(250,247,242,.62)} .door.on .door-w{color:#FAF7F2}
-  .door.on:hover{background:#171310}
-  .mark{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:.78rem;letter-spacing:-.02em;color:#fff;background:var(--d)}
-  .door-t{font-size:.76rem;color:var(--ink-3);letter-spacing:-.005em}
-  .door-w{font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:-.03em;line-height:1.22;color:var(--ink)}
-
-
-  /* ── the light ground ─────────────────────────────────────────────────
-     The room is a hero, not a whole page. Light is where you read, and a
-     visitor spends far longer below the fold than in it — a full page of
-     near-black is fine for forty words and tiring for a thousand.
-
-     This works by redeclaring the same tokens inside .lit rather than by
-     restyling components, so every rule written for the dark ground keeps
-     working and nothing had to be duplicated. The accent shifts from the
-     lamp's pale orange to a burnt one, because #F0A868 on off-white is
-     roughly 1.8:1 and unreadable. */
-  .lit section{padding:92px 0}
-  .lit{
-    --room:#FBFAF8; --paper-2:#EFEBE4; --card:#FFFFFF; --panel:#FFFFFF;
-    --ink:#171310; --ink-2:#57504A; --ink-3:#756D65;
-    --line:rgba(23,19,16,.11); --line-2:rgba(23,19,16,.18);
-    --lamp:#B8460F; --lamp-2:#8F3609;
-    /* --lamp at low alpha. Written out rather than color-mix()'d so the
-       value is greppable next to the hex it comes from. */
-    --lamp-wash:rgba(184,70,15,.085); --lamp-wash-2:rgba(184,70,15,.025);
-    --lamp-line:rgba(184,70,15,.34);
-    /* No rounded lip, no lift, no shadow. Those existed to land a light
-       block on a dark room; with one ground for the whole page they would be
-       a seam where there is nothing to seam. */
-    background:transparent;color:var(--ink);position:relative;z-index:4}
-  .lit .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:transparent}
-  .lit .chip{background:#fff}
-  .lit .btn-solid{background:#171310;color:#FBFAF8;box-shadow:0 10px 26px -14px rgba(23,19,16,.6)}
-  .lit .btn-solid:hover{box-shadow:0 16px 32px -14px rgba(23,19,16,.7)}
-  .lit .btn-glass{background:#fff;border-color:var(--line-2);color:var(--ink);backdrop-filter:none}
-  .lit .btn-glass:hover{background:#fff;border-color:rgba(23,19,16,.34)}
-  .lit .adm{background:linear-gradient(100deg,rgba(184,70,15,.055),rgba(23,19,16,.012) 44%)}
-  .lit .price{background:#fff}
-  .lit footer{border-top:1px solid var(--line)}
-
-  /* ── the proof ─────────────────────────────────────────────────────────
-     Three claims that have to read as evidence rather than marketing, so
-     they get a plain numbered rule down the left rather than a card each:
-     cards say "feature", a ruled list says "argument".                   */
-  .proofs{margin-top:44px;display:grid;gap:0;border-top:1px solid var(--line)}
-  .proof{padding:28px 0 26px;border-bottom:1px solid var(--line);
-    display:grid;grid-template-columns:minmax(0,22ch) minmax(0,1fr);gap:8px 48px;align-items:start}
-  .proof h4{font-size:1.06rem;letter-spacing:-.025em;line-height:1.25}
-  .proof p{font-size:.95rem;line-height:1.62;color:var(--ink-2);max-width:62ch}
-  @media(max-width:820px){
-    .proof{grid-template-columns:1fr;gap:7px}
-    .proof p{max-width:none}
-  }
-
-  /* ── screenshots ───────────────────────────────────────────────────────
-     Given a real border and a real shadow because a screenshot floating on
-     the page background reads as a mockup; a framed one reads as a window. */
-  .shot{margin:38px 0 0}
-  .shot img{display:block;width:100%;height:auto;border-radius:14px;
-    border:1px solid var(--line-2);background:#fff;
-    box-shadow:0 30px 60px -34px rgba(23,19,16,.45)}
-  .shot figcaption{margin-top:12px;font-size:.86rem;color:var(--ink-3);line-height:1.5}
-  .shots2{display:grid;grid-template-columns:1fr 1fr;gap:30px}
-  @media(max-width:900px){.shots2{grid-template-columns:1fr;gap:0}}
-
-  /* ── price ─────────────────────────────────────────────────────────────
-     Two numbers and the reason there are two. The old single figure said
-     "$6,000 · founding price", which contradicted the app's own pricing
-     screen, where the founding rate is $2,500 and $6,000 is what it becomes
-     once the three founding slots are gone.                              */
-  .prices{margin-top:46px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:18px;align-items:stretch}
-  .tier{position:relative;display:flex;flex-direction:column;
-    border:1px solid var(--line);border-radius:18px;padding:26px 22px;
-    background:rgba(255,255,255,.55);
-    transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s ease,border-color .22s ease}
-  .tier .amt{font-family:var(--display);font-weight:700;letter-spacing:-.045em;
-    font-size:2.05rem;line-height:1;display:block}
-  .tier .per{display:block;margin-top:7px;font-family:var(--mono);font-size:.68rem;
-    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
-  .tier p{margin-top:13px;font-size:.9rem;line-height:1.55;color:var(--ink-2)}
-  .tier:hover{transform:translateY(-4px)}
-
-  /* The recommended tier, without a slab of colour.
-     The obvious way to do this is the one every pricing page uses: fill the
-     card with a saturated block and reverse the text out of it. Against this
-     paper that is a jump of about 11:1 at the card edge, and it reads as a
-     banner dropped onto the page rather than part of it.
-     So the pull is built from ONE hue — the same --lamp the rest of the page
-     accents with — at four strengths: an 8% wash for the ground, 34% for the
-     border, the full colour for the number and the badge, and a tinted
-     shadow. The card also sits 12px proud of its neighbours top and bottom,
-     which is where most of the "choose this" comes from: size and elevation
-     carry hierarchy at a fraction of the contrast that colour needs. */
-  .tier.lead{margin:-12px 0;padding:34px 24px 32px;
-    border-color:var(--lamp-line);
-    background:linear-gradient(168deg,var(--lamp-wash) 0%,var(--lamp-wash-2) 58%,rgba(255,255,255,0) 100%),#fff;
-    box-shadow:0 28px 56px -30px rgba(184,70,15,.4),0 1px 0 rgba(184,70,15,.06)}
-  .tier.lead .amt{color:var(--lamp)}
-  .tier.lead .per{color:var(--lamp-2)}
-  .tier.lead:hover{box-shadow:0 34px 62px -30px rgba(184,70,15,.5)}
-
-  /* Sits on the border rather than inside it, so the eye finds the card
-     before it reads a word. Full-strength lamp on ~5.4:1 against its own
-     text — the one place on this block where the colour goes solid, and it
-     is 90px wide. */
-  .pick{position:absolute;top:-11px;right:20px;
-    font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
-    background:var(--lamp);color:#FFF7F1;padding:5px 11px;border-radius:999px;
-    box-shadow:0 6px 16px -9px rgba(184,70,15,.9)}
-
-  @media(max-width:820px){
-    .prices{grid-template-columns:1fr;gap:14px}
-    /* Stacked, there are no neighbours to stand proud of, and the negative
-       margin would just collide with the card above. */
-    .tier.lead{margin:0}
-  }
-
-  .lit .kicker{background:#fff}
-
-  /* The bar detaches into a floating pill once it is over the light ground,
-     the way the reference does. Sitting flush to the top edge over a rounded
-     light block reads as two pages stacked. */
-  .mast.stuck .in{max-width:calc(var(--col) - 40px);margin:10px auto;padding:11px 14px 11px 22px;
-    border:1px solid rgba(23,19,16,.10);border-radius:999px;
-    background:rgba(255,255,255,.74);backdrop-filter:blur(20px) saturate(1.6);
-    box-shadow:0 18px 40px -22px rgba(23,19,16,.35)}
-  .mast.stuck{background:transparent;backdrop-filter:none;border-bottom-color:transparent}
-
-  /* ── marquee ──────────────────────────────────────────────────────── */
-  .strip{padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;
-    mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
-    -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
-  .marquee{display:flex;width:max-content;animation:slide 52s linear infinite}
-  .marquee-row{display:flex;gap:10px;padding:0 5px}
-  .strip:hover .marquee{animation-play-state:paused}
-  @keyframes slide{to{transform:translateX(-50%)}}
-  .chip{font-family:var(--mono);font-size:.69rem;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:7px 14px;white-space:nowrap;color:var(--ink-3)}
-  .chip.hot{color:var(--lamp-2);border-color:var(--lamp-line);background:var(--lamp-wash)}
-
-  /* ── features ─────────────────────────────────────────────────────── */
-  /* stretch, not start: the "Their side" column carries three items and
-     "Your side" four, so at align-items:start one card finished 80px short of
-     the other and the pair looked accidental. */
-  .split{margin-top:54px;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
-  @media(max-width:900px){.split{grid-template-columns:1fr;gap:14px}}
-  /* The photograph gets the top of the card, not a strip. The panel is pushed
-     down by padding rather than sized, so a three-item column and a four-item
-     one still show the same amount of picture. */
-  /* The 30px here is the photo mat, not the text's padding — the panel keeps
-     its own 26px inside. At 16px the panel was 578px wide and its lines ran
-     to about 62 characters, which is past a comfortable measure and left the
-     photograph as a hairline around the edge. At 30px the panel is 542px and
-     the lines settle near 58, and the picture actually reads as the card. */
-  .col{position:relative;border-radius:22px;padding:230px 30px 30px;overflow:hidden;
-    border:1px solid var(--line);isolation:isolate;display:flex;flex-direction:column;
-    transition:transform .22s cubic-bezier(.2,.7,.3,1),box-shadow .22s ease}
-  /* Same 4px lift as the tiers and the vertical cards, so every card on the
-     site answers the cursor the same way. */
-  .col:hover{transform:translateY(-4px);box-shadow:0 30px 58px -32px rgba(23,19,16,.55)}
-  .col .feats{flex:1}
-  /* The photograph is an <img>, not a background-image, for one reason:
-     loading="lazy" does not reach CSS backgrounds. As a background these two
-     were fetched before the load event even though the section sits well below
-     the fold — 239KB on the critical path for something a visitor might never
-     scroll to. As images they wait until they are approached. Visually
-     identical: object-fit:cover reproduces center/cover, and the gradient
-     still sits over the top via ::before. */
-  .col-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    object-position:center;z-index:-2}
-  .col::before{content:"";position:absolute;inset:0;z-index:-1;
-    background:linear-gradient(180deg,rgba(10,8,6,.30) 0%,rgba(10,8,6,.05) 34%,rgba(10,8,6,.22) 100%)}
-  /* On a phone the mat would eat a third of an already narrow measure, so it
-     comes back in. */
-  @media(max-width:900px){.col{padding:175px 18px 18px}}
-
-  /* Two photographic cards, after the reference: the photograph is the card,
-     not a band above it, and the content floats on top in a frosted panel.
-
-     That panel is doing real work rather than decoration. Four paragraphs of
-     body copy set directly on a photograph is unreadable at any opacity you
-     would still call a photograph — the panel keeps the picture full-bleed and
-     the text on a surface with a contrast ratio you can rely on. */
-  /* The label rides the photograph at the top of the card, outside the panel. */
-  .side-k{position:absolute;top:20px;left:24px;right:24px;display:block;font-family:var(--mono);
-    font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;border-bottom:0;
-    text-shadow:0 1px 10px rgba(0,0,0,.7)}
-  /* One rule, not two. The list reset used to be declared separately and later,
-     so its padding:0 silently undid the panel's padding and every line sat
-     against the left edge — same class, same specificity, source order decides. */
-  .feats{list-style:none;margin:0;padding:18px 26px 20px;
-    background:rgba(255,255,255,.94);backdrop-filter:blur(14px) saturate(1.2);
-    border-radius:16px;box-shadow:0 22px 48px -26px rgba(23,19,16,.55)}
-  .feat{padding:16px 0;border-bottom:1px solid var(--line)}
-  .feat:last-child{border-bottom:0}
-  .feat h4{margin-bottom:5px;font-size:1rem}
-  .feat p{font-size:.9rem;line-height:1.55;color:var(--ink-2);max-width:60ch}
-
-  /* ── the week ─────────────────────────────────────────────────────── */
-  .week{list-style:none;margin:54px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:0}
-  @media(max-width:940px){.week{grid-template-columns:1fr}}
-  .day{position:relative;padding:32px 20px 0 0;border-top:1px solid var(--line)}
-  @media(max-width:940px){.day{padding:24px 0}}
-  .day::before{content:"";position:absolute;top:-3px;left:0;width:5px;height:5px;border-radius:50%;background:var(--lamp);box-shadow:0 0 10px var(--lamp)}
-  .day-k{display:block;font-family:var(--mono);font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lamp-2);margin-bottom:11px}
-  .day h4{margin-bottom:8px}
-  .day p{font-size:.87rem;color:var(--ink-2);padding-right:8px}
-
-  /* ── close ────────────────────────────────────────────────────────── */
-  .price{margin-top:34px;display:inline-flex;align-items:baseline;gap:14px;border:1px solid var(--line-2);border-radius:16px;padding:18px 26px;background:linear-gradient(180deg,rgba(255,240,220,.06),transparent)}
-  .price b{font-family:var(--display);font-size:2.3rem;font-weight:700;letter-spacing:-.05em}
-  .price span{font-family:var(--mono);font-size:.69rem;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3)}
-  footer{border-top:1px solid var(--line);padding:34px 0 62px;font-size:.83rem;color:var(--ink-3)}
-  .foot-row{display:flex;flex-wrap:wrap;gap:12px 26px;align-items:center}
-  .foot-legal{margin-top:16px;font-size:.79rem;color:var(--ink-3);opacity:.85}
-  footer a{text-decoration:none;transition:color .18s ease}
-  footer a:hover{color:var(--ink)}
-  footer .sp{margin-left:auto}
-
-  /* ── reveal ───────────────────────────────────────────────────────── */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
-  .doors .door,.week .day{opacity:0;transform:translateY(22px)}
-  .doors.in .door,.week.in .day{opacity:1;transform:none;
-    transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.3,1),background .24s ease,border-color .24s ease,box-shadow .24s ease}
-  .doors.in .door[data-i="1"],.week.in .day[data-i="1"]{transition-delay:.08s}
-  .doors.in .door[data-i="2"],.week.in .day[data-i="2"]{transition-delay:.16s}
-  .doors.in .door[data-i="3"],.week.in .day[data-i="3"]{transition-delay:.24s}
-  .week.in .day[data-i="4"]{transition-delay:.32s}
-  .doors.in .door:hover{transform:translateY(-6px)}
-
-  /* Motion is decoration here; none of it carries meaning, so all of it goes. */
-  /* Windows ships "Animation effects" off for a lot of people, so this is not a
-     rare accessibility edge — it is a normal visitor, and on their machine the
-     old version of this block killed every animation AND every transition. The
-     page stopped responding to a hover, and the headline froze on one of its
-     four lines, hiding three quarters of what it says.
-
-     So: movement goes. Drift, bloom, marquee, the tilt, the travel on a reveal.
-     Opacity and colour stay, because a crossfade has no vestibular cost and it
-     is what keeps the page from reading as a screenshot. The rotator keeps
-     running for the reason it exists: each line names a different reader's
-     problem, and showing one of four is showing a quarter of the argument. */
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto}
-    .aurora i,.bloom,.marquee,.logo b{animation:none}
-    .reveal,.doors .door,.week .day{opacity:1;transform:none;transition:none}
-    .screen figure,.screen:hover figure{transform:none;transition:none}
-    .door:hover,.btn:hover,.btn-solid:hover,.btn-glass:hover{transform:none}
-    /* The lift is movement, so it goes. The wash, the badge and the extra
-       height are static and still say "this one". */
-    .tier:hover,.col:hover{transform:none}
-    .door-go svg,.door:hover .door-go svg{transition:none;transform:none}
-    .rot-item{transform:none;transition:opacity .45s ease}
-    .talk-field input,.talk-field textarea,.talk-send{transition:none}
-  }
-
-
-  /* ── let's talk ───────────────────────────────────────────────────────
-     The photograph is a horizon at the foot of the section, not a ground
-     under the form. Behind form labels and input text it would need a scrim
-     heavy enough to make it a smudge, and there is no version of "washed-out
-     mountain behind a text field" that reads as anything but a mistake. Below
-     the content it costs nothing and does the whole job. */
-  section.talk{position:relative;padding:64px 0 300px;overflow:hidden;scroll-margin-top:100px}
-  /* An <img> rather than a background-image, for one reason: a CSS background
-     is fetched as soon as its element enters the render tree, off-screen or
-     not. Measured on the deployed front page, the old plate was in the 513KB
-     the browser pulled before a visitor scrolled a pixel — for a picture at
-     the very bottom of the page. loading="lazy" defers it to the moment
-     somebody actually approaches this section, so a plate six times sharper
-     costs nothing at all on first paint. (In the committed copies the image is
-     inlined and this is moot; pages.mjs pulls it out into /assets on deploy,
-     which is where it matters.)
-     
-     The band reaches 600px up — past the form card, not to it. Anchored to
-     the card's lower edge it drew a line across the page; rising behind the
-     card there is no edge to see. */
-  .talk-bg{position:absolute;left:0;right:0;bottom:0;height:600px;z-index:0;
-    pointer-events:none;overflow:hidden}
-  .talk-bg img{position:absolute;inset:0;width:100%;height:100%;display:block;
-    object-fit:cover;object-position:center bottom}
-  /* The scrim, painted over the photograph. Eight stops with no flat run and
-     no step: the eye cannot find an edge, so the picture grows out of the
-     paper rather than starting somewhere. It eases back toward paper over the
-     last 15% as well: the footer below is plain ground, and a photograph at
-     full strength meeting it draws the same hard line at the bottom that the
-     old band drew at the top. The warm wash is not decoration —
-     the plate is grey rock under white mist and this site is cream and warm
-     brown, so untinted it reads as a photograph borrowed from elsewhere. */
-  .talk-bg::after{content:"";position:absolute;inset:0;
-    background:
-      linear-gradient(180deg, var(--room) 0%, rgba(251,250,248,.965) 13%,
-        rgba(251,250,248,.87) 28%, rgba(251,250,248,.68) 44%, rgba(251,250,248,.44) 60%,
-        rgba(251,250,248,.22) 74%, rgba(251,250,248,.10) 84%,
-        rgba(251,250,248,.26) 93%, rgba(251,250,248,.62) 100%),
-      linear-gradient(180deg, rgba(255,206,158,.16), rgba(214,148,88,.11))}
-  .talk .wrap{position:relative;z-index:1}
-  .talk-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:52px;align-items:start}
-  @media(max-width:900px){.talk-grid{grid-template-columns:1fr;gap:32px}
-    section.talk{padding:52px 0 250px}.talk-bg{height:470px}}
-
-  .talk-facts{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:14px}
-  .talk-facts li{display:grid;gap:2px}
-  .talk-facts .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
-    text-transform:uppercase;color:var(--ink-2)}
-  .talk-facts .v{font-size:.97rem;color:var(--ink)}
-  .talk-facts a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--lamp)}
-  .talk-facts a:hover{color:var(--lamp)}
-
-  .talk-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 26px 24px;
-    box-shadow:0 30px 64px -34px rgba(23,19,16,.40)}
-  .talk-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media(max-width:520px){.talk-row{grid-template-columns:1fr}}
-  .talk-field{display:grid;gap:6px;margin-top:14px}
-  .talk-field:first-child,.talk-row .talk-field{margin-top:0}
-  .talk-row{margin-bottom:14px}
-  .talk-field label{font-size:.85rem;font-weight:600;color:var(--ink)}
-  .talk-field input,.talk-field textarea{font:inherit;font-size:.95rem;color:var(--ink);
-    background:#FDFCFA;border:1px solid var(--line-2, var(--line));border-radius:10px;
-    padding:11px 13px;width:100%;box-sizing:border-box;
-    transition:border-color .18s ease,box-shadow .18s ease,background .18s ease}
-  .talk-field textarea{min-height:118px;resize:vertical;line-height:1.55}
-  .talk-field input:focus,.talk-field textarea:focus{outline:none;background:#fff;
-    border-color:var(--lamp);box-shadow:0 0 0 3px color-mix(in srgb, var(--lamp) 18%, transparent)}
-  .talk-field input::placeholder,.talk-field textarea::placeholder{color:var(--ink-3)}
-
-  /* Off-screen rather than display:none — a bot reading the DOM fills what it
-     can see in the markup, and a hidden input is the tell. */
-  .talk-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-
-  .talk-send{margin-top:16px;width:100%;justify-content:center}
-  .talk-send[disabled]{opacity:.62;cursor:progress}
-  .talk-note{margin-top:12px;font-family:var(--mono);font-size:.72rem;line-height:1.6;
-    color:var(--ink-3);text-align:center}
-  .talk-note a{color:var(--ink-2);text-decoration:underline;text-underline-offset:2px}
-  .talk-msg{margin-top:12px;font-size:.9rem;line-height:1.55;padding:11px 13px;border-radius:10px;display:none}
-  .talk-msg.on{display:block}
-  .talk-msg.ok{background:#EFF6EF;border:1px solid #BFD8BF;color:#2C5530}
-  .talk-msg.warn{background:#FDF4E8;border:1px solid #E6CFA8;color:#6B4A17}
-
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
 
 <header class="mast" id="mast">
-  <div class="in">
-    <a class="logo" href="#top"><svg class="mk" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="mkw" gradientUnits="userSpaceOnUse" x1="10" y1="8" x2="52" y2="58"><stop offset="0" stop-color="#E8913F"/><stop offset=".55" stop-color="#C9571A"/><stop offset="1" stop-color="#8F3609"/></linearGradient><linearGradient id="mkt" gradientUnits="userSpaceOnUse" x1="18" y1="48" x2="54" y2="18"><stop offset="0" stop-color="#3AA5A0"/><stop offset="1" stop-color="#14615F"/></linearGradient></defs><path d="M10 57 31 9 52 57" fill="none" stroke="url(#mkw)" stroke-width="8" stroke-linejoin="miter" stroke-miterlimit="8" stroke-linecap="butt"/><path d="M19 45 L43.5 26.3" fill="none" stroke="url(#mkt)" stroke-width="6.5" stroke-linecap="butt"/><path d="M52 20 L47.7 32.7 L38.7 20.7 Z" fill="url(#mkt)"/></svg>Anqulas</a>
-    <nav>
-      <a class="sm" href="#doors">Who it's for</a>
-      <a class="sm" href="#inside">What's inside</a>
-      <a class="sm" href="#week">The week</a>
-      <a class="btn btn-glass" href="https://app.anqulas.com/login">Sign in to the demo</a>
-      <a class="btn btn-solid" href="#talk">Book a call</a>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Anqulas home"><img src="/assets/anqulas-mark.webp" alt="" width="34" height="34">Anqulas</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#products">Products</a>
+      <a href="#team">Team</a>
     </nav>
+    <a class="btn btn-solid" href="#talk">Start a project</a>
   </div>
 </header>
 
-<main id="top">
-
-<section class="hero">
-  <div class="room" aria-hidden="true"></div>
-  <div class="bloom" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
+<main>
+<div class="hero">
+  <svg class="ribbon" viewBox="0 0 520 300" fill="none" aria-hidden="true">
+    <path d="M230 -20 C226 60 330 92 356 34 C382 -24 292 -30 304 52 C316 134 444 122 464 58" stroke="#3FC8D8" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M168 -14 C186 50 260 76 286 32" stroke="#3FC8D8" stroke-opacity=".35" stroke-width="6" stroke-linecap="round"/>
+  </svg>
   <div class="wrap">
-    <div class="stage">
-      <div>
-        <span class="kicker">One system · four front doors</span>
-        <h1>Somebody said yes.<br><span class="ser">Nobody wrote it down.</span></h1>
-        <div class="rot"><span class="rot-item on" style="--d:#BC2A59">in an email thread, by somebody junior.</span><span class="rot-item" style="--d:#0F6B4F">four chasing emails ago. Still nothing.</span><span class="rot-item" style="--d:#B44917">on site, by phone. It cost £40,000.</span><span class="rot-item" style="--d:#0D6E76">on a call, at a price nobody wrote down.</span></div>
-        <p class="lede">One login where an approval carries a name, a date and a price — and nothing can quietly change afterwards.</p>
-        <div class="cta">
-          <a class="btn btn-solid btn-lg" href="https://app.anqulas.com/login">Open the live demo</a>
-          <a class="btn btn-glass btn-lg" href="#talk">Twenty minutes, no slides</a>
-        </div>
-        <p class="fine">Nothing is behind a booking form. Open it, click anything, then decide.</p>
-        <div class="deskband" aria-hidden="true"></div>
-      </div>
-      <div class="screen">
-        <figure>
-          <div class="screen-bar" aria-hidden="true"><i></i><i></i><i></i><span>Executive analytics</span></div>
-          <img src="/assets/7b73b82d39.webp" width="1600" height="1095" fetchpriority="high" decoding="async"
-            alt="The Executive analytics screen: revenue, ARR, profit and retention tiles above trend and forecast charts, with CRM, Sales, Invoices, AI Assistant and Workflows listed in the sidebar.">
-        </figure>
-      </div>
+    <div class="eyebrow">Digital studio · India, working worldwide</div>
+    <h1>Websites and software for studios <i>and firms.</i></h1>
+    <p class="lede">We design and build websites for architecture and interior design studios and professional firms, plus a client operations system and self-serve tools. Each site is researched around the business and live in days.</p>
+    <div class="ctas">
+      <a class="btn btn-solid" href="#work">See the work</a>
+      <a class="btn btn-line" href="#talk">Start a project</a>
     </div>
-  </div>
-  <div class="wrap">
-    <div class="doors" id="doors">
-        <a class="door" href="/studios/" style="--d:#BC2A59" data-i="0">
-          <span class="mark">St</span>
-          <span class="door-t">Design studios</span>
-          <span class="door-w">The intern approved it</span>
-        </a>
-        <a class="door" href="/professional-services/" style="--d:#0F6B4F" data-i="1">
-          <span class="mark">Pr</span>
-          <span class="door-t">Accountants &amp; consultants</span>
-          <span class="door-w">Still waiting on their paperwork</span>
-        </a>
-        <a class="door on" href="/construction/" style="--d:#B44917" data-i="2">
-          <span class="mark">Si</span>
-          <span class="door-t">Construction &amp; fit-out</span>
-          <span class="door-w">Who approved the variation?</span>
-        </a>
-        <a class="door" href="/equipment/" style="--d:#0D6E76" data-i="3">
-          <span class="mark">Su</span>
-          <span class="door-t">Equipment &amp; supply</span>
-          <span class="door-w">Who agreed to that price?</span>
-        </a></div>
-  </div>
-</section>
-
-<div class="lit">
-
-<div class="strip">
-  <div class="marquee">
-    <div class="marquee-row"><span class="chip hot">AI assistant</span><span class="chip hot">Executive analytics</span><span class="chip">CRM &amp; contacts</span><span class="chip">Sales pipeline</span><span class="chip">Projects &amp; tasks</span><span class="chip">Invoices &amp; billing</span><span class="chip">Reports &amp; exports</span><span class="chip">Calendar &amp; meetings</span><span class="chip">Knowledge base</span><span class="chip">Support tickets</span><span class="chip">Audit log</span><span class="chip">Single sign-on</span><span class="chip">Nightly backups</span><span class="chip">53 screens, honestly</span></div>
-    <div class="marquee-row" aria-hidden="true"><span class="chip hot">AI assistant</span><span class="chip hot">Executive analytics</span><span class="chip">CRM &amp; contacts</span><span class="chip">Sales pipeline</span><span class="chip">Projects &amp; tasks</span><span class="chip">Invoices &amp; billing</span><span class="chip">Reports &amp; exports</span><span class="chip">Calendar &amp; meetings</span><span class="chip">Knowledge base</span><span class="chip">Support tickets</span><span class="chip">Audit log</span><span class="chip">Single sign-on</span><span class="chip">Nightly backups</span><span class="chip">53 screens, honestly</span></div>
+    <div class="stats">
+      <div><b>24</b><span>websites designed and built for studios and firms</span></div>
+      <div><b>10</b><span>countries, from Mumbai and Dubai to London and New York</span></div>
+      <div><b>5 days</b><span>from kickoff to a client’s system going live</span></div>
+      <div><b>53</b><span>screens in the Anqulas Business OS</span></div>
+    </div>
   </div>
 </div>
 
-<section id="inside">
-  <div class="wrap reveal">
-    <span class="kicker">Fifty-three screens</span>
-    <h2 style="margin-top:24px">Their half, and <span class="ser">your half.</span></h2>
-    <p class="lede" style="margin-top:22px">These are the ones that change your week. The rest are there when you want them and quiet when you don't.</p>
-    <div class="split">
-      <div class="col">
-        <img class="col-bg" src="/assets/7c736ac716.webp" alt="" loading="lazy" decoding="async">
-        <span class="side-k">Their side — what the client sees</span>
-        <ul class="feats">
-          <li class="feat">
-            <h4>Clients get their own front door</h4>
-            <p>They sign in and see their projects, their files, their invoices — and nothing belonging to anyone else.</p>
-          </li>
-          <li class="feat">
-            <h4>Decisions with a name on them</h4>
-            <p>Work goes out as a decision, not an attachment. Approve, or request changes — recorded, dated, signed. “I never approved that” stops being a conversation.</p>
-          </li>
-          <li class="feat">
-            <h4>Four roles, so the right person decides</h4>
-            <p>Owner signs and pays. Manager approves. Team member uploads. Viewer looks. Set per client in a minute — the wrong person doesn’t get the button.</p>
-          </li></ul>
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Selected work</div>
+        <h2 style="margin-top:14px">Each site built around<br>a real business.</h2>
       </div>
-      <div class="col">
-        <img class="col-bg" src="/assets/3b752c2ecd.webp" alt="" loading="lazy" decoding="async">
-        <span class="side-k">Your side — what you get</span>
-        <ul class="feats">
-          <li class="feat">
-            <h4>Everything live, and whose turn it is</h4>
-            <p>Projects, tasks, calendar and pipeline in one place. What’s moving, what’s stuck, and who it’s sitting with. Usually them.</p>
-          </li>
-          <li class="feat">
-            <h4>Invoices that know what they’re for</h4>
-            <p>Raise it against the work, send it, see who hasn’t paid — without opening anything else. It bills. It isn’t your accountant.</p>
-          </li>
-          <li class="feat">
-            <h4>Your name on it. Not ours.</h4>
-            <p>Your logo, your colours, your domain. Nothing on the screen mentions us. As far as they know, you built it.</p>
-          </li>
-          <li class="feat">
-            <h4>Your data leaves whenever you like</h4>
-            <p>Backed up nightly, and read back to check it restores — an unread backup is a hope. Any records export to a plain file. Nothing holds you hostage.</p>
-          </li></ul>
+      <p class="lede" style="max-width:440px;margin:0">Researched from the studio’s or firm’s own published work, then given a look that fits its character, not a template.</p>
+    </div>
+    <div class="work reveal">
+      <figure><div class="shot"><img src="/assets/work/studio-deia.webp" alt="Concept website for an architecture and interior design studio in Mumbai" loading="lazy" width="960" height="600"></div><figcaption><b>Architecture + interiors</b>Mumbai</figcaption></figure>
+      <figure><div class="shot"><img src="/assets/work/archipoint.webp" alt="Concept website for an architecture and urban design practice in Surat" loading="lazy" width="960" height="600"></div><figcaption><b>Architecture &amp; urban design</b>Surat</figcaption></figure>
+      <figure><div class="shot"><img src="/assets/work/altu.webp" alt="Concept website for an architecture and scenography studio in Antwerp" loading="lazy" width="960" height="600"></div><figcaption><b>Architecture &amp; scenography</b>Antwerp</figcaption></figure>
+      <figure><div class="shot"><img src="/assets/work/cs-interiors.webp" alt="Concept website for a fit-out and design-and-build contractor in Dubai" loading="lazy" width="960" height="600"></div><figcaption><b>Fit-out, design &amp; build</b>Dubai</figcaption></figure>
+      <figure><div class="shot"><img src="/assets/work/nsad-studio.webp" alt="Concept website for an architecture and interior design studio in Ahmedabad" loading="lazy" width="960" height="600"></div><figcaption><b>Architecture + interiors</b>Ahmedabad</figcaption></figure>
+      <figure><div class="shot"><img src="/assets/work/kreativa.webp" alt="Concept website for an interior design and bespoke furniture showroom in Madeira" loading="lazy" width="960" height="600"></div><figcaption><b>Interiors &amp; bespoke furniture · PT/EN</b>Madeira</figcaption></figure>
+      <figure><div class="shot"><img src="/assets/work/paul-j-davies.webp" alt="Concept website for a lighting design and control specialist in Dubai" loading="lazy" width="960" height="600"></div><figcaption><b>Lighting design &amp; control</b>Dubai</figcaption></figure>
+      <figure><div class="shot"><img src="/assets/work/ashit.webp" alt="Concept website for a chartered accountancy firm in Ahmedabad" loading="lazy" width="960" height="600"></div><figcaption><b>Chartered accountants</b>Ahmedabad</figcaption></figure>
+      <figure><div class="shot"><img src="/assets/work/dhrumil.webp" alt="Concept website for a chartered accountancy firm specialising in market and IT audits" loading="lazy" width="960" height="600"></div><figcaption><b>Chartered accountants · audit</b>Ahmedabad</figcaption></figure>
+    </div>
+    <p class="work-note">Shown here: nine of 24 concept websites for studios and firms in India, the UK, the US, the UAE, Europe, Singapore, Australia and the Caribbean. They are unsolicited concepts, clearly labelled on each site, and not affiliated with the businesses they were designed for. Ask and we’ll walk you through the live ones.</p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow">Services</div>
+    <h2 style="margin-top:14px">What we do.</h2>
+    <div class="svc">
+      <div class="card lead reveal">
+        <div class="tag">Lead service · 24 built</div>
+        <h3>Websites for studios &amp; firms</h3>
+        <p>Custom websites for architecture and interior design studios, chartered accountants and other professional firms. Each one starts with research into the business’s own projects, people, registrations and awards, and gets its own visual identity.</p>
+        <ul>
+          <li>Multi-page sites shaped to the business: work, services, team, careers, contact</li>
+          <li>Bilingual where the market needs it</li>
+          <li>Mobile-first and fast, with motion that respects reduced-motion settings</li>
+          <li>Designed, built and deployed in days, with domain setup</li>
+        </ul>
+        <div class="price">Per project · quoted after a 20-minute call</div>
+        <a class="more" href="#talk">Start a website project →</a>
+      </div>
+      <div class="card reveal">
+        <div class="tag">Software · live demo</div>
+        <h3>Anqulas Business OS</h3>
+        <p>One system a firm runs on, and one login its clients use: projects, CRM, invoicing and a client portal where approvals carry a name, a date and a price. Live in five days, under your own brand.</p>
+        <a class="more" href="/business-os/">See the Business OS →</a>
+      </div>
+      <div class="card reveal">
+        <div class="tag">Tools &amp; video</div>
+        <h3>Interactive tools that sell</h3>
+        <p>Browser tools that answer a compliance question with a business’s own numbers, plus the explainer video and search pages that bring buyers to them.</p>
+        <a class="more" href="/work/">See how we work →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── The proof ───────────────────────────────────────────────────────────
-     The rest of this page, and every cold email that points at it, ends on
-     some version of "nobody can change it afterwards". Until this section
-     existed that was an assertion and a prospect had only the writing to go
-     on. These three items are the mechanisms underneath it, named plainly.
-     A commercial director does not need to understand hash chaining to notice
-     that the claim has machinery behind it rather than adjectives.        -->
-<section id="proof" class="rule">
-  <div class="wrap reveal">
-    <span class="kicker">The part that matters</span>
-    <h2 style="margin-top:24px">Why <span class="ser">"I never approved that"</span><br>stops working.</h2>
-    <p class="lede" style="margin-top:22px">Anyone can promise a record. These are the three things that make it hold up months later, when the job is finished and the argument is about who said what.</p>
-
-    <div class="proofs">
-      <div class="proof">
-        <h4>The log refuses to be edited</h4>
-        <p>Every action is written append-only and hash-chained: each record's hash covers its content and links to the one before it. The database rejects updates and deletes outright, and an edit made around it breaks verification from that point onward. There is a button that checks the whole chain.</p>
+<section id="products">
+  <div class="wrap">
+    <div class="eyebrow">Products</div>
+    <h2 style="margin-top:14px">Things we build and sell ourselves.</h2>
+    <div class="products">
+      <div class="card reveal">
+        <div class="tag">Amazon sellers</div>
+        <h3>Seller Appeal Kit</h3>
+        <p>For deactivated Amazon sellers: a Plan of Action builder covering 15 deactivation reasons, with 9 language checks, instead of a $1,500+ consultant.</p>
+        <div class="price">$79 one-time</div>
+        <a class="more" href="https://appeal.anqulas.com/">appeal.anqulas.com →</a>
       </div>
-      <div class="proof">
-        <h4>A signature captures the document, not a tick</h4>
-        <p>Signing a contract records the name, the moment, the IP address it came from, and a hash of that exact version of the document. Change a word afterwards and the hash no longer matches what was signed — which is the difference between a signature and a checkbox.</p>
+      <div class="card reveal">
+        <div class="tag">EU accessibility</div>
+        <h3>EAA Compliance Kit</h3>
+        <p>Five browser tools for the European Accessibility Act: check whether you’re in scope, what “accessible” means for your site, and generate the accessibility statement regulators ask for first.</p>
+        <div class="price">€99 one payment</div>
+        <a class="more" href="/eaa-kit/">See the kit →</a>
       </div>
-      <div class="proof">
-        <h4>Approvals supersede. They never overwrite</h4>
-        <p>When something is re-agreed, the new approval points back at the one it replaces and both stay. So the question at final account isn't "what does the system say now" — it's "show me the sequence", and the sequence is there with a name and a price against each step.</p>
+      <div class="card reveal">
+        <div class="tag">Free tools</div>
+        <h3>Free tools</h3>
+        <p>No signup, nothing leaves your browser.</p>
+        <ul style="margin-top:12px">
+          <li><a href="/eaa/">EAA Annex VI workbook</a></li>
+          <li><a href="/variation-calculator/">Undocumented variations calculator</a></li>
+          <li><a href="/confirmation-of-verbal-instruction/">Confirmation of verbal instruction</a></li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── What it actually looks like ─────────────────────────────────────────
-     Real screenshots of the running app, not renders. The page claimed
-     fifty-three screens and showed one tilted mock, which is a lot of asking
-     and very little showing. The credentials being printed on the sign-in
-     page is the genuinely unusual part of the offer and was buried in a
-     button, so it is said in words here.                                  -->
-<section id="look" class="rule">
-  <div class="wrap reveal">
-    <span class="kicker">Open it yourself</span>
-    <h2 style="margin-top:24px">No form. No call.<br><span class="ser">No trial to cancel.</span></h2>
-    <p class="lede" style="margin-top:22px">The demo login and password are printed on the sign-in page. Nothing to fill in, nobody to talk to, and no card. These are three of the fifty-three screens, photographed from the thing itself.</p>
-
-    <figure class="shot">
-      <img src="/assets/eebf47c9c1.webp" width="2360" height="1016" loading="lazy" decoding="async" alt="The audit log, showing that records are append-only and hash-chained, with a button to verify the integrity of the whole chain.">
-      <figcaption>The audit log. Append-only, hash-chained, and it will check itself on demand.</figcaption>
-    </figure>
-
-    <div class="shots2">
-      <figure class="shot">
-        <img src="/assets/910b22c41e.webp" width="1240" height="775" loading="lazy" decoding="async" alt="The dashboard, showing revenue this month, active projects, new customers and automation runs, with a written summary of what needs attention today.">
-        <figcaption>Monday morning: what moved, what is stuck, and who it is sitting with.</figcaption>
-      </figure>
-      <figure class="shot">
-        <img src="/assets/3223b88d25.webp" width="1240" height="775" loading="lazy" decoding="async" alt="The projects screen, showing an automatically generated risk register for a blocked project with mitigations.">
-        <figcaption>Every engagement in one view, with the risks written out rather than implied.</figcaption>
-      </figure>
-    </div>
-
-    <div class="cta" style="margin-top:34px">
-      <a class="btn btn-solid btn-lg" href="https://app.anqulas.com/login">Open the demo</a>
+<section id="method">
+  <div class="wrap">
+    <div class="eyebrow">How we work</div>
+    <h2 style="margin-top:14px">Proof over promises.</h2>
+    <div class="method reveal">
+      <div><span class="n">01</span><b>Built around you</b><p>Every site starts from your own work: projects, people, registrations. No templates, no filler.</p></div>
+      <div><span class="n">02</span><b>Live in days</b><p>Not a pilot or a discovery phase. You see your real site, on your domain, within the week.</p></div>
+      <div><span class="n">03</span><b>You own everything</b><p>Hosting and accounts in your name from day one. If you stop working with us, nothing switches off.</p></div>
+      <div><span class="n">04</span><b>Every claim sourced</b><p>If we can’t source a fact, it doesn’t ship. That goes for your site’s copy as much as our own.</p></div>
     </div>
   </div>
 </section>
 
-<section id="week">
-  <div class="wrap reveal">
-    <span class="kicker">Five days</span>
-    <h2 style="margin-top:24px">Live by <span class="ser">Friday.</span></h2>
-    <p class="lede" style="margin-top:22px">Not a pilot, not a discovery phase. Your real clients, your real invoices, your team logged in.</p>
-    <ul class="week">
-        <li class="day" data-i="0">
-          <span class="day-k">Mon</span>
-          <h4>We talk for an hour</h4>
-          <p>Your stages, your roles, who is allowed to approve what. Bring a job that went sideways — everyone has one.</p>
-        </li>
-        <li class="day" data-i="1">
-          <span class="day-k">Tue</span>
-          <h4>Your copy goes up</h4>
-          <p>Your instance, your subdomain, your logo and colours — on accounts opened in your name.</p>
-        </li>
-        <li class="day" data-i="2">
-          <span class="day-k">Wed</span>
-          <h4>Your real work goes in</h4>
-          <p>Live clients, live jobs, the invoices you’re still chasing. No sample data.</p>
-        </li>
-        <li class="day" data-i="3">
-          <span class="day-k">Thu</span>
-          <h4>Your team gets logins</h4>
-          <p>An hour together. If it needs a training course, it’s built wrong.</p>
-        </li>
-        <li class="day" data-i="4">
-          <span class="day-k">Fri</span>
-          <h4>You let the clients in</h4>
-          <p>Two or three to start. The first decision that lands there instead of your inbox pays for the week.</p>
-        </li></ul>
-  </div>
-</section>
-
-
-<section class="rule">
-  <div class="wrap reveal">
-    <h2>Your logo. Your domain.<br><span class="ser">Your data.</span></h2>
-    <p class="lede" style="margin-top:22px">The hosting and database accounts are opened in your name, on your card, on day one. Nothing on your clients' screen mentions me. If you stop working with me on a Wednesday, nothing switches off — you keep the system, the data and the logins.</p>
-    <div class="prices">
-      <div class="tier lead">
-        <span class="pick">Recommended</span>
-        <span class="amt">$2,500</span>
-        <span class="per">once · founding, first three</span>
-        <p>While there is nothing to show but the software. Your price locked for good; in exchange, honest feedback and your name once it works.</p>
-      </div>
-      <div class="tier">
-        <span class="amt">$6,000</span>
-        <span class="per">once · after that</span>
-        <p>The same week's work, once the three founding slots are gone. Hosting accounts opened in your name, written handover runbook.</p>
-      </div>
-      <div class="tier">
-        <span class="amt">$150</span>
-        <span class="per">per month · optional</span>
-        <p>A support agreement, not a licence. Cancel with 30 days' notice and nothing switches off. Plenty of people take the runbook and never need it.</p>
-      </div>
-    </div>
-    <p class="lede" style="margin-top:22px">No per-seat pricing, no AI credits, no tier that unlocks the thing you actually needed. Unlimited people and unlimited client logins on all of them.</p>
-    <div class="cta">
-      <a class="btn btn-solid btn-lg" href="#talk">Book twenty minutes</a>
-      <a class="btn btn-glass btn-lg" href="https://app.anqulas.com/login">Or just open the demo</a>
+<section id="team">
+  <div class="wrap">
+    <div class="eyebrow">Team</div>
+    <h2 style="margin-top:14px">The people you’ll talk to.</h2>
+    <div class="team">
+      <div class="person reveal"><div class="avatar" aria-hidden="true">SS</div><div>
+        <h3>Satyam Sagar</h3><div class="role">Design &amp; Engineering</div>
+        <p>Designs and builds every Anqulas site and product, from the studio websites to the Business OS and the Seller Appeal Kit.</p>
+        <div class="contact"><a href="mailto:satyam@anqulas.com">satyam@anqulas.com</a></div></div></div>
+      <div class="person reveal"><div class="avatar" aria-hidden="true">AU</div><div>
+        <h3>Aditya Udyal</h3><div class="role">Sales &amp; Client Relations</div>
+        <p>Leads sales and client outreach, from the first conversation to a signed project and beyond.</p>
+        <div class="contact"><a href="mailto:aditya@anqulas.com">aditya@anqulas.com</a></div></div></div>
     </div>
   </div>
 </section>
-
-<section class="rule">
-  <div class="wrap reveal">
-    <h2>Free, and nothing<br><span class="ser">to fill in.</span></h2>
-    <p class="lede" style="margin-top:22px">Three pages that ask for no address and sell nothing. They are here because the problem underneath this software is worth understanding whether or not you ever buy it — and because the trade has its own words for it, which are better than mine.</p>
-    <div class="toolrow">
-      <a class="door" href="/variation-calculator/" style="--d:#B44917">
-        <span class="mark">£</span>
-        <span class="door-t">Free tool · no signup</span>
-        <span class="door-w">What undocumented variations cost you in a year</span>
-      </a>
-      <a class="door" href="/confirmation-of-verbal-instruction/" style="--d:#1F4B73">
-        <span class="mark">CVI</span>
-        <span class="door-t">Guide · with a template</span>
-        <span class="door-w">Confirmation of verbal instruction</span>
-      </a>
-      <a class="door" href="/variation-instruction-change-order/" style="--d:#456E00">
-        <span class="mark">A→B</span>
-        <span class="door-t">Guide</span>
-        <span class="door-w">Variation, instruction, change order</span>
-      </a>
-    </div>
-  </div>
-</section>
-
 
 <section class="talk" id="talk">
-  <div class="talk-bg" aria-hidden="true">
-    <img src="/assets/0a86312d6b.webp" alt="" width="1600" height="724" loading="lazy" decoding="async">
-  </div>
   <div class="wrap">
     <div class="talk-grid">
       <div>
-        <h2>Let's talk</h2>
-        <p class="lede" style="margin-top:18px;">Questions about the demo, an install for your own team, or the price — write and you'll get a reply from the person who built it, not a sales team. There isn't one.</p>
-        <ul class="talk-facts">
-          <li><span class="k">Email</span><span class="v"><a href="mailto:contact@anqulas.com">contact@anqulas.com</a></span></li>
-          <li><span class="k">Replies</span><span class="v">Same working day, Monday to Friday</span></li>
-          <li><span class="k">Where</span><span class="v">India — working with clients worldwide</span></li>
+        <div class="eyebrow" style="color:var(--acc)">Contact</div>
+        <h2 style="margin-top:14px">Let’s talk.</h2>
+        <p class="lede">A new website, the Business OS for your team, or a question about one of our products. You’ll get a reply from the people who build it.</p>
+        <ul class="facts">
+          <li><span class="k">Email</span><span><a href="mailto:contact@anqulas.com">contact@anqulas.com</a></span></li>
+          <li><span class="k">Replies</span><span>Same working day, Monday to Friday</span></li>
+          <li><span class="k">Where</span><span>India, working with clients worldwide</span></li>
         </ul>
       </div>
-
-      <form class="talk-card" id="talk-form" novalidate>
-        <div class="talk-row">
-          <div class="talk-field">
-            <label for="talk-name">Your name</label>
-            <input id="talk-name" name="name" type="text" autocomplete="name" maxlength="120" required>
-          </div>
-          <div class="talk-field">
-            <label for="talk-company">Company</label>
-            <input id="talk-company" name="company" type="text" autocomplete="organization" maxlength="160">
-          </div>
+      <form id="talk-form" novalidate>
+        <div class="row">
+          <div class="field"><label for="talk-name">Your name</label><input id="talk-name" name="name" type="text" autocomplete="name" maxlength="120" required></div>
+          <div class="field"><label for="talk-company">Company</label><input id="talk-company" name="company" type="text" autocomplete="organization" maxlength="160"></div>
         </div>
-        <div class="talk-field">
-          <label for="talk-email">Your email</label>
-          <input id="talk-email" name="email" type="email" autocomplete="email" maxlength="254" required>
-        </div>
-        <div class="talk-field">
-          <label for="talk-message">What's the situation?</label>
-          <textarea id="talk-message" name="message" maxlength="5000" required
-            placeholder="What you're trying to solve, and roughly how big your team is…"></textarea>
-        </div>
-        <p class="talk-hp" aria-hidden="true">
-          <label for="talk-website">Leave this empty</label>
-          <input id="talk-website" name="website" type="text" tabindex="-1" autocomplete="off">
-        </p>
-        <button class="btn btn-solid btn-lg talk-send" type="submit">Send it</button>
-        <div class="talk-msg" id="talk-msg" role="status" aria-live="polite"></div>
-        <p class="talk-note">Goes straight to a person, not a CRM sequence.<br>
-          Or write to <a href="mailto:contact@anqulas.com">contact@anqulas.com</a> yourself.</p>
+        <div class="field"><label for="talk-email">Your email</label><input id="talk-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
+        <div class="field"><label for="talk-message">What do you need?</label><textarea id="talk-message" name="message" maxlength="5000" required placeholder="A new website, the Business OS, or something else…"></textarea></div>
+        <p class="hp" aria-hidden="true"><label for="talk-website">Leave this empty</label><input id="talk-website" name="website" type="text" tabindex="-1" autocomplete="off"></p>
+        <button class="btn btn-solid" type="submit">Send it</button>
+        <div class="msg" id="talk-msg" role="status" aria-live="polite"></div>
+        <p class="note">Goes straight to a person. Or write to <a href="mailto:contact@anqulas.com">contact@anqulas.com</a>.</p>
       </form>
     </div>
   </div>
 </section>
-
-<div class="wrap">
-  <footer>
-    <div class="foot-row">
-      <span>Anqulas</span>
-      <a href="mailto:contact@anqulas.com">contact@anqulas.com</a>
-      <a href="https://anqulas.com/privacy">Privacy</a>
-      <span class="sp"></span>
-      <a href="/construction/">Construction</a>
-      <a href="/studios/">Studios</a>
-      <a href="/equipment/">Equipment</a>
-      <a href="/professional-services/">Professional services</a>
-    </div>
-    
-  </footer>
-</div>
-
-</div>
-
 </main>
+
+<footer>
+  <div class="wrap foot">
+    <div><b>Anqulas</b>We design, build &amp; automate.<br><a href="mailto:contact@anqulas.com" style="margin-top:8px">contact@anqulas.com</a></div>
+    <div><b>Work</b><a href="#work">Websites</a><a href="/business-os/">Business OS</a><a href="/work/">Tools &amp; video</a></div>
+    <div><b>Products</b><a href="https://appeal.anqulas.com/">Seller Appeal Kit</a><a href="/eaa-kit/">EAA Compliance Kit</a><a href="/eaa/">Annex VI workbook</a></div>
+    <div><b>Company</b><a href="#team">Team</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
+  </div>
+</footer>
 
 <script>
 (() => {
   const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  // Anything below the fold starts hidden, so if the observer never runs the
-  // page would be blank. Hence the unconditional fallback.
-  const targets = document.querySelectorAll(".reveal, .doors, .week");
+  const targets = document.querySelectorAll(".reveal");
   if (calm || !("IntersectionObserver" in window)) {
     targets.forEach((t) => t.classList.add("in"));
   } else {
-    const io = new IntersectionObserver((es) => {
-      es.forEach((e) => {
-        if (!e.isIntersecting) return;
-        e.target.classList.add("in");
-        io.unobserve(e.target);
-      });
-    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.05 });
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("in");
+      io.unobserve(e.target);
+    }), { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
     targets.forEach((t) => io.observe(t));
   }
-
-  // The bar only grows a background once you have left the hero: chrome over
-  // the headline is what makes a page feel like a template.
   const mast = document.getElementById("mast");
   const onScroll = () => mast.classList.toggle("stuck", scrollY > 24);
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
-
-  // The headline rotator. Stops while the tab is hidden: a timer ticking in a
-  // background tab is pure battery for something nobody is looking at.
-  const items = [...document.querySelectorAll(".rot-item")];
-  if (items.length > 1) {
-    let i = 0, timer = null;
-    const step = () => {
-      items[i].classList.remove("on");
-      i = (i + 1) % items.length;
-      items[i].classList.add("on");
-    };
-    const start = () => { timer ??= setInterval(step, calm ? 4200 : 2900); };
-    const stop = () => { clearInterval(timer); timer = null; };
-    document.addEventListener("visibilitychange", () =>
-      document.hidden ? stop() : start());
-    start();
-  }
 })();
 
 (() => {
   const form = document.getElementById("talk-form");
-  if (!form) return;
   const msg = document.getElementById("talk-msg");
   const btn = form.querySelector("button[type=submit]");
   const label = btn.textContent;
-
-  const say = (kind, text) => {
-    msg.className = "talk-msg on " + kind;
-    msg.textContent = text;
-  };
+  const say = (kind, text) => { msg.className = "msg on " + kind; msg.textContent = text; };
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const val = (n) => String(new FormData(form).get(n) || "").trim();
-
     if (!val("name") || !val("email") || !val("message")) {
       say("warn", "Name, email and a message, and it's on its way.");
       return;
     }
-
     btn.disabled = true;
     btn.textContent = "Sending…";
-    msg.className = "talk-msg";
-
+    msg.className = "msg";
     try {
       const res = await fetch("https://visionos-api.onrender.com/api/contact", {
         method: "POST",
@@ -1043,24 +416,22 @@
         }),
       });
       const data = await res.json().catch(() => ({}));
-
       if (res.ok && data.delivered) {
         form.reset();
-        say("ok", "Sent. You'll get a reply the same working day — from the person who built it.");
+        say("ok", "Sent. You'll get a reply the same working day.");
       } else if (res.ok) {
         say("warn", "That reached us but the mail didn't go out. Email contact@anqulas.com and it won't get lost.");
       } else {
-        say("warn", "That didn't send. Email contact@anqulas.com instead and I'll pick it up.");
+        say("warn", "That didn't send. Email contact@anqulas.com instead and we'll pick it up.");
       }
     } catch {
-      say("warn", "Couldn't reach the server. Email contact@anqulas.com instead — that always works.");
+      say("warn", "Couldn't reach the server. Email contact@anqulas.com instead, that always works.");
     } finally {
       btn.disabled = false;
       btn.textContent = label;
     }
   });
 })();
-
 </script>
 </body>
 </html>
