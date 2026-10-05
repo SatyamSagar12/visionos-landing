@@ -12,7 +12,7 @@
 <meta property="og:description" content="Websites for architecture and interior design studios and professional firms. 24 built across ten countries.">
 <meta property="og:image" content="https://anqulas.com/assets/work/studio-deia.webp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#12110F">
+<meta name="theme-color" content="#1E2923">
 <link rel="icon" href="/assets/favicon-64.png" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,14 +20,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&family=DM+Mono:wght@400&display=swap" media="print" onload="this.media='all';this.onload=null">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&family=DM+Mono:wght@400&display=swap"></noscript>
 <style>
-  /* Two grounds, one accent. Warm charcoal and bone carry everything; the
-     accent is bronze, light on dark and deep on paper (5.6:1 on bone). */
+  /* Grounds: bone, warm sand, and a deep olive for the two dark bands.
+     The accent is bronze, light on olive and deep on the light grounds. */
   :root{
-    --ink:#12110F; --ink-2:#1A1916; --ink-3:#25231F;
+    --ink:#1E2923; --ink-2:#233029; --ink-3:#2D3B33;
     --paper:#EEEAE2; --paper-2:#E3DED3; --white:#FBFAF7;
     --t1:#0D0D0C; --t2:#4A4843; --t3:#77736B;
-    --d1:#F2EFE8; --d2:#B4B0A6; --d3:#85817A;
-    --line:rgba(18,17,15,.12); --dline:rgba(242,239,232,.14);
+    --d1:#F1EDE4; --d2:#BDC1B6; --d3:#97A096;
+    --line:rgba(30,41,35,.12); --dline:rgba(242,239,232,.14);
     --aqua:#CDAE7E; --teal:#7A5A2E;
     --serif:"Cormorant Garamond","Cormorant",Garamond,"Times New Roman",serif;
     --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
@@ -68,7 +68,7 @@
   .nav{position:fixed;left:0;right:0;top:0;z-index:100;display:flex;align-items:center;gap:24px;padding:22px var(--gut);color:var(--d1);transition:transform .6s var(--ease),color .4s}
   .nav.hide{transform:translateY(-110%)}
   .nav.on-paper{color:var(--t1)}
-  .nav::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .4s;background:linear-gradient(180deg,rgba(18,17,15,.55),transparent)}
+  .nav::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .4s;background:linear-gradient(180deg,rgba(30,41,35,.55),transparent)}
   .nav.scrolled:not(.on-paper)::before{opacity:1}
   .brand{display:flex;align-items:center;gap:12px;font-family:var(--sans);font-weight:600;font-size:17px;letter-spacing:-.02em}
   .brand img{width:30px;height:30px;object-fit:contain;transition:transform .8s var(--ease)}
@@ -99,9 +99,9 @@
   .col img{border-radius:8px;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;filter:saturate(.9)}
   @keyframes up{to{transform:translateY(-50%)}}
   .hero::before{content:"";position:absolute;inset:0;z-index:1;background:
-    linear-gradient(90deg,var(--ink) 0%,var(--ink) 30%,rgba(18,17,15,.86) 46%,rgba(18,17,15,.25) 75%,rgba(18,17,15,.45) 100%),
-    linear-gradient(0deg,var(--ink) 0%,rgba(18,17,15,0) 38%)}
-  @media(max-width:900px){.cols{inset:-10% -40% 30% -20%;opacity:.5}.hero::before{background:linear-gradient(0deg,var(--ink) 0%,var(--ink) 40%,rgba(18,17,15,.55) 100%)}}
+    linear-gradient(90deg,var(--ink) 0%,var(--ink) 30%,rgba(30,41,35,.86) 46%,rgba(30,41,35,.25) 75%,rgba(30,41,35,.45) 100%),
+    linear-gradient(0deg,var(--ink) 0%,rgba(30,41,35,0) 38%)}
+  @media(max-width:900px){.cols{inset:-10% -40% 30% -20%;opacity:.5}.hero::before{background:linear-gradient(0deg,var(--ink) 0%,var(--ink) 40%,rgba(30,41,35,.55) 100%)}}
   .hero-in{position:relative;z-index:2}
   .hero h1{font-family:var(--serif);font-size:clamp(64px,11.5vw,188px);line-height:.86;letter-spacing:-.035em;max-width:11ch}
   .hero h1 .it{color:var(--aqua)}
@@ -125,7 +125,7 @@
   .statement{padding:clamp(110px,16vw,220px) 0}
   .statement .label{color:var(--t3)}
   .statement p.big{margin-top:36px;font-family:var(--serif);font-size:clamp(34px,4.6vw,72px);line-height:1.06;letter-spacing:-.02em;max-width:20ch}
-  .statement .big .wd{color:rgba(18,17,15,.16);transition:color .5s}
+  .statement .big .wd{color:rgba(30,41,35,.16);transition:color .5s}
   .statement .big .wd.lit{color:var(--t1)}
   .statement .big .it.wd.lit{color:var(--teal)}
   .stmt-grid{display:grid;grid-template-columns:1fr 2.2fr;gap:40px}
@@ -160,7 +160,7 @@
   /* ── index: every site, with a preview that follows the cursor ── */
   .index{margin-top:clamp(80px,10vw,140px)}
   .index ol{list-style:none;margin:28px 0 0;padding:0;border-top:1px solid var(--line)}
-  .row{position:relative;display:grid;grid-template-columns:70px 1.6fr 1fr 1fr 32px;gap:20px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line);transition:color .3s,padding .5s var(--ease)}
+  .row{position:relative;display:grid;grid-template-columns:70px 1.6fr 1fr 1fr;gap:20px;align-items:center;padding:24px 0;border-bottom:1px solid var(--line);transition:color .3s,padding .5s var(--ease)}
   .row .label{color:var(--t3)}
   .row .nm{font-family:var(--serif);font-size:clamp(26px,2.6vw,40px);line-height:1;letter-spacing:-.02em}
   .row .sm{color:var(--t2);font-size:15px}
@@ -387,6 +387,19 @@
   /* Lining figures: Cormorant defaults to old-style numerals. */
   .nums b,.tier .amt,.row .label,.label{font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1}
   body{letter-spacing:0}
+  /* Sand: a warm light ground. It re-points the dark-ground tokens, so the
+     same components read dark-on-sand without restyling each one. */
+  .sand{background:linear-gradient(180deg,#E7DECF 0%,#DFD3C0 100%);color:#1E2923;
+    --d1:#1E2923; --d2:#4B4A40; --d3:#5F5A4D; --dline:rgba(30,41,35,.16); --aqua:#7A5A2E}
+  .sand .btn-light{background:#1E2923;color:#F1EDE4}
+  .sand .btn-light:hover{background:#7A5A2E;color:#F7F3EC}
+  .sand .svc-side .pill{color:#1E2923}
+  .sand .svc-side .pill:hover{background:#1E2923;color:#F1EDE4}
+  .sand details[open] .plus{background:#1E2923;color:#F1EDE4}
+  .sand .fld input::placeholder,.sand .fld textarea::placeholder{color:#7E7768}
+  .sand .msg.ok{background:#DCEBDD;color:#24452B}
+  .sand .msg.warn{background:#F3E2C3;color:#5C3F10}
+  .sand :focus-visible{outline-color:#7A5A2E}
 </style>
 </head>
 <body>
@@ -452,34 +465,34 @@
       <span class="label">(02) 2026 · 24 concept sites</span>
     </div>
     <div class="feature">
-      <figure class="f f1" data-cursor="view"><div class="frame"><img class="par" src="/assets/work/studio-deia.webp" width="960" height="600" loading="lazy" alt="Concept website for an architecture and interior design studio in Mumbai"></div><figcaption><span class="label">01</span><b>Architecture + interiors</b><span>Mumbai</span></figcaption></figure>
-      <figure class="f f2" data-cursor="view"><div class="frame"><img class="par" src="/assets/work/altu.webp" width="960" height="600" loading="lazy" alt="Concept website for an architecture and scenography studio in Antwerp"></div><figcaption><span class="label">02</span><b>Scenography</b><span>Antwerp</span></figcaption></figure>
-      <figure class="f f3" data-cursor="view"><div class="frame"><img class="par" src="/assets/work/paul-j-davies.webp" width="960" height="600" loading="lazy" alt="Concept website for a lighting design and control specialist in Dubai"></div><figcaption><span class="label">03</span><b>Lighting design</b><span>Dubai</span></figcaption></figure>
-      <figure class="f f4" data-cursor="view"><div class="frame"><img class="par" src="/assets/work/archipoint.webp" width="960" height="600" loading="lazy" alt="Concept website for an architecture and urban design practice in Surat"></div><figcaption><span class="label">04</span><b>Architecture &amp; urban design</b><span>Surat</span></figcaption></figure>
+      <figure class="f f1"><div class="frame"><img class="par" src="/assets/work/studio-deia.webp" width="960" height="600" loading="lazy" alt="Concept website for an architecture and interior design studio in Mumbai"></div><figcaption><span class="label">01</span><b>Architecture + interiors</b><span>Mumbai</span></figcaption></figure>
+      <figure class="f f2"><div class="frame"><img class="par" src="/assets/work/altu.webp" width="960" height="600" loading="lazy" alt="Concept website for an architecture and scenography studio in Antwerp"></div><figcaption><span class="label">02</span><b>Scenography</b><span>Antwerp</span></figcaption></figure>
+      <figure class="f f3"><div class="frame"><img class="par" src="/assets/work/paul-j-davies.webp" width="960" height="600" loading="lazy" alt="Concept website for a lighting design and control specialist in Dubai"></div><figcaption><span class="label">03</span><b>Lighting design</b><span>Dubai</span></figcaption></figure>
+      <figure class="f f4"><div class="frame"><img class="par" src="/assets/work/archipoint.webp" width="960" height="600" loading="lazy" alt="Concept website for an architecture and urban design practice in Surat"></div><figcaption><span class="label">04</span><b>Architecture &amp; urban design</b><span>Surat</span></figcaption></figure>
     </div>
 
     <div class="index">
       <div class="sec-head" style="padding-bottom:18px"><span class="label">Index</span><span class="label">Discipline · City</span></div>
       <ol id="index">
-        <li class="row" data-img="/assets/work/studio-deia.webp"><span class="label">01</span><span class="nm">Architecture + interiors</span><span class="sm">Residential &amp; workplace</span><span class="sm">Mumbai</span><span class="arw" aria-hidden="true">→</span><span class="thumb"><img src="/assets/work/studio-deia.webp" alt="" width="960" height="600" loading="lazy"></span></li>
-        <li class="row" data-img="/assets/work/altu.webp"><span class="label">02</span><span class="nm">Architecture &amp; scenography</span><span class="sm">Exhibitions &amp; interiors</span><span class="sm">Antwerp</span><span class="arw" aria-hidden="true">→</span><span class="thumb"><img src="/assets/work/altu.webp" alt="" width="960" height="600" loading="lazy"></span></li>
-        <li class="row" data-img="/assets/work/paul-j-davies.webp"><span class="label">03</span><span class="nm">Lighting design &amp; control</span><span class="sm">Architectural lighting</span><span class="sm">Dubai</span><span class="arw" aria-hidden="true">→</span><span class="thumb"><img src="/assets/work/paul-j-davies.webp" alt="" width="960" height="600" loading="lazy"></span></li>
-        <li class="row" data-img="/assets/work/archipoint.webp"><span class="label">04</span><span class="nm">Architecture &amp; urban design</span><span class="sm">Since 1995</span><span class="sm">Surat</span><span class="arw" aria-hidden="true">→</span><span class="thumb"><img src="/assets/work/archipoint.webp" alt="" width="960" height="600" loading="lazy"></span></li>
-        <li class="row" data-img="/assets/work/nsad-studio.webp"><span class="label">05</span><span class="nm">Architecture + interiors</span><span class="sm">Avant-garde residential</span><span class="sm">Ahmedabad</span><span class="arw" aria-hidden="true">→</span><span class="thumb"><img src="/assets/work/nsad-studio.webp" alt="" width="960" height="600" loading="lazy"></span></li>
-        <li class="row" data-img="/assets/work/kreativa.webp"><span class="label">06</span><span class="nm">Interiors &amp; bespoke furniture</span><span class="sm">Bilingual, PT/EN</span><span class="sm">Madeira</span><span class="arw" aria-hidden="true">→</span><span class="thumb"><img src="/assets/work/kreativa.webp" alt="" width="960" height="600" loading="lazy"></span></li>
-        <li class="row" data-img="/assets/work/cs-interiors.webp"><span class="label">07</span><span class="nm">Fit-out, design &amp; build</span><span class="sm">Contractor</span><span class="sm">Dubai</span><span class="arw" aria-hidden="true">→</span><span class="thumb"><img src="/assets/work/cs-interiors.webp" alt="" width="960" height="600" loading="lazy"></span></li>
-        <li class="row" data-img="/assets/work/ozt-studio.webp"><span class="label">08</span><span class="nm">Architecture &amp; interiors</span><span class="sm">Two cities</span><span class="sm">Surat &amp; Mumbai</span><span class="arw" aria-hidden="true">→</span><span class="thumb"><img src="/assets/work/ozt-studio.webp" alt="" width="960" height="600" loading="lazy"></span></li>
-        <li class="row" data-img="/assets/work/nova-home-design.webp"><span class="label">09</span><span class="nm">Home staging &amp; rentals</span><span class="sm">Furnished homes</span><span class="sm">Dubai</span><span class="arw" aria-hidden="true">→</span><span class="thumb"><img src="/assets/work/nova-home-design.webp" alt="" width="960" height="600" loading="lazy"></span></li>
-        <li class="row" data-img="/assets/work/ashit.webp"><span class="label">10</span><span class="nm">Chartered accountants</span><span class="sm">Audit &amp; tax litigation</span><span class="sm">Ahmedabad</span><span class="arw" aria-hidden="true">→</span><span class="thumb"><img src="/assets/work/ashit.webp" alt="" width="960" height="600" loading="lazy"></span></li>
-        <li class="row" data-img="/assets/work/dhrumil.webp"><span class="label">11</span><span class="nm">Chartered accountants</span><span class="sm">Market &amp; IT audits</span><span class="sm">Ahmedabad</span><span class="arw" aria-hidden="true">→</span><span class="thumb"><img src="/assets/work/dhrumil.webp" alt="" width="960" height="600" loading="lazy"></span></li>
-        <li class="row" data-img="/assets/work/cgss.webp"><span class="label">12</span><span class="nm">Chartered accountants</span><span class="sm">Audit, tax &amp; advisory</span><span class="sm">Bengaluru</span><span class="arw" aria-hidden="true">→</span><span class="thumb"><img src="/assets/work/cgss.webp" alt="" width="960" height="600" loading="lazy"></span></li>
+        <li class="row" data-img="/assets/work/studio-deia.webp"><span class="label">01</span><span class="nm">Architecture + interiors</span><span class="sm">Residential &amp; workplace</span><span class="sm">Mumbai</span><span class="thumb"><img src="/assets/work/studio-deia.webp" alt="" width="960" height="600" loading="lazy"></span></li>
+        <li class="row" data-img="/assets/work/altu.webp"><span class="label">02</span><span class="nm">Architecture &amp; scenography</span><span class="sm">Exhibitions &amp; interiors</span><span class="sm">Antwerp</span><span class="thumb"><img src="/assets/work/altu.webp" alt="" width="960" height="600" loading="lazy"></span></li>
+        <li class="row" data-img="/assets/work/paul-j-davies.webp"><span class="label">03</span><span class="nm">Lighting design &amp; control</span><span class="sm">Architectural lighting</span><span class="sm">Dubai</span><span class="thumb"><img src="/assets/work/paul-j-davies.webp" alt="" width="960" height="600" loading="lazy"></span></li>
+        <li class="row" data-img="/assets/work/archipoint.webp"><span class="label">04</span><span class="nm">Architecture &amp; urban design</span><span class="sm">Practice &amp; planning</span><span class="sm">Surat</span><span class="thumb"><img src="/assets/work/archipoint.webp" alt="" width="960" height="600" loading="lazy"></span></li>
+        <li class="row" data-img="/assets/work/nsad-studio.webp"><span class="label">05</span><span class="nm">Architecture + interiors</span><span class="sm">Avant-garde residential</span><span class="sm">Ahmedabad</span><span class="thumb"><img src="/assets/work/nsad-studio.webp" alt="" width="960" height="600" loading="lazy"></span></li>
+        <li class="row" data-img="/assets/work/kreativa.webp"><span class="label">06</span><span class="nm">Interiors &amp; bespoke furniture</span><span class="sm">Bilingual, PT/EN</span><span class="sm">Madeira</span><span class="thumb"><img src="/assets/work/kreativa.webp" alt="" width="960" height="600" loading="lazy"></span></li>
+        <li class="row" data-img="/assets/work/cs-interiors.webp"><span class="label">07</span><span class="nm">Fit-out, design &amp; build</span><span class="sm">Contractor</span><span class="sm">Dubai</span><span class="thumb"><img src="/assets/work/cs-interiors.webp" alt="" width="960" height="600" loading="lazy"></span></li>
+        <li class="row" data-img="/assets/work/ozt-studio.webp"><span class="label">08</span><span class="nm">Architecture &amp; interiors</span><span class="sm">Two cities</span><span class="sm">Surat &amp; Mumbai</span><span class="thumb"><img src="/assets/work/ozt-studio.webp" alt="" width="960" height="600" loading="lazy"></span></li>
+        <li class="row" data-img="/assets/work/nova-home-design.webp"><span class="label">09</span><span class="nm">Home staging &amp; rentals</span><span class="sm">Furnished homes</span><span class="sm">Dubai</span><span class="thumb"><img src="/assets/work/nova-home-design.webp" alt="" width="960" height="600" loading="lazy"></span></li>
+        <li class="row" data-img="/assets/work/ashit.webp"><span class="label">10</span><span class="nm">Chartered accountants</span><span class="sm">Audit &amp; tax litigation</span><span class="sm">Ahmedabad</span><span class="thumb"><img src="/assets/work/ashit.webp" alt="" width="960" height="600" loading="lazy"></span></li>
+        <li class="row" data-img="/assets/work/dhrumil.webp"><span class="label">11</span><span class="nm">Chartered accountants</span><span class="sm">Market &amp; IT audits</span><span class="sm">Ahmedabad</span><span class="thumb"><img src="/assets/work/dhrumil.webp" alt="" width="960" height="600" loading="lazy"></span></li>
+        <li class="row" data-img="/assets/work/cgss.webp"><span class="label">12</span><span class="nm">Chartered accountants</span><span class="sm">Audit, tax &amp; advisory</span><span class="sm">Bengaluru</span><span class="thumb"><img src="/assets/work/cgss.webp" alt="" width="960" height="600" loading="lazy"></span></li>
       </ol>
-      <p class="note">Twelve of 24 concept websites for studios and firms in India, the UK, the US, the UAE, Europe, Singapore, Australia and the Caribbean. Each is an unsolicited concept, labelled as such on the site and not affiliated with the business it was designed for. Live walkthroughs on request.</p>
+      <p class="note">Twelve of 24 concept websites for studios and firms in India, the UK, the US, the UAE, Europe, Singapore, Australia and the Caribbean. Shown here as design studies: business names and photography are replaced, and no concept is affiliated with or endorsed by the business it was made for. Walkthroughs on request.</p>
     </div>
   </div>
 </section>
 
-<section class="services dark" id="services">
+<section class="services sand" id="services">
   <div class="pad">
     <div class="sec-head">
       <h2 class="rl"><span class="line"><span>What we</span></span><span class="line"><span class="it">do</span></span></h2>
@@ -605,7 +618,7 @@
   </div>
 </section>
 
-<section class="contact dark" id="contact">
+<section class="contact sand" id="contact">
   <div class="pad">
     <span class="label" style="color:var(--d3)">(06) Contact</span>
     <h2 class="big rl" style="margin-top:28px"><span class="line"><span>Let’s make</span></span><span class="line"><span class="it">something good.</span></span></h2>
@@ -773,8 +786,8 @@
     $$(".row").forEach((row) => {
       const src = row.dataset.img;
       if (!imgs[src]) { const im = new Image(); im.src = src; im.alt = ""; peek.append(im); imgs[src] = im; }
-      row.addEventListener("pointerenter", () => { Object.values(imgs).forEach((i) => i.classList.toggle("on", i === imgs[src])); peek.classList.add("on"); cur.classList.add("view"); });
-      row.addEventListener("pointerleave", () => { peek.classList.remove("on"); cur.classList.remove("view"); });
+      row.addEventListener("pointerenter", () => { Object.values(imgs).forEach((i) => i.classList.toggle("on", i === imgs[src])); peek.classList.add("on"); });
+      row.addEventListener("pointerleave", () => { peek.classList.remove("on"); });
     });
     let px = 0, lastX = 0;
     addEventListener("pointermove", (e) => {
