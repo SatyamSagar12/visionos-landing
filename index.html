@@ -400,6 +400,59 @@
   .sand .msg.ok{background:#DCEBDD;color:#24452B}
   .sand .msg.warn{background:#F3E2C3;color:#5C3F10}
   .sand :focus-visible{outline-color:#7A5A2E}
+  /* ── contact: a bold, tactile panel ── */
+  .c-top{display:flex;align-items:flex-end;justify-content:space-between;gap:30px}
+  .badge{position:relative;flex:none;width:clamp(150px,15vw,210px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;color:var(--ink);margin-bottom:10px}
+  .badge>svg{position:absolute;inset:0;width:100%;height:100%;animation:turn 16s linear infinite}
+  .badge:hover>svg{animation-duration:5s}
+  .badge text{font:500 15.5px var(--mono);letter-spacing:.24em;text-transform:uppercase;fill:currentColor}
+  .badge .core{width:46%;aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:#7A5A2E;color:#F7F2E8;transition:transform .6s var(--ease),background .3s}
+  .badge:hover .core{transform:scale(1.12) rotate(45deg);background:var(--ink)}
+  @keyframes turn{to{transform:rotate(360deg)}}
+  @media(max-width:700px){.c-top{flex-direction:column;align-items:flex-start}.badge{width:130px}}
+  .c-panel{position:relative;overflow:hidden;isolation:isolate;margin-top:clamp(40px,6vw,80px);border-radius:28px;background:var(--ink);color:#F1EDE4;display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(30px,5vw,80px);padding:clamp(28px,5vw,72px);box-shadow:0 60px 120px -60px rgba(30,41,35,.7);
+    --d1:#F1EDE4; --d2:#C4C8BD; --d3:#9FA89D; --dline:rgba(241,237,228,.16); --aqua:#D7B987}
+  @media(max-width:900px){.c-panel{grid-template-columns:1fr}}
+  .c-panel .glow{position:absolute;z-index:-1;inset:0;background:radial-gradient(520px circle at var(--gx,75%) var(--gy,30%),rgba(215,185,135,.30),transparent 60%),radial-gradient(700px circle at 0% 100%,rgba(122,90,46,.35),transparent 60%);transition:background .2s}
+  .c-panel::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .c-lead{font-family:var(--serif);font-weight:300;font-size:clamp(28px,2.8vw,42px);line-height:1.1;color:#F1EDE4;max-width:16ch}
+  .mailrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:34px}
+  .c-panel .mail{margin-top:0;font-size:clamp(24px,2.4vw,36px);color:#F1EDE4}
+  .copy{min-height:40px;padding:0 16px;border-radius:999px;border:1px solid var(--dline);background:rgba(241,237,228,.06);color:#F1EDE4;font:500 13px var(--sans);cursor:pointer;transition:background .3s,border-color .3s}
+  .copy:hover{background:rgba(241,237,228,.14);border-color:rgba(241,237,228,.4)}
+  .c-panel .facts{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:0}
+  .c-panel .facts li{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-top:1px solid var(--dline);color:#F1EDE4;font-size:15px}
+  .c-panel .facts .label{color:var(--d3)}
+  .chips{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+  .chips legend{width:100%;margin-bottom:12px;color:var(--d3)}
+  .chips label{cursor:pointer;position:relative}
+  .chips input{position:absolute;opacity:0;width:1px;height:1px}
+  .chips span{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--dline);background:rgba(241,237,228,.05);font-size:15px;transition:background .3s,border-color .3s,color .3s,transform .4s var(--ease)}
+  .chips span::before{content:"";width:7px;height:7px;border-radius:50%;border:1px solid var(--d3);transition:background .3s,border-color .3s}
+  .chips label:hover span{border-color:rgba(241,237,228,.45);transform:translateY(-2px)}
+  .chips input:checked+span{background:#D7B987;border-color:#D7B987;color:#1E2923}
+  .chips input:checked+span::before{background:#1E2923;border-color:#1E2923}
+  .chips input:focus-visible+span{outline:2px solid #D7B987;outline-offset:3px}
+  .c-panel form{gap:22px}
+  .c-panel .fld label{color:var(--d3)}
+  .c-panel .fld input,.c-panel .fld textarea{background:rgba(241,237,228,.06);border:1px solid var(--dline);border-radius:14px;padding:14px 16px;color:#F1EDE4;font-size:17px;transition:border-color .3s,background .3s,box-shadow .3s}
+  .c-panel .fld input:hover,.c-panel .fld textarea:hover{border-color:rgba(241,237,228,.32)}
+  .c-panel .fld input:focus,.c-panel .fld textarea:focus{border-color:#D7B987;background:rgba(241,237,228,.09);box-shadow:0 0 0 4px rgba(215,185,135,.18)}
+  .c-panel .fld input::placeholder,.c-panel .fld textarea::placeholder{color:#8E978C}
+  .send{justify-self:stretch;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:0 10px 0 30px;border:0;border-radius:999px;background:#D7B987;color:#1E2923;font:600 19px var(--sans);letter-spacing:-.01em;cursor:pointer;position:relative;overflow:hidden;isolation:isolate;transition:color .4s}
+  .send::before{content:"";position:absolute;inset:0;z-index:-1;background:#F1EDE4;transform:translateY(101%);border-radius:inherit;transition:transform .55s var(--ease)}
+  .send:hover::before{transform:none}
+  .send-a{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#1E2923;color:#D7B987;transition:transform .55s var(--ease)}
+  .send:hover .send-a{transform:rotate(-45deg)}
+  .send[disabled]{opacity:.65;cursor:progress}
+  .c-panel .msg.ok{background:rgba(191,242,226,.12);color:#CFF5E8}
+  .c-panel .msg.warn{background:rgba(251,221,166,.12);color:#FBE3B4}
+  .c-panel :focus-visible{outline-color:#D7B987}
+  /* The bar keeps a soft, blurred ground whenever it floats over content. */
+  .nav.scrolled::before{opacity:1;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
+  .nav.scrolled:not(.on-paper)::before{background:rgba(30,41,35,.62)}
+  .nav.scrolled.on-paper::before{background:rgba(236,230,219,.78)}
+  @media (prefers-reduced-motion:reduce){.badge>svg{animation:none}.send::before,.send-a,.chips span{transition:none}}
 </style>
 </head>
 <body>
@@ -487,7 +540,7 @@
         <li class="row" data-img="/assets/work/dhrumil.webp"><span class="label">11</span><span class="nm">Chartered accountants</span><span class="sm">Market &amp; IT audits</span><span class="sm">Ahmedabad</span><span class="thumb"><img src="/assets/work/dhrumil.webp" alt="" width="960" height="600" loading="lazy"></span></li>
         <li class="row" data-img="/assets/work/cgss.webp"><span class="label">12</span><span class="nm">Chartered accountants</span><span class="sm">Audit, tax &amp; advisory</span><span class="sm">Bengaluru</span><span class="thumb"><img src="/assets/work/cgss.webp" alt="" width="960" height="600" loading="lazy"></span></li>
       </ol>
-      <p class="note">Twelve of 24 concept websites for studios and firms in India, the UK, the US, the UAE, Europe, Singapore, Australia and the Caribbean. Shown here as design studies: business names and photography are replaced, and no concept is affiliated with or endorsed by the business it was made for. Walkthroughs on request.</p>
+      <p class="note">Twelve of 24 concept websites for studios and firms in India, the UK, the US, the UAE, Europe, Singapore, Australia and the Caribbean. Shown as design studies with business names changed. No concept is affiliated with or endorsed by the business it was made for. Walkthroughs on request.</p>
     </div>
   </div>
 </section>
@@ -620,24 +673,53 @@
 
 <section class="contact sand" id="contact">
   <div class="pad">
-    <span class="label" style="color:var(--d3)">(06) Contact</span>
-    <h2 class="big rl" style="margin-top:28px"><span class="line"><span>Let’s make</span></span><span class="line"><span class="it">something good.</span></span></h2>
-    <a class="mail rv" href="mailto:contact@anqulas.com" data-cursor="link">contact@anqulas.com <span aria-hidden="true">↗</span></a>
-    <div class="c-grid">
-      <div class="facts rv">
-        <div><span class="label">Replies</span><p>Same working day, Monday to Friday</p></div>
-        <div><span class="label">Studio</span><p>India, working with clients worldwide</p></div>
-        <div><span class="label">Good to include</span><p>Your website, what you want more of, and a rough timeline</p></div>
+    <div class="c-top">
+      <div>
+        <span class="label" style="color:var(--d3)">(06) Contact</span>
+        <h2 class="big rl" style="margin-top:28px"><span class="line"><span>Let’s make</span></span><span class="line"><span class="it">something good.</span></span></h2>
       </div>
-      <form id="talk-form" class="rv" novalidate>
+      <a class="badge rv" href="#enquiry" aria-label="Start a project: go to the enquiry form" data-magnetic>
+        <svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ring" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#ring">Start a project · Start a project · Start a project ·</textPath></text></svg>
+        <span class="core" aria-hidden="true"><svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="1.6"/></svg></span>
+      </a>
+    </div>
+
+    <div class="c-panel rv" id="enquiry">
+      <i class="glow" aria-hidden="true"></i>
+      <div class="c-left">
+        <p class="c-lead">Tell us what you’re making. You’ll hear back the same working day from the people who build it.</p>
+        <div class="mailrow">
+          <a class="mail" href="mailto:contact@anqulas.com" data-cursor="link">contact@anqulas.com <span aria-hidden="true">↗</span></a>
+          <button class="copy" type="button" id="copy-mail">Copy</button>
+        </div>
+        <ul class="facts">
+          <li><span class="label">Replies</span><span>Same working day, Mon–Fri</span></li>
+          <li><span class="label">Studio</span><span>India, working worldwide</span></li>
+          <li><span class="label">First step</span><span>A 20-minute call, no slides</span></li>
+        </ul>
+      </div>
+      <form id="talk-form" novalidate>
+        <fieldset class="chips">
+          <legend class="label">What do you need?</legend>
+          <label><input type="checkbox" name="need" value="A new website"><span>A new website</span></label>
+          <label><input type="checkbox" name="need" value="The Business OS"><span>The Business OS</span></label>
+          <label><input type="checkbox" name="need" value="Tools &amp; video"><span>Tools &amp; video</span></label>
+          <label><input type="checkbox" name="need" value="Not sure yet"><span>Not sure yet</span></label>
+        </fieldset>
+        <fieldset class="chips">
+          <legend class="label">When?</legend>
+          <label><input type="radio" name="when" value="As soon as possible"><span>As soon as possible</span></label>
+          <label><input type="radio" name="when" value="In 1–3 months"><span>In 1–3 months</span></label>
+          <label><input type="radio" name="when" value="Just exploring"><span>Just exploring</span></label>
+        </fieldset>
         <div class="f2c">
           <div class="fld"><label for="talk-name">Your name</label><input id="talk-name" name="name" type="text" autocomplete="name" maxlength="120" required></div>
           <div class="fld"><label for="talk-company">Studio or company</label><input id="talk-company" name="company" type="text" autocomplete="organization" maxlength="160"></div>
         </div>
         <div class="fld"><label for="talk-email">Email</label><input id="talk-email" name="email" type="email" autocomplete="email" maxlength="254" required></div>
-        <div class="fld"><label for="talk-message">Tell us about the project</label><textarea id="talk-message" name="message" maxlength="5000" required placeholder="A new website, the Business OS, or something else"></textarea></div>
+        <div class="fld"><label for="talk-message">Tell us about the project</label><textarea id="talk-message" name="message" maxlength="4800" required placeholder="Your current website, what you want more of, anything we should know"></textarea></div>
         <p class="hp" aria-hidden="true"><label for="talk-website">Leave this empty</label><input id="talk-website" name="website" type="text" tabindex="-1" autocomplete="off"></p>
-        <button class="btn btn-light send" type="submit" data-magnetic>Send enquiry <span aria-hidden="true">→</span></button>
+        <button class="send" type="submit" data-magnetic><span class="send-t">Send enquiry</span><span class="send-a" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8"/></svg></span></button>
         <div class="msg" id="talk-msg" role="status" aria-live="polite"></div>
       </form>
     </div>
@@ -802,6 +884,13 @@
   const fit = () => { word.style.fontSize = "100px"; const w = word.scrollWidth, avail = word.parentElement.clientWidth; word.style.fontSize = `${(100 * avail / w) * 0.995}px`; };
   fit(); addEventListener("resize", fit); if (document.fonts) document.fonts.ready.then(fit);
 
+  // Contact: the panel's glow follows the pointer; the email copies in one tap.
+  const panel = $("#enquiry");
+  if (fine && !calm) panel.addEventListener("pointermove", (e) => { const r = panel.getBoundingClientRect(); panel.style.setProperty("--gx", `${e.clientX - r.left}px`); panel.style.setProperty("--gy", `${e.clientY - r.top}px`); });
+  const cp = $("#copy-mail");
+  cp.addEventListener("click", async () => { try { await navigator.clipboard.writeText("contact@anqulas.com"); cp.textContent = "Copied"; } catch (e) { cp.textContent = "contact@anqulas.com"; } setTimeout(() => { cp.textContent = "Copy"; }, 1800); });
+  $(".badge").addEventListener("click", () => setTimeout(() => $("#talk-name").focus({ preventScroll: true }), 900));
+
   // Accordion: one open at a time.
   $$("#acc details").forEach((d) => d.addEventListener("toggle", () => { if (d.open) $$("#acc details").forEach((o) => { if (o !== d) o.open = false; }); }));
 
@@ -828,14 +917,22 @@
   const form = document.getElementById("talk-form"), msg = document.getElementById("talk-msg");
   const btn = form.querySelector("button[type=submit]"), label = btn.innerHTML;
   const say = (kind, text) => { msg.className = "msg on " + kind; msg.textContent = text; };
+  // The chips travel at the top of the message, so they reach the inbox
+  // without changing what the contact endpoint accepts.
+  const brief = () => {
+    const fd = new FormData(form), need = fd.getAll("need"), when = fd.get("when"), lines = [];
+    if (need.length) lines.push("Needs: " + need.join(", "));
+    if (when) lines.push("Timing: " + when);
+    return lines.length ? lines.join("\n") + "\n\n" : "";
+  };
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const val = (n) => String(new FormData(form).get(n) || "").trim();
     if (!val("name") || !val("email") || !val("message")) { say("warn", "Name, email and a few words about the project, and it's on its way."); return; }
-    btn.disabled = true; btn.textContent = "Sending…"; msg.className = "msg";
+    btn.disabled = true; btn.querySelector(".send-t").textContent = "Sending…"; msg.className = "msg";
     try {
       const res = await fetch("https://visionos-api.onrender.com/api/contact", { method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: val("name"), company: val("company"), email: val("email"), message: val("message"), website: val("website") }) });
+        body: JSON.stringify({ name: val("name"), company: val("company"), email: val("email"), message: brief() + val("message"), website: val("website") }) });
       const data = await res.json().catch(() => ({}));
       if (res.ok && data.delivered) { form.reset(); say("ok", "Thank you. You'll hear back the same working day."); }
       else if (res.ok) say("warn", "That reached us but the mail didn't go out. Email contact@anqulas.com and it won't get lost.");
